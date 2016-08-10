@@ -1,28 +1,19 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<%-- <% String cp1 = request.getContextPath();%> --%>
-<c:set var="cp" value="${pageContext.request.contextPath}"/>
+<c:import url="/WEB-INF/views/include/import.jsp" />
 
 <title>회원가입</title>
-
-
-	<link href="${ cp }/resources/css/registerbootstrap.min.css" rel="stylesheet">
-    <!-- font awesome -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/registerfont-awesome.min.css'/>" media="screen" title="no title" charset="utf-8">
-    <!-- Custom style -->
-    <link rel="stylesheet" href="<c:url value='/resources/css/registerstyle.css'/>" media="screen" title="no title" charset="utf-8">
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
+   
+    <!-- 회원가입 폼 관련 css, js -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<c:url value='/resources/js/registerbootstrap.min.js'/>" > </script>
-
+	<%--     <link href="${ cp }/resources/css/registerbootstrap.min.css" rel="stylesheet">
+     <script src="<c:url value='/resources/js/registerbootstrap.min.js'/>" > </script> --%>
 </head>
 <body>	
 	  <article class="container">	  

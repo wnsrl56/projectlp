@@ -40,6 +40,7 @@ public class MysqlMemberDao implements MemberDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 	@Override
 	public void updateMember(HashMap<String, ?> hash) {
@@ -51,6 +52,11 @@ public class MysqlMemberDao implements MemberDao {
 	public void deleteMemberByIndex(int index) {
 		// TODO Auto-generated method stub
 		
+	}
+	// 로그인
+	@Override
+	public Member selectMemberByEmailAndPassword(HashMap<String, String> account) {
+		return memberMapper.selectMemberByEmailAndPassword(account);
 	}
 	
 

@@ -52,6 +52,11 @@ public class OracleMemberDao implements MemberDao {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override	
+	public Member selectMemberByEmailAndPassword(HashMap<String, String> account) {
+		return null;	
+	}
 	
 
 }

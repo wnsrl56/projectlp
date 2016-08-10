@@ -26,6 +26,6 @@ public interface MemberDao {
 	public void deleteMemberByIndex(int index);
 	
 	// 로그인
-	//public Member searchMemberByEmailAndPw(HashMap<String, String> hash);
+	public Member selectMemberByEmailAndPassword(HashMap<String, String> account);
 	
 }

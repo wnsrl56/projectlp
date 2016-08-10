@@ -2,12 +2,12 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<c:set var="cp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 	<c:import url="/WEB-INF/views/include/import.jsp" />
-
+	
 <title>회원가입</title>   
     <!-- 회원가입 폼 관련 css, js -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -22,7 +22,7 @@
         <div align="center"><h1>회원가입 <small>basic form</small></h1></div>
         <div class="col-md-6 col-md-offset-3">
           <%-- <form:form action="register.action" method="post" modelAttribute="member" > --%>
-          <form:form action="<c:url value='/member/register.action'/>" method="post" modelAttribute="member" >
+          <form:form action="${cp}/member/register.action" method="post" modelAttribute="member" >
             <div class="form-group">
               <label for="email">이메일 주소</label>
               <input type="email" class="form-control" name="email" placeholder="이메일 주소">

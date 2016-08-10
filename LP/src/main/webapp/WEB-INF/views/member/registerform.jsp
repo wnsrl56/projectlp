@@ -41,9 +41,9 @@
               <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요">
             </div>
             <div class="form-group">
-              <label for="gender">성별</label> &nbsp;
-              <input class="" type="radio" name="sexual" value="male" checked> Male &nbsp;&nbsp; 
-  			  <input class="" type="radio" name="sexual" value="female"> Female &nbsp;&nbsp;
+              <label for="sexual">성별</label> &nbsp;
+              <input class="" type="radio" name="sexual" value="male" checked> Male&nbsp;&nbsp; 
+  			  <input class="" type="radio" name="sexual" value="female"> Female&nbsp;&nbsp;
   			  <input class="" type="radio" name="sexual" value="other"> Other <br>              
             </div>
             <div class="form-group">

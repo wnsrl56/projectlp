@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 논리적 클래스 만들기 -->  
+<mapper namespace="com.project.model.mapper.QuestMapper">
+
+
+<!-- interface에 따른 query language 생성 -->
+
+<!--  template -->
+
+<!-- 	
+	
+	<sql id="selectDefault"></sql>
+
+	<insert id="d" parameterType="d"></insert>
+	
+	<select id="d" resultType="d">
+			<include refid="selectDefault" />
+	</select>
+	
+		<sql id="selectDefault">
+ 			SELECT *
+ 			FROM MEMBER
+ 		</sql>
+  
+ 		<select id="selectAllMemberList" resultType="member">
+			<include refid="selectDefault" />
+		</select>
+	
+ -->		
+ 
+
+
+		 <!-- insert -->
+		 <insert id="insertQuest" parameterType="quest">
+			 INSERT INTO 
+			 Quest(BoardNo,QuestNo,Title,Context,RegDate,Writer,ViewCount,GoodCount,Deleted)
+ 			 VALUES
+ 			 ('quest',2,12);
+			 
+			
+		  </insert>
+		  
+		  <select id = "selectAllQuestList" parameterType="quest">
+		  <![CDATA[
+		     SELECT
+		        BOARDNO,
+		        QUESTNO,
+		        TITLE,
+		        CONTEXT,
+		        REGDATE,
+		        WRITER,
+		        VIEWCOUNT,
+		        GOODCOUNT,
+		        DELETED
+		        FROM
+		            QUEST
+		        
+		  
+		  
+		  ]]>
+		  
+		  </select>
+		 
+	
+
+</mapper> 	
+	
+
+	
+	
+	

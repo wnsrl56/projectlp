@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+								http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- base scan -->
+	<!--  context unbound를 대비하여, beans 에  xmlns:context , schemalocation을 추가 시켜 놓는다. -->
+	<context:component-scan base-package="com.project.model.dao" />
+	<context:component-scan base-package="com.project.model.service" />	
+	
+	<!--  db id 주입을 위한 데이터 소스 -->
+	
+	<!-- dataSource for Oracle  
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+		<property name="username" value="lp" />
+		<property name="password" value="lp" />			
+	</bean>
+	
+	-->
+	
+	<!-- datasource for mysql -->	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/lp?useSSL=false"/>
+		<property name="username" value="lp" />
+		<property name="password" value="admin" />			
+	</bean>
+	
+	 
+	<!-- Mybatis를 사용하기 위한 sqlsession factory 및 sqlsession을 xml을 통해서 DI 주입--> 
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />	
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />	
+	</bean>	
+	
+	
+	<!--  mapper -->
+	<bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.MemberMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>	
+	
+	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.BoardMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="questMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.QuestMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+
+	</bean>
+		
+		
+</beans>

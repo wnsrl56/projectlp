@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  mybatis config form 으로 작성하겠다. -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+	
+	<!-- 외부 속성 정해주기 -->
+	<!-- $접근으로 값을 공유하고 싶을 때 정의한다. -->
+	<!-- 후에 mysql로 변경하기 -->
+	
+	<!--  oracle
+	<properties>
+		<property name="driver" value="com.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="lp" />
+		<property name="password" value="lp" />
+	</properties>
+	 -->
+	<properties>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/lp?characterEncoding=UTF-8" />
+		<property name="username" value="lp" />
+		<property name="password" value="admin" />			
+	</properties>
+	
+	<!--  별명 매칭하기 타이핑을 줄여준다.-->
+	<typeAliases>
+		<typeAlias type="com.project.model.dto.Member" alias="Member"/>
+		<typeAlias type="com.project.model.dto.Board" alias="Board"/>
+		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
+	</typeAliases>
+	
+	<!--  환경 설정 -->
+	<environments default="development">
+		<environment id="development">			
+			<!--  스프링 환경에서는 jdbc 밑의 속성은 필용 없다. 자동 설정 -->
+			<transactionManager type="JDBC" />			
+			
+			<!-- POOLED는 jdbc connector 와 같은 의미로 쓴다. -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />				
+				<property name="username" value="lp" />
+				<property name="password" value="admin" />
+			</dataSource>
+			
+		</environment>
+	</environments>
+
+	<mappers>
+		<!-- 
+			Code에서 분리된 SQL문이 작성되고 객체와의 매핑 정보가 정의되는 파일들
+			경로는 패키지 경로를 사용 : com.demoweb -> com/demoweb 경로 
+		-->		 
+		<!--  밑에 mapper 추가 -->
+		<mapper resource="com/project/model/mapper/MemberMapper.xml" />
+		<mapper resource="com/project/model/mapper/BoardMapper.xml" />
+		<mapper resource="com/project/model/mapper/QuestMapper.xml" />
+		
+		
+	</mappers>
+
+</configuration>

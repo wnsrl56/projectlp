@@ -23,6 +23,8 @@ public class AccountController {
 	
 	@RequestMapping(value = "/account/login.action", method = RequestMethod.GET)
 	public String login() {
+		
+		System.out.println("gggg");
 		return "web/account/loginform";
 		// /WEB-INF/views/ + account/loginform + .jsp
 	}

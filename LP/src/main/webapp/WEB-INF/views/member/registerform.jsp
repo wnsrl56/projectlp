@@ -6,10 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<c:import url="/WEB-INF/views/include/import.jsp" />
+	<c:import url="/WEB-INF/views/include/import.jsp" />
 
-<title>회원가입</title>
-   
+<title>회원가입</title>   
     <!-- 회원가입 폼 관련 css, js -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	<%--     <link href="${ cp }/resources/css/registerbootstrap.min.css" rel="stylesheet">

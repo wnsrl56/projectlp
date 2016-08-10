@@ -3,7 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 	<c:import url="/WEB-INF/views/include/import.jsp" />
 	<title>main</title>
@@ -15,13 +14,9 @@
     <![endif]-->
 
 </head>
-
 <body>
-	
 	<c:import url="/WEB-INF/views/include/header.jsp" />
-	
 	<c:import url="/WEB-INF/views/include/home.jsp" />
-   
 </body>
 
 </html>

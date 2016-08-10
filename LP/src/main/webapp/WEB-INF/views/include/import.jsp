@@ -10,10 +10,10 @@
     <meta name="author" content="">
 	
 	<!-- jQuery -->
-    <script src="${cp}/resources/js/jquery.js"></script>
+	<script src="${cp}/resources/js/jquery-1.12.4.min.js"></script>    
     <!-- Bootstrap Core JavaScript -->
     <script src="${cp}/resources/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
-    <link href="${cp}/resources/css/bootstrap.min.css'/>" rel="stylesheet">
+    <link href="${cp}/resources/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->    
-	<link href="${cp}/resources/css/4-col-portfolio.css'/>" rel="stylesheet">
+	<link href="${cp}/resources/css/4-col-portfolio.css" rel="stylesheet">

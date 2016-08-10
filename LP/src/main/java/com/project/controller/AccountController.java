@@ -25,6 +25,7 @@ public class AccountController {
 	public String login() {
 		
 		System.out.println("gggg");
+		System.out.println("gggg");
 		return "web/account/loginform";
 		// /WEB-INF/views/ + account/loginform + .jsp
 	}

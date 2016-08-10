@@ -11,7 +11,7 @@ public class Util {
 	 * 
 	 * @param source 암호화 대상 문자열
 	 * @param algorithm 암호화 알고리즘 문자열 (SHA-1, MD5, SHA-256 ...)
-	 * @return 암호화된 데이터
+	 * @return 암호화된 데이터ttt
 	 */
 	public static byte[] getHashedData(String source, String algorithm) {
 		

@@ -23,16 +23,12 @@ public class MysqlMemberDao implements MemberDao {
 	
 	@Override
 	public void insertMember(Member member) {
-		// TODO Auto-generated method stub
-
-		memberMapper.insertMember(member);
-		
+		memberMapper.insertMember(member);		
 	}
 
 	@Override
 	public List<Member> selectAllMemberList() {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.selectAllMemberList();
 	}
 
 	@Override

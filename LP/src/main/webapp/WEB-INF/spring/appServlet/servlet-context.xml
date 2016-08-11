@@ -12,7 +12,6 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
-
 	<!--  controller mapping  scan-->
 	<context:component-scan base-package="com.project.controller" />
 
@@ -36,12 +35,5 @@
 		<!--  밑에 멀티파트 내용 추가하기 ex) 용량제한 파일 확장자 제한 등등 -->
 		
 	</beans:bean>
-	
-	
-
-	
-	
-	
-	
 	
 </beans:beans>

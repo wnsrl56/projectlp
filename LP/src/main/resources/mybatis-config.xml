@@ -29,11 +29,8 @@
 		<typeAlias type="com.project.model.dto.Member" alias="Member"/>
 		<typeAlias type="com.project.model.dto.Board" alias="Board"/>
 		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
-<<<<<<< HEAD
 		<typeAlias type="com.project.model.dto.PartyNotice" alias="PartyNotice"/>
-=======
 		<typeAlias type="com.project.model.dto.Comm" alias="Comm"/>
->>>>>>> branch 'master' of https://github.com/wnsrl56/projectlp.git
 	</typeAliases>
 	
 	<!--  환경 설정 -->
@@ -62,11 +59,9 @@
 		<mapper resource="com/project/model/mapper/MemberMapper.xml" />
 		<mapper resource="com/project/model/mapper/BoardMapper.xml" />
 		<mapper resource="com/project/model/mapper/QuestMapper.xml" />
-<<<<<<< HEAD
 		<mapper resource="com/project/model/mapper/PartyNoticeMapper.xml" />
-=======
 		<mapper resource="com/project/model/mapper/CommMapper.xml" />
->>>>>>> branch 'master' of https://github.com/wnsrl56/projectlp.git
+
 		
 	</mappers>
 

@@ -58,7 +58,6 @@
 	<bean id="questMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.project.model.mapper.QuestMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-
 	</bean>
 	<bean id="partynoticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.project.model.mapper.PartyNoticeMapper" />
@@ -66,5 +65,8 @@
 
 	</bean>
 		
-		
+	<bean id="commMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.CommMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>

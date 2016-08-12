@@ -5,7 +5,6 @@
 
 	<c:set var="cp" value="${pageContext.request.contextPath}"/>
   <!-- Navigation -->
-     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <script type="text/javascript">
   </script>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

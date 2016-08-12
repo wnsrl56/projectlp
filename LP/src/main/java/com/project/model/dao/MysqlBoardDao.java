@@ -23,11 +23,21 @@ public class MysqlBoardDao implements BoardDao {
 	
 	
 	@Override
-	public void insertBoard(Board board) {
-		// TODO Auto-generated method stub
-		boardMapper.insertBoard(board);
+	public void insertBoard() {
+		
+		boardMapper.insertBoard();
+		
+	}
+	
+	@Override
+	public int selectBoardNo(int memberNo) {
+		
+		int boardNo	= boardMapper.selectBoardNo(memberNo);
+		
+		return boardNo;
 	}
 
+	
 
 	@Override
 	public Board searchBoardByIndex(int index) {
@@ -53,5 +63,7 @@ public class MysqlBoardDao implements BoardDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

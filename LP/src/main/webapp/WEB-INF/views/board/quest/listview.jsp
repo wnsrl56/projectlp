@@ -31,8 +31,8 @@
   	  <div class="col-md-6" role="complementary" id="list">
   	
   		 
-   <c:choose> 
-    <c:when test="${count != 0 }">
+    <c:choose> 
+    <c:when test="${ empty quest }">
         <table width="700" border="1" cellpadding="0" cellspacing="0">
         <tr>
             <td align="center">게시판에 저장된 글이 없습니다.</td>
@@ -41,9 +41,35 @@
     </c:when>
     
     <c:otherwise>
+    
+    <c:forEach var="quest" items="${ quests }">
+    		<div class="col">
+				  <div class="col-sm-6 col-md-4">
+				    <div class="thumbnail">
+				      <%-- <img src="<c:url value='/resources/image/${ board.savedFileName }'/>" alt="..."> --%>
+				      <img src="#" />
+				      <div class="caption">
+				        <h3>${ quest.title }</h3>
+				        <p>${ quest.writer }</p>
+				        <p>
+				        <%-- <a href="<c:url value='/board/boardview.action'/>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%>
+				        <%-- <a href="<c:url value='/board/boardview.action'/>" id="activeModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%> 
+				       	<div>
+				       	<c:url value="boardview.action" var="viewUrl">
+        					<c:param name="questNo" value="${ quest.questNo }" />
+        				</c:url>		       
+				        <a id="activeModal"	href="${ viewUrl }" class="btn btn-primary btn-lg">답변하기</a>
+				        </div>
+				        <!-- <a href="#" class="btn btn-default" role="button" >Button</a></p> -->
+				      </div>
+				    </div>
+				  </div>
+				</div>
+     	</c:forEach> 
+    
     	
     	
-            <c:forEach var="board" items="${boards}"><%-- AAA.rows는 레코드 배열을 반환한다 --%>
+<%--             <c:forEach var="board" items="${boards}">AAA.rows는 레코드 배열을 반환한다
               	 <div class="col-sm-6 col-md-4">
 					   <p>${ board.title }</p>
 					   <hr>
@@ -67,7 +93,7 @@
 					    <c:out value = "${board.regDate}"/>
       				  
       				  </div></div>	 
-              </c:forEach>    
+              </c:forEach>     --%>
         
     </c:otherwise>
 </c:choose>

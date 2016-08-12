@@ -36,12 +36,28 @@
 		 <!-- insert -->
 		 <insert id="insertQuest" parameterType="quest">
 			 INSERT INTO 
-			 Quest(BoardNo,QuestNo,Title,Context,RegDate,Writer,ViewCount,GoodCount,Deleted)
+			 Quest(BoardNo,Title,Context,Writer)
  			 VALUES
- 			 ('quest',2,12);
-			 
-			
+ 			 (#{boardNo}, #{title}, #{context}, #{writer});
 		  </insert>
+		  
+		  <insert id="insertQPicture" parameterType="qpicture">
+		     
+			 INSERT INTO 
+			 QPicture(QuestNo, SavedFilePath, RealFilePath, Writer)
+ 			 VALUES
+ 			 (#{questNo}, #{savedFilePath}, #{realFilePath}, #{writer} );
+		  </insert>
+		  
+		  <select id="selectQuestNo" resultType="int">
+				SELECT count(*) 
+				FROM quest 
+		  </select>
+		  
+		  <select id="selectAllQuests" resultType="quest">
+				SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted
+				FROM quest
+		  </select>
 		  
 		  <select id = "selectAllQuestList" parameterType="quest">
 		  <![CDATA[

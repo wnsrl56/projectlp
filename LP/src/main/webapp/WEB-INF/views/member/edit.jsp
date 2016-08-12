@@ -19,10 +19,10 @@
         <div class="page-header">
         	<c:import url="/WEB-INF/views/include/header.jsp" />
         </div>
-        <div align="center"><h1>회원가입 <small>basic form</small></h1></div>
+        <div align="center"><h1>회원정보 수정 <small></small></h1></div>
         <div class="col-md-6 col-md-offset-3">
           <%-- <form:form action="register.action" method="post" modelAttribute="member" > --%>
-          <form:form action="${cp}/member/register.action" method="post" modelAttribute="member" >
+          <form:form action="${cp}/member/edit.action" method="post" modelAttribute="member" >
             <div class="form-group">
               <label for="email">이메일 주소</label>
               <input type="email" class="form-control" name="email" placeholder="이메일 주소">
@@ -60,33 +60,7 @@
               <input class="" type="radio" name="userType" value="사용자" checked> 사용자 &nbsp;&nbsp; 
   			  <input class="" type="radio" name="userType" value="관리자"> 관리자 &nbsp;&nbsp;  			                
             </div>
-           <!--  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
-    </ul>
-    </div> -->
-        <!--     <div class="form-group">
-              <label for="username">휴대폰 인증</label>
-              <div class="input-group">
-                <input type="tel" class="form-control" id="username" placeholder="- 없이 입력해 주세요">
-                <span class="input-group-btn">
-                  <button class="btn btn-success">인증번호 전송<i class="fa fa-mail-forward spaceLeft"></i></button>
-                </span>
-              </div>
-            </div> -->
-            <!-- <div class="form-group">
-              <label for="username">인증번호 입력</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="username" placeholder="인증번호">
-                <span class="input-group-btn">
-                  <button class="btn btn-success">인증번호 입력<i class="fa fa-edit spaceLeft"></i></button>
-                </span>
-              </div>
-            </div> -->
+           
             <div class="form-group">
                 <label>약관 동의</label>
               <div data-toggle="buttons">
@@ -98,8 +72,8 @@
               </div>
             </div>
             <div class="form-group text-center">
-              <button type="submit" class="btn btn-info">회원가입<!-- <i class="fa fa-check spaceLeft"></i> --></button>
-              <button type="submit" class="btn btn-warning">가입취소<!-- <i class="fa fa-times spaceLeft">test</i> --></button>
+              <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
+              <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
             </div>
           </form:form>
         </div>

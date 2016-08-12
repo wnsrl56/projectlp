@@ -8,48 +8,47 @@
 <head>
 <c:import url="/WEB-INF/views/include/import.jsp" />
 <title>마이페이지</title>
+<script type="text/javascript">
+	// 개인정보 수정
+	function edit() { 
+		// 수정하려면 아이디 / 비번 입력 받기
+		// 아이디 
+	}
+	
+</script>
 </head>
 <body>
 	<div><c:import url="/WEB-INF/views/include/header.jsp" /></div>
-	<div id="content">
-		<c:set var="member" value="${ session.loginuser }"/>
-		<table class="table">
-			<tr style="height: 30px;">
-				<th>회원정보</th>
+	<div style="height: 100px;"></div>
+	<div id="content" >
+		<c:set var="member" value="${ sessionScope.loginuser }"/>
+		<div>회원정보 ${ member.name }</div>
+		<table class="table">			
+			<tr>
+				<th>이름</th>
+				<td>${ member.name }</td>
+				<th>성별</th>
+				<td>${ member.sexual }</td>				
 			</tr>
-			<tr style="height: 30px;">
-				<th>이름</td>
+			<tr>
+				<th>학년</th>
+				<td>${ member.grade }</td>
+				<th>등록일자</th>
+				<td>${ member.regDate }</td>								
 			</tr>
-				<td>이름</td>
-				<td>성별</td>
-				<td>학년</td>
-				<td>등록일자</td>
-				<td>약관동의여부</td>
-				<td>가입사이트</td>
-				<td>사용자구분</td>
-				<td>활성화여부</td>
-			</tr>
-			<c:forEach var="member" items="${ members }">
-				<tr style="height: 30px">
-					<td>
-						<!-- view.action?memberid=...... 경로를 만들고 변수에 저장 --> <%-- <c:url value="view.action" var="viewUrl">
-        					<c:param name="memberid" value="${ member.memberId }" />
-        				</c:url>
-        				<a href="${ viewUrl }">${ member.memberId }</a> --%> <a
-						href="#">${ member.email }</a>
-					</td>
-					<td>${ member.name }</td>
-					<td>${ member.sexual }</td>
-					<td>${ member.grade }</td>
-					<td>${ member.regDate }</td>
-					<td>${ member.submit }</td>
-					<td>${ member.extMember }</td>
-					<td>${ member.userType }</td>
-					<td>${ member.deleted }</td>
-				</tr>
-			</c:forEach>
+			<tr>
+				<th>약관동의여부</th>
+				<td>${ member.submit }</td>
+				<th>가입사이트</th>	
+				<td>${ member.extMember }</td>
+			</tr>				
 		</table>
 	</div>
+	<div class="form-group text-center">
+       <button type="submit" class="btn btn-info">회원수정</button>
+       <button type="submit" class="btn btn-warning">돌아가기</button>
+       <button type="button" class="btn btn-info fa">회원탈퇴</button>
+    </div>
 </body>
 </html>
 

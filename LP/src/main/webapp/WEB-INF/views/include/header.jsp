@@ -24,7 +24,10 @@
                 <ul class="nav navbar-nav">                
                 <li>
                        <a href="${ cp }/qboard/listview.action">Quest</a>
-                </li>                    
+                </li>  
+                <li>
+                       <a href="${ cp }/cboard/listview.action">Comm</a>
+                </li>                   
               <c:choose>
             	<%-- <c:when test="${ sessionScope.loginuser == null }"> --%>
             	<c:when test="${ empty sessionScope.loginuser }">

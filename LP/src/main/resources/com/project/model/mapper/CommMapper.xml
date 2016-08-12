@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 논리적 클래스 만들기 -->  
-<mapper namespace="com.project.model.mapper.MemberMapper">
+<mapper namespace="com.project.model.mapper.CommMapper">
 
 
 <!-- interface에 따른 query language 생성 -->
@@ -30,21 +30,18 @@
 		</select>
 	
  -->		
+ 
+
+
 		 <!-- insert -->
-		 <insert id="insertMember" parameterType="Member">
-			 INSERT INTO
-			 member (Email, Password, Sexual, Name, Grade, Submit, UserType, ExtMember) 
-			 VALUES (#{email}, password(#{password}), #{sexual}, #{name}, #{grade}, #{submit}, #{userType}, #{extMember})
-		 </insert>
-		 
-		 <select id="selectMemberByEmailAndPassword" parameterType="hashMap" resultType="Member">
-		 	SELECT * from member	 		
-		 	WHERE Email = #{email} AND Password = password(#{password}) 
-		 </select>
-		 <select id="selectAllMemberList" resultType="Member">
-		 	SELECT * from member	 	 
-		 </select>
-		 
+		 <!-- no group user comm의 boardno == 2 -->
+		 <insert id="insertComm" parameterType="comm">
+			 INSERT INTO 
+			   comm(comm.BoardNo,comm.Title,comm.Context,comm.Writer) 
+ 			 VALUES
+ 				(2,#{title},#{context},#{writer});
+			</insert>
+		  
 		 
 		 
 	

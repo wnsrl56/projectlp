@@ -48,7 +48,7 @@ public class AccountController {
 		}
 	}
 			
-	@RequestMapping(value = "/account/logout.action", method = RequestMethod.GET)
+	@RequestMapping(value = "logout.action", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loginuser");//로그아웃
 		return "redirect:/home.action";

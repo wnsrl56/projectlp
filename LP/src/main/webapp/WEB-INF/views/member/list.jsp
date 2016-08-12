@@ -10,21 +10,25 @@
 <title>회원 목록</title>
 </head>
 <body>
-	<div><c:import url="/WEB-INF/views/web/include/header.jsp" /></div>
+	<div><c:import url="/WEB-INF/views/include/header.jsp" /></div>
 	<div id="list">
 		 <div id="content">
         	<br /><br />
         	<div style='text-align:center'>
-        		[&nbsp;<!-- <a href="register.action"> --><a href="#">사용자 등록</a>&nbsp;]
+        		<%-- [&nbsp;<!-- <a href="register.action"> --><a href="#">사용자 등록</a>&nbsp;] --%>
         	</div>
         	<br /><br />        	
-        	<table border="1" align="center" width="700px">
+        	<table class="table">
         		<tr style="height:30px;background-color:orange">
         			<td>이메일(아이디)</td>
-        			<td>이메일</td>
-        			<td>사용자구분</td>
-        			<td>활성화여부</td>
+        			<td>이름</td>
+        			<td>성별</td>
+        			<td>학년</td>
         			<td>등록일자</td>
+        			<td>약관동의여부</td>
+        			<td>가입사이트</td>
+        			<td>사용자구분</td>
+        			<td>활성화여부</td>        			
         		</tr>        	
         	<c:forEach var="member" items="${ members }">
         		<tr style="height:30px">
@@ -34,12 +38,16 @@
         					<c:param name="memberid" value="${ member.memberId }" />
         				</c:url>
         				<a href="${ viewUrl }">${ member.memberId }</a> --%>
-        				<a href="#">${ member.memberId }</a> 
+        				<a href="#">${ member.email }</a> 
         			</td>
-        			<td>${ member.email }</td>
-        			<td>${ member.userType }</td>
-        			<td>${ member.active }</td>
+        			<td>${ member.name }</td>
+        			<td>${ member.sexual }</td>
+        			<td>${ member.grade }</td>
         			<td>${ member.regDate }</td>
+        			<td>${ member.submit } </td>
+        			<td>${ member.extMember }</td>
+        			<td>${ member.userType }</td>
+        			<td>${ member.deleted }</td>        			
         		</tr>
         	</c:forEach>
         	</table>        	

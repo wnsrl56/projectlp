@@ -1,5 +1,6 @@
 package com.project.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,15 @@ public class MemberServiceImpl implements MemberService {
 				
 		return memberDao.selectMemberByEmailAndPassword(account);
 	}
+
+	@Override
+	public ArrayList<Member> listAllMembers() {
+		ArrayList<Member> lists = (ArrayList)memberDao.selectAllMemberList();
+		System.out.println("list size" + lists.size() + "@service");
+		return lists;
+	}
+	
+	
 
 
 

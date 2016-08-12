@@ -13,40 +13,40 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.model.dto.Board;
-import com.project.model.dto.Quest;
+import com.project.model.dto.PartyNotice;
 
 @Controller
-@RequestMapping(value="/qboard/")
-public class QuestBoardController {
+@RequestMapping(value="/pboard/")
+public class PartyNoticeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(QuestBoardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PartyNoticeController.class);
 
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
-	public ModelAndView QuestBoardListGet(Map<String,Object> Map){
-	    ModelAndView mv = new ModelAndView("board/quest/listview");
-	     
+	public ModelAndView PartyNoticeListGet(Map<String,Object> Map){
+	    ModelAndView mv = new ModelAndView("board/partynotice/listview");
+	        
         
 	    return mv;
 	}
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.GET)
-	public ModelAndView QuestInsertGet(@ModelAttribute Quest quest){
-	    ModelAndView mv = new ModelAndView("board/quest/registerform");
-	     
+	public ModelAndView PartyNoticeInsertGet(@ModelAttribute PartyNotice partynotice,Model model){
+	    ModelAndView mv = new ModelAndView("board/partynotice/registerform");
+
+	   
+	    model.addAttribute("partynotice",partynotice);
+       
         
 	    return mv;
 	}
 	
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.POST)
-	public String QuestInsertPost(MultipartHttpServletRequest req,Board board,Model model,BindingResult result) {
-		logger.info("board.context: {}");
-	     
-        
+	public String PartyNoticeInsertPost(MultipartHttpServletRequest req,PartyNotice partynotice ,Model model,BindingResult result) {
+		/*logger.info("partynotice.context: {}");*/
+	   
+		 System.out.println(partynotice.getTitle());
 	    return "redirect:listview.action";
-	    
-	    
 	}
 
 	

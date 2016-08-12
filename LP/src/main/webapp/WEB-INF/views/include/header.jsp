@@ -24,6 +24,11 @@
                 <ul class="nav navbar-nav">                
                 <li>
                        <a href="${ cp }/qboard/listview.action">Quest</a>
+                       
+                </li>       
+                <li>
+                <a href="${ cp }/pboard/listview.action">PartyNotice</a>
+                </li>             
                 </li>  
                 <li>
                        <a href="${ cp }/cboard/listview.action">Comm</a>

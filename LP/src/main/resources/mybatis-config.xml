@@ -31,6 +31,7 @@
 		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
 		<typeAlias type="com.project.model.dto.PartyNotice" alias="PartyNotice"/>
 		<typeAlias type="com.project.model.dto.Comm" alias="Comm"/>
+		<typeAlias type="com.project.model.dto.QPicture" alias="QPicture"/>
 	</typeAliases>
 	
 	<!--  환경 설정 -->

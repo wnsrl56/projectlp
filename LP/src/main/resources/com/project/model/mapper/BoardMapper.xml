@@ -38,10 +38,16 @@
 			 INSERT INTO 
 			 board(BoardType,MemberNo,PartyNo)
  			 VALUES
- 			 ('comm',1,1);
-			 
-			
+ 			 ('quest',1,1);
 		  </insert>
+		  
+		  <select id="selectBoardNo" resultType="int">
+				SELECT boardNo 
+				FROM board 
+				WHERE MemberNo =  #{MemberNo}  and BoardType = 'quest';
+		  </select>
+		  
+		  
 		  
 		  <select id = "selectAllBoardList" parameterType="board">
 		  <![CDATA[

@@ -64,7 +64,12 @@ public class MemberController {
 	
 	//회원 정보 상세 보기
 	@RequestMapping(value = "detail.action", method = RequestMethod.GET)
-	public String detail(HttpSession session) {		
+	public String detail() {		
+		return "/member/detail";			
+	}
+	// 회원 정보 상세보기 (이메일이나 인덱스 넘버로 찾아오기) -- 관리자용
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String detailByEmail(String Email) {		
 		return "/member/detail";			
 	}
 	// 회원정보 수정

@@ -56,7 +56,7 @@
                         <a href="${cp}/member/modify.action">Modify</a>
                     </li> --%>
                      <li>
-                   		<a> Welcome ${ loginuser.email }!!</a>
+                   		<a href="${cp}/member/detail.action"> Welcome ${ loginuser.email }!!</a>
                     </li>
                    
             	</c:otherwise>

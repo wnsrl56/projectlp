@@ -29,6 +29,7 @@
 		<typeAlias type="com.project.model.dto.Member" alias="Member"/>
 		<typeAlias type="com.project.model.dto.Board" alias="Board"/>
 		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
+		<typeAlias type="com.project.model.dto.QPicture" alias="QPicture"/>
 	</typeAliases>
 	
 	<!--  환경 설정 -->

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.project.model.dto.Board;
+import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
 import com.project.model.mapper.BoardMapper;
 import com.project.model.mapper.MemberMapper;
@@ -25,8 +26,20 @@ public class MysqlQuestDao implements QuestDao {
 
 	@Override
 	public void insertQuest(Quest quest) {
-		// TODO Auto-generated method stub
 		
+		questMapper.insertQuest(quest);
+	}
+	
+	@Override
+	public void insertQPicture(QPicture qpicture) {
+		
+		questMapper.insertQPicture(qpicture);
+	}
+	
+	@Override
+	public int selectQuestNo() {
+		int QuestNo = questMapper.selectQuestNo();
+		return QuestNo;
 	}
 
 	@Override
@@ -52,7 +65,16 @@ public class MysqlQuestDao implements QuestDao {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	public List<Quest> selectAllQuests() {
+		
+		List<Quest> quests	= questMapper.selectAllQuests();
+		
+		return quests;
+	}
+
+
 	
 	
 

@@ -5,7 +5,6 @@
 	<artifactId>lp</artifactId>
 	<!-- 실행 불가시, id 와 web 매핑 주소를 확인 -->
 	<groupId>com.project</groupId>
-	<artifactId>lp</artifactId>
 	<name>LP</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>

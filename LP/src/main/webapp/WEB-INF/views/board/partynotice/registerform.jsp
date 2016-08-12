@@ -1,7 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%> 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page import="com.project.model.dto.PartyNotice"%>
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
+
+
 
 <!--  start to head -->
 <!-- 설정내용 넣어놓기 -->
@@ -31,29 +34,28 @@
   	  <div class="col-md-6" role="complementary" id="list">
   	  <h3> 공지사항 </h3>
   	  <hr>
-  	  <form id ="frm">
-  	  <table class ="board_view">
-  	  <colgroup>
-  	  <col width="15%" />
-  	  <col width="*" />
-  	  </colgroup>
-  	  <caption>공지사항</caption>
-  	  <tbody>
+  	  
+  	  <form:form modelAttribute="partynotice"  action="insert.action" method="post" enctype="multipart/form-data">
+  	  
+  	  <form:hidden path=""/>
+  	  
   	  <tr>
   	    <th scope="row"> 제목 </th>
-  	    <td><input type="text" id="TITLE" name="TITLE" class="wdp_90"></input></td>
+  	    <form:input path="title" class="form-control" rows="5" placeholder="작성하시오" />
+  	    
   	    </tr>
   	     <td colspan="2" class="view_text">
-  	     <textarea rows="20" cols="100" title="내용" id="CONTEXT" name="CONTEXT"></textarea>
+  	     <form:input path="context" id="context" class="form-control" rows="5" placeholder="써라" />
   	     </td>
-  	     </tr>
   	     
-  	     
-  	  </tbody>
-  	  </table>
-  	  <a href="/LP/pboard/listview.action" class="btn" id="write">등록</a>
-  	  <a href="/LP/pboard/listview.action" class="btn" id="list"> 목록으로</a>
-  	  </form>
+  	  
+  	  <div class="form-group text-center">
+  	  <button type="submit" class="btn btn-info ">등록<i class="fa fa-check spaceLeft"></i></button>
+  	  
+  	  <button class="btn btn-warning">목록으로<i class="fa fa-check spaceLeft"></i></button>
+  	  </div>
+  	  </form:form>>
+
   		<%-- 
 		<form:form modelAttribute="board"  action="insert.action" method="post" enctype="multipart/form-data">
 		
@@ -94,7 +96,23 @@
 </body>
 <!--  end of body -->
 
+<script type = "text/javascript">
+$(document).ready(function(){
+    $("#list").on("click", function(e){
+        e.preventDefault();
+        fn_openBoardList();
+    });     
+});
+ 
+function fn_openBoardList(){
+    var comSubmit = new ComSubmit();
+    comSubmit.setUrl("<c:url value='/board/partynotice/listview' />");
+    comSubmit.submit();
+}
+</script>
+
 <script>
+
 var upload = document.getElementsByTagName('input')[0],
     holder = document.getElementById('holder'),
     state = document.getElementById('questionImageFile');

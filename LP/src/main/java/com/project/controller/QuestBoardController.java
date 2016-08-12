@@ -45,6 +45,8 @@ public class QuestBoardController {
 	     
         
 	    return "redirect:listview.action";
+	    
+	    
 	}
 
 	

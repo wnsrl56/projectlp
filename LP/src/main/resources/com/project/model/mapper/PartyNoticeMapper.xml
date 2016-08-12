@@ -38,7 +38,7 @@
 			 INSERT INTO 
 			 PartyNotice(NoticeNo,Context,RegDate,Deleted,BoardNo,ViewCount,Title)
 			 VALUES
-			 ()
+			 ( #{NoticeNo} , #{Context} , #{RegDate} , #{Deleted} , #{BoardNo} , #{ViewCount} , #{Title} );
 			 
 			
 		  </insert>

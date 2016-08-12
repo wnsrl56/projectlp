@@ -60,7 +60,7 @@
     <c:otherwise>
     	
     	
-            <c:forEach var="board" items="${boards}"><%-- AAA.rows는 레코드 배열을 반환한다 --%>
+            <c:forEach var="board" items="${partynotices }"><%-- AAA.rows는 레코드 배열을 반환한다 --%>
               	 <div class="col-sm-6 col-md-4">
 					   <p>${ partynotice.title }</p>
 					   <hr>

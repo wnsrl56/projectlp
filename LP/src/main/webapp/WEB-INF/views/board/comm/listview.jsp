@@ -17,9 +17,51 @@
 <!-- set Script -->
 <script type="text/javascript">
 
+//forAjax
+$(function() {
+	 
+	  
+	 	
+	 	
+		
+	 		$('#save').on('click',function(event){
+	 			
+	 			  var comm;
+	 				
+	 			  comm = {
+	 			  			"context" :$('#context').val(),
+	 			  			"title" : "hihihi",
+	 			  			"writer" : "annoy"
+	 			  			 } ;
+	 			 	
+	 			 	comm = JSON.stringify(comm);
+	 			
+			 			$.ajax({
+			 		
+			 			url: "/lp/cboard/insert.action",
+			 			type : "post",
+			 		    data: comm,
+			 		    contentType: "application/json",
+			 			success : function(data, status, xhr) {
+			 				alert("저장했습니다.");
+			 			},
+			 			
+			 			error:function(request,status,error){
+			 		       alert("저장에 실패했습니다.");
+			 	       }
+	 			
+	 		   }); 
+	 		
+	 		});
 
 
+});
+
+
+ 
 </script>
+
+
 
 <div id="allcontainer" class="container-fluid " style="margin-top:80px" >
   
@@ -28,8 +70,7 @@
   	 <div class="col-md-2" role="main" id="sidebar">
   		<ul class="nav nav-pills nav-stacked">
      		 <li role="presentation" class="active"><a href="#"><h4><p class="text-center">Talk</p></h4></a></li>
-            
-        </ul>
+       </ul>
         
        
   	 </div><!-- sidebar end --> 
@@ -38,31 +79,25 @@
   	  <h3> Community </h3>
   	  <hr>
 		
-			<form action="insert.action">
 			
+					<p></p>
 				<div class="row">
 					<div class="col-md-2" id="profile">
 						<a href="#" class="thumbnail">
 						  <img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
 						</a>
 					</div>
-					<div class="col-md-10" id="text">
-						  <!--<form:hidden path="writer" value= "${ loginuser.email }"/>-->	
-						<textarea id="context" path="context" class="form-control" rows="4" style="height:103px" placeholder="이야기를 적어주세요."></textarea>
+					<div class="col-md-10">
+						<textarea  id="context" class="form-control" rows="4" style="height:103px" placeholder="이야기를 적어주세요."></textarea>
 					</div>
 				</div>
 				<div class="row">
+				
 				<span style="float:right">
-				 	<button type="submit" class="btn btn-danger">이야기 남기기</button>	
+				 	<button type="submit" class="btn btn-danger" id="save">이야기 남기기</button>	
 				</span>
 				</div>
-			    	
-		  
-		
-		 
-		 
-	 				
-			</form>
+			
 			
 			
 			
@@ -139,41 +174,6 @@
 
 </body>
 <!--  end of body -->
-
-<script>
-var upload = document.getElementsByTagName('input')[0],
-    holder = document.getElementById('holder'),
-    state = document.getElementById('questionImageFile');
-
-if (typeof window.FileReader === 'undefined') {
-  state.className = 'fail';
-} else {
-  state.className = 'success';
-  state.innerHTML = 'File API & FileReader available';
-}
- 
-upload.onchange = function (e) {
-  e.preventDefault();
-
-  var file = upload.files[0],
-      reader = new FileReader();
-  reader.onload = function (event) {
-    var img = new Image();
-    img.src = event.target.result;
-    // note: no onload required since we've got the dataurl...I think! :)
-    if (img.width > 560) { // holder width
-      img.width = 560;
-    }
-    holder.innerHTML = '';
-    holder.appendChild(img);
-  };
-  reader.readAsDataURL(file);
-
-  return false;
-};
-</script>
-
-
 	
 
 </html>

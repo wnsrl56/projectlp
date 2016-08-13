@@ -222,7 +222,7 @@ function addReply(){
 								       				 <!--  context -->
 								       				 <div class="col-md-12" id="contextdata">
 								       				 	
-								       				 	<div class="panel panel-default">
+								       				 	<div class="panel panel-info">
 								       				 	<div class="panel-body">
 													    <p>${ comm.context }</p>
 													    </div>
@@ -242,22 +242,21 @@ function addReply(){
 																	<c:forEach var="aaa" items="${ aaa }">
 																	<div class="col-md-12">
 																	 <!--  profile picture -->
-																		<div class="col-md-2" id="profile" style="width:80px;height:80px">
+																		
+									     									<!--  context -->
+													       				 	<div class="panel panel-info">
+													       				 	<div class="panel-body">
+													       				 	<div class="col-md-2" id="profile" style="width:80px;height:80px">
 																			<a href="#" class="thumbnail">
 																				<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
 																				<span> ${ comm.writer }</span>
 																			</a>
-																			
 																		</div>
-																		<ul class="nav nav-pills">
-									     									<!--  context -->
-													       				 	<li class="panel-body">
-																		  		  <p>${ aaa }</p>
-																		    </li>
-																		    <li class="panel-body">
-																		  		  <p></p>
-																		    </li>
-													       				 </ul>
+																		
+													       				 	  <span class="panel-info">${ aaa }ioetrssgbnoeirbnoestrbnon</span>
+																		    </div>
+																		    </div>
+													       				 
 									       							 </div>
 									       							 	</c:forEach>
 																		<p>&nbsp;&nbsp;</p>

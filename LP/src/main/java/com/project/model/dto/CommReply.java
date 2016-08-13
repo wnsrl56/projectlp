@@ -6,7 +6,7 @@ import java.util.Date;
 public class CommReply implements Serializable{
 
 	private int commReplyNo;
-	private int CommNo;
+	private int commNo;
 	private String context;
 	private String writer;
 	private Date regDate;
@@ -20,10 +20,10 @@ public class CommReply implements Serializable{
 		this.commReplyNo = commReplyNo;
 	}
 	public int getCommNo() {
-		return CommNo;
+		return commNo;
 	}
 	public void setCommNo(int commNo) {
-		CommNo = commNo;
+		this.commNo = commNo;
 	}
 	public String getContext() {
 		return context;
@@ -49,7 +49,8 @@ public class CommReply implements Serializable{
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-
+	
+	
 	
 	
 	

@@ -1,5 +1,6 @@
 package com.project.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,17 @@ public class CommServiceImpl implements CommService {
 	@Override
 	public List<Comm> selectAllCommList() {
 		// TODO Auto-generated method stub
-		return null;
+		return commDao.selectAllCommList();
+	}
+
+	@Override
+	public List<Comm> selectCommListOrderByDesc(int start, int end) {
+		
+		HashMap<String, Integer> period = new HashMap<>();
+		period.put("start",start);
+		period.put("end",end);
+		
+		return commDao.selectCommListOrderByDesc(period);
 	}
 
 }

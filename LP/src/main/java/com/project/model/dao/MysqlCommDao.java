@@ -32,7 +32,7 @@ public class MysqlCommDao implements CommDao {
 	@Override
 	public List<Comm> selectAllCommList() {
 		// TODO Auto-generated method stub
-		return null;
+		return commMapper.selectAllCommList();
 	}
 
 	@Override
@@ -53,4 +53,11 @@ public class MysqlCommDao implements CommDao {
 
 	}
 
+	@Override
+	public List<Comm> selectCommListOrderByDesc(HashMap<String, ?> period) {
+		// TODO Auto-generated method stub
+		return commMapper.selectCommListOrderByDesc(period);
+	}
+
+	
 }

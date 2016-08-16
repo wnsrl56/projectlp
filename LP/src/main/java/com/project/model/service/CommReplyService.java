@@ -3,6 +3,7 @@ package com.project.model.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 
 public interface CommReplyService {
@@ -13,6 +14,7 @@ public interface CommReplyService {
 		
 		//조회
 		public List<CommReply> selectAllCommReplyList();
+		public List<CommReply> selectCommReplyListOrderByDesc(int start, int end,int commIndex) ;
 		public CommReply searchCommReplyByIndex(int index);
 		
 		

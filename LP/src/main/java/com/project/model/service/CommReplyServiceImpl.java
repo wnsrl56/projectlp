@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.project.model.dao.CommReplyDao;
+import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 
 
@@ -23,7 +24,7 @@ public class CommReplyServiceImpl implements CommReplyService {
 	@Override
 	public void insertCommReply(CommReply commReply) {
 		// TODO Auto-generated method stub
-
+		commReplyDao.insertCommReply(commReply);
 	}
 
 	@Override
@@ -48,6 +49,17 @@ public class CommReplyServiceImpl implements CommReplyService {
 	public void deleteCommReplyByIndex(int index) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<CommReply> selectCommReplyListOrderByDesc(int start, int end,int commIndex) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> period = new HashMap<>();
+		period.put("start",start);
+		period.put("end",end);
+		period.put("commIndex",commIndex);
+		
+		return commReplyDao.selectCommReplyListOrderByDesc(period);
 	}
 
 }

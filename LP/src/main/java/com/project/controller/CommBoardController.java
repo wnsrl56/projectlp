@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
+import com.project.model.dto.ListCommReply;
+import com.project.model.service.CommReplyService;
 import com.project.model.service.CommService;
 
 @Controller
@@ -31,7 +34,9 @@ public class CommBoardController {
 	@Qualifier("commService")
 	private CommService commService;
 	
-	
+	@Autowired
+	@Qualifier("commReplyService")
+	private CommReplyService commReplyService;
 	
 	
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
@@ -39,20 +44,22 @@ public class CommBoardController {
 		
 		//list 가져오기
 		//List<Comm> comms = commService.selectAllCommList();
-		
+		int end =0;
 		//최근 갯수 가져오기
-		List<Comm> comms = commService.selectCommListOrderByDesc(0,2);
+		List<Comm> comms = commService.selectCommListOrderByDesc(0,1);
+		List<CommReply> replies =commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(0).getCommNo());
+	
 		
-		
-		String[] aaa = {"hh","11","22"};
+	
+			
+	System.out.println("secces");
 		
 		
 	    ModelAndView mv = new ModelAndView("board/comm/listview");
 	    //System.out.println(comms.get(0).getContext());
 	    
 	    mv.addObject("comms",comms);
-	    mv.addObject("aaa",aaa);
-	    
+	    mv.addObject("replies",replies);
 	    return mv;
 	}
 	
@@ -80,11 +87,11 @@ public class CommBoardController {
 	public String CInsertReplyPost(@RequestBody CommReply commReply,Model model,BindingResult result) {
 		logger.info("board.reply: {}");
 		
-		System.out.println(commReply.getContext());
+		System.out.println(commReply.getContext()+commReply.getCommNo()+commReply.getWriter());
 		
 		
 		//삽입
-		//commService.insertComm(comm);
+		commReplyService.insertCommReply(commReply);
 		
         
 	    return "success";

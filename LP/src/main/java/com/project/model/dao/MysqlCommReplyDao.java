@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 import com.project.model.mapper.CommReplyMapper;
 
@@ -22,7 +23,7 @@ public class MysqlCommReplyDao implements CommReplyDao {
 	@Override
 	public void insertCommReply(CommReply commReply) {
 		// TODO Auto-generated method stub
-
+		commReplyMapper.insertCommReply(commReply);
 	}
 
 	@Override
@@ -47,6 +48,12 @@ public class MysqlCommReplyDao implements CommReplyDao {
 	public void deleteCommReplyByIndex(int index) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<CommReply> selectCommReplyListOrderByDesc(HashMap<String, ?> period) {
+		// TODO Auto-generated method stub
+		return commReplyMapper.selectCommReplyListOrderByDesc(period);
 	}
 
 }

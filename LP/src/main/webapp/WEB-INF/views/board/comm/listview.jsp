@@ -17,6 +17,7 @@
 <!-- set Script -->
 <script type="text/javascript">
 
+
 //forAjax
 $(function() {
 	 
@@ -41,7 +42,7 @@ $(function() {
 			 		    contentType: "application/json",
 			 			success : function(data, status, xhr) {
 			 				
-			 				 alert("저장했습니다.");
+			 				// alert("저장했습니다.");
 			 				 location.reload();
 			 				
 			 			},beforeSend:function(){
@@ -87,8 +88,8 @@ $(function() {
 				 		    data: reply,
 				 		    contentType: "application/json",
 				 			success : function(data, status, xhr) {
-				 				alert("리플을 저장 했습니다.");
-				 				// location.reload();
+				 				//alert("리플을 저장 했습니다.");
+				 				location.reload();
 				 				
 				 			},
 				 			
@@ -126,9 +127,7 @@ function addReply(){
 
 
        
-		  
-		  
-		  
+		    
 		
 
 
@@ -157,7 +156,7 @@ function addReply(){
 						</a>
 					</div>
 					<div class="col-md-10">
-						<textarea  id="context" class="form-control" rows="4" style="height:103px" placeholder="이야기를 적어주세요.">${ loginuser.name }</textarea>
+						<textarea  id="context" class="form-control" rows="4" style="height:103px" placeholder="이야기를 적어주세요."></textarea>
 					</div>
 				</div>
 				 <p>&nbsp;&nbsp;</p>
@@ -211,8 +210,7 @@ function addReply(){
 																		   <span class="caret"></span>
 																		  </button>
 																			  <ul class="dropdown-menu">
-																				    <li><a href="#">Action</a></li>
-																				    <li><a href="#">Another action</a></li>
+																				    <li><a href="">삭제</a></li>
 																			  </ul>
 																	</div>
 																</span>
@@ -233,13 +231,14 @@ function addReply(){
 								       				 
 								       				 
 								       				 <!-- reply -->
-								       				 
+								       			
 								       				 <div class="row">
 								       				 <div class="col-md-12" id="replytable">
 								       				  <div class="col-md-10" name="replytable">
 															<div class="row">
 																	<!--  top manu bar -->
-																	<c:forEach var="aaa" items="${ aaa }">
+														 			
+																	<c:forEach var="replies" items="${ replies }">
 																	<div class="col-md-12">
 																	 <!--  profile picture -->
 																		
@@ -249,17 +248,17 @@ function addReply(){
 													       				 	<div class="col-md-2" id="profile" style="width:80px;height:80px">
 																			<a href="#" class="thumbnail">
 																				<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
-																				<span> ${ comm.writer }</span>
+																				<span> ${ replies.writer }</span>
 																			</a>
 																		</div>
 																		
-													       				 	  <span class="panel-info">${ aaa }ioetrssgbnoeirbnoestrbnon</span>
+													       				 	  <span class="panel-info">${ replies.context }</span>
 																		    </div>
 																		    </div>
 													       				 
 									       							 </div>
 									       							 	</c:forEach>
-																		<p>&nbsp;&nbsp;</p>
+									       								<p>&nbsp;&nbsp;</p>
 									       							 <div class="col-md-12">
 									       							<div class="input-group" name="replyinput">
 																		<div class="input-group-btn">

@@ -3,6 +3,7 @@ package com.project.model.mapper;
 import java.util.HashMap;
 import java.util.List;
 
+import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 
 public interface CommReplyMapper {
@@ -14,6 +15,7 @@ public interface CommReplyMapper {
 		
 		//조회
 		public List<CommReply> selectAllCommReplyList();
+		public List<CommReply> selectCommReplyListOrderByDesc(HashMap<String,?> period);
 		public CommReply searchCommReplyByIndex(int index);
 		
 		

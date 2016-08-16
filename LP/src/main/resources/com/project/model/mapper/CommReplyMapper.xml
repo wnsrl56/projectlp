@@ -32,10 +32,10 @@
  -->		
  		<!--  기본 불러오기 구문 -->
 		<sql id="selectDefault">
-		 SELECT
-		 comm.BoardNo,comm.CommNo,comm.Context,comm.Writer,comm.Title,comm.RegDate,comm.Deleted 
-		 FROM 
-		 comm
+		SELECT 
+		commreply.CommNo,commreply.CommReplyNo,commreply.Context,commreply.Writer,commreply.Deleted,commreply.RegDate 
+		FROM 
+		CommReply
 		</sql>  
  
 
@@ -43,10 +43,10 @@
 		 <!-- insert -->
 		 <!-- no group user comm의 boardno == 2 -->
 		 <insert id="insertCommReply" parameterType="commReply">
-			 INSERT INTO 
-			   comm(comm.BoardNo,comm.Title,comm.Context,comm.Writer) 
- 			 VALUES
- 				(2,#{title},#{context},#{writer})
+			INSERT INTO 
+			CommReply(commreply.CommNo, commreply.Context, commreply.Writer) 
+			VALUES
+			(#{commNo},#{context},#{writer});
 			</insert>
 		  
 		<!--  select -->
@@ -58,7 +58,7 @@
 		<!--  select limits -->
 		<select id="selectCommReplyListOrderByDesc" parameterType="hashMap" resultType="commReply">
 			<include refid="selectDefault" />  
-			WHERE deleted=0 
+			WHERE deleted=0 AND commNo = #{ commIndex }
 			ORDER BY RegDate 
 			DESC LIMIT #{ start },#{ end };
 		</select>

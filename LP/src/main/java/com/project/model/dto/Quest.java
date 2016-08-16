@@ -14,9 +14,23 @@ public class Quest implements Serializable {
 	private int viewCount;
 	private int goodCount;
 	private boolean deleted;
+	private String savedFilePath;
+	private String realFilePath;
 	
 	
 	
+	public String getSavedFilePath() {
+		return savedFilePath;
+	}
+	public void setSavedFilePath(String savedFilePath) {
+		this.savedFilePath = savedFilePath;
+	}
+	public String getRealFilePath() {
+		return realFilePath;
+	}
+	public void setRealFilePath(String realFilePath) {
+		this.realFilePath = realFilePath;
+	}
 	public int getQuestNo() {
 		return questNo;
 	}

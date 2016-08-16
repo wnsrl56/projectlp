@@ -13,6 +13,6 @@ public interface QuestMapper {
 	public void insertQPicture(QPicture qpicture);
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();
-	
+	public QPicture selectQPicture();
 
 }

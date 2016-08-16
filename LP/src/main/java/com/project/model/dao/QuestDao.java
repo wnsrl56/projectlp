@@ -18,7 +18,7 @@ public interface QuestDao {
 	public Quest searchQuestByIndex(int index);
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();
-	
+	public QPicture selectQPicture();
 	//수정
 	//put으로 알아서 추가하던가, 명시적으로 만들어서 쓰면 될듯
 	public void updateQuest(HashMap<String,?> hash);

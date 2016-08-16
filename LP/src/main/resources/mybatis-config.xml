@@ -31,6 +31,7 @@
 		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
 		<typeAlias type="com.project.model.dto.PartyNotice" alias="PartyNotice"/>
 		<typeAlias type="com.project.model.dto.Comm" alias="Comm"/>
+		<typeAlias type="com.project.model.dto.CommReply" alias="CommReply"/>
 		<typeAlias type="com.project.model.dto.QPicture" alias="QPicture"/>
 	</typeAliases>
 	
@@ -62,6 +63,7 @@
 		<mapper resource="com/project/model/mapper/QuestMapper.xml" />
 		<mapper resource="com/project/model/mapper/PartyNoticeMapper.xml" />
 		<mapper resource="com/project/model/mapper/CommMapper.xml" />
+		<mapper resource="com/project/model/mapper/CommReplyMapper.xml" />
 
 		
 	</mappers>

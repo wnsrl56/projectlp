@@ -5,8 +5,6 @@
 
 	<c:set var="cp" value="${pageContext.request.contextPath}"/>
   <!-- Navigation -->
-  <script type="text/javascript">
-  </script>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,7 +29,7 @@
                 </li>             
                 </li>  
                 <li>
-                       <a href="${ cp }/cboard/listview.action">Comm</a>
+                       <a href="${ cp }/cboard/listview.action" id="linkComm">Comm</a>
                 </li>                   
               <c:choose>
             	<%-- <c:when test="${ sessionScope.loginuser == null }"> --%>
@@ -77,3 +75,4 @@
     </nav>
     
     
+		  

@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 논리적 클래스 만들기 -->  
-<mapper namespace="com.project.model.mapper.CommMapper">
+<mapper namespace="com.project.model.mapper.CommReplyMapper">
 
 
 <!-- interface에 따른 query language 생성 -->
@@ -32,33 +32,33 @@
  -->		
  		<!--  기본 불러오기 구문 -->
 		<sql id="selectDefault">
-		 SELECT
-		 comm.BoardNo,comm.CommNo,comm.Context,comm.Writer,comm.Title,comm.RegDate,comm.Deleted 
-		 FROM 
-		 comm
+		SELECT 
+		commreply.CommNo,commreply.CommReplyNo,commreply.Context,commreply.Writer,commreply.Deleted,commreply.RegDate 
+		FROM 
+		CommReply
 		</sql>  
  
 
 
 		 <!-- insert -->
 		 <!-- no group user comm의 boardno == 2 -->
-		 <insert id="insertComm" parameterType="comm">
-			 INSERT INTO 
-			   comm(comm.BoardNo,comm.Title,comm.Context,comm.Writer) 
- 			 VALUES
- 				(2,#{title},#{context},#{writer})
+		 <insert id="insertCommReply" parameterType="commReply">
+			INSERT INTO 
+			CommReply(commreply.CommNo, commreply.Context, commreply.Writer) 
+			VALUES
+			(#{commNo},#{context},#{writer});
 			</insert>
 		  
 		<!--  select -->
-		<select id="selectAllCommList" resultType="comm">
+		<select id="selectAllCommReplyList" resultType="commReply">
 			<include refid="selectDefault" /> 
 			WHERE deleted=0
 		</select>
 		
 		<!--  select limits -->
-		<select id="selectCommListOrderByDesc" parameterType="hashMap" resultType="comm">
+		<select id="selectCommReplyListOrderByDesc" parameterType="hashMap" resultType="commReply">
 			<include refid="selectDefault" />  
-			WHERE deleted=0 
+			WHERE deleted=0 AND commNo = #{ commIndex }
 			ORDER BY RegDate 
 			DESC LIMIT #{ start },#{ end };
 		</select>

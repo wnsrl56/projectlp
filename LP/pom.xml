@@ -2,8 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.project</groupId>
 	<artifactId>lp</artifactId>
+	<!-- 실행 불가시, id 와 web 매핑 주소를 확인 -->
+	<groupId>com.project</groupId>
 	<name>LP</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -304,5 +305,6 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
 	

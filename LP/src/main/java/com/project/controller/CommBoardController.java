@@ -32,6 +32,8 @@ public class CommBoardController {
 	private CommService commService;
 	
 	
+	
+	
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
 	public ModelAndView CommBoardListGet(@ModelAttribute Comm comm,@ModelAttribute CommReply commReply){
 		
@@ -46,9 +48,11 @@ public class CommBoardController {
 		
 		
 	    ModelAndView mv = new ModelAndView("board/comm/listview");
-	    System.out.println(comms.get(0).getContext());
+	    //System.out.println(comms.get(0).getContext());
+	    
 	    mv.addObject("comms",comms);
 	    mv.addObject("aaa",aaa);
+	    
 	    return mv;
 	}
 	

@@ -62,6 +62,7 @@
 		<mapper resource="com/project/model/mapper/QuestMapper.xml" />
 		<mapper resource="com/project/model/mapper/PartyNoticeMapper.xml" />
 		<mapper resource="com/project/model/mapper/CommMapper.xml" />
+		<mapper resource="com/project/model/mapper/CommReplyMapper.xml" />
 
 		
 	</mappers>

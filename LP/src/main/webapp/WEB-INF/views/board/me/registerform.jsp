@@ -24,7 +24,7 @@
   	
   	 <div class="col-md-2" role="main" id="sidebar">
   		<ul class="nav nav-pills nav-stacked">
-     		 <li role="presentation" class="active"><a href="insert.action"><p class="text-center" style= "text-align: center">공지사항</p></a></li>
+     		 <li role="presentation" class="active"><a href="insert.action"><p class="text-center" style= "text-align: center">이벤트</p></a></li>
             
         </ul>
         
@@ -32,10 +32,10 @@
   	 </div><!-- sidebar end --> 
   	 
   	  <div class="col-md-6" role="complementary" id="list">
-  	  <h3> 공지사항 </h3>
+  	  <h3> 이벤트 </h3>
   	  <hr>
   	  
-  	  <form modelAttribute="partynotice"  action="insert.action" method="post" enctype="multipart/form-data">
+  	  <form modelAttribute="managerevent"  action="insert.action" method="post" enctype="multipart/form-data">
   	  
   	  
   	  

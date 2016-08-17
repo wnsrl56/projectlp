@@ -54,7 +54,7 @@ $(function() {
 			 		       alert("저장에 실패했습니다.");
 			 	       }
 	 			
-	 		   }); 
+	 		   });
 	 		
 	 		});
 				
@@ -109,27 +109,9 @@ $(function() {
 
 
 });
-
-//addReply
-function addReply(){
-	
-	var listStructure ="";
-	
-	$('#textcontainer').append(listStructure);
-}
-
-
- 
- 
 </script>
 
 <!--  loading page -->
-
-
-       
-		    
-		
-
 
 <div id="allcontainer" class="container-fluid " style="margin-top:80px" >
   

@@ -34,24 +34,24 @@
 
 
 		 <!-- insert -->
-		 <insert id="insertPartyNotice" parameterType="partynotice">
+		 <insert id="insertManagerEvent" parameterType="managerevent">
 			 INSERT INTO 
-			 PartyNotice(NoticeNo,Context,Deleted,BoardNo,ViewCount,Title)
+			 ManagerEvent(EventNo,Title,Context,RegDate,Writer,ViewCount,Deleted,BoardNo)
 			 VALUES
-			 ( #{noticeNo} , #{context} , #{deleted} , #{boardNo} , #{viewCount} , #{title} );
+			 ( #{eventNo} , #{title} , #{context} , #{regDate} , #{writer} , #{viewCount},#{deleted}, #{ boardNo} );
 			 
 			
 		  </insert>
 		  
-		  <select id="selectPartyNoticeNo" resultType="int">
+		  <select id="selectManagerEventNo" resultType="int">
 				SELECT count(*) 
-				FROM partynotice 
+				FROM managerevent
 		  </select>
 		  
-		  <select id="selectAllPartyNoticeList" resultType="partynotice">
-				SELECT NoticeNo, BoardNo, Title, Context, RegDate,  ViewCount,  Deleted
-				FROM partynotice
-				ORDER BY NoticeNo DESC
+		  <select id="selectAllManagerEventList" resultType="managerevent">
+				SELECT EventNo, Title, Context, RegDate, Writer, ViewCount,  Deleted, BoardNo
+				FROM managerevent
+				ORDER BY EventNo DESC
 		  </select>
 		 
 	

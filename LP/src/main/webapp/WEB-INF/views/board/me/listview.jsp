@@ -24,7 +24,7 @@
 			 <div class="col-md-2" role="main" id="sidebar">
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation" class="active"><a href="insert.action"><p
-								class="text-center">공지사항 등록</p></a></li>
+								class="text-center">이벤트 등록</p></a></li>
 				</ul>
 
 
@@ -39,7 +39,7 @@
 				<c:when test="empty partynotices">
 					<table width="700" border="1" cellpadding="0" cellspacing="0">
 						<tr>
-							<td align="center">게시판에 저장된 글이 없습니다.</td>
+							<td align="center">이벤트에 저장된 글이 없습니다.</td>
 						</tr>
 					</table>
 				</c:when>
@@ -47,7 +47,7 @@
 				<c:otherwise>
 
 
-					<h3>Notice</h3>
+					<h3>Event</h3>
 					<hr>
 					
 					
@@ -61,7 +61,7 @@
 								<th>날짜</th>
 							</tr>
 
-							<c:forEach var="partynotice" items="${ partynotices }">
+							<c:forEach var="managerevent" items="${ managerevents }">
 								<%-- AAA.rows는 레코드 배열을 반환한다 --%>
 
 
@@ -69,13 +69,13 @@
 
 
 								<tr>
-									<td>${ partynotice.noticeNo }</td>
+									<td>${ managerevent.eventNo }</td>
 
-									<td>${ partynotice.title }
-									<td>${ partynotice.viewCount }</td>
+									<td>${ managerevent.title }
+									<td>${ managerevent.viewCount }</td>
 
 
-									<td>${ partynotice.regDate }</td>
+									<td>${ managerevent.regDate }</td>
 								</tr>
 
 

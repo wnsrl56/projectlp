@@ -11,39 +11,41 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.project.model.dao.BoardDao;
+import com.project.model.dao.ManagerEventDao;
 import com.project.model.dao.PartyNoticeDao;
 import com.project.model.dao.QuestDao;
+import com.project.model.dto.ManagerEvent;
 import com.project.model.dto.PartyNotice;
 
 
-@Service("partynoticeService")
-public class PartyNoticeServiceImpl implements PartyNoticeService {
+@Service("managereventService")
+public class ManagerEventServiceImpl implements ManagerEventService {
 
 	Logger log = Logger.getLogger(this.getClass());
 	
 	@Autowired
-	@Qualifier("mysqlPartyNoticeDao")
-	private PartyNoticeDao partynoticeDao;
+	@Qualifier("mysqlManagerEventDao")
+	private ManagerEventDao managereventDao;
 
 	@Override
-	public List<PartyNotice> selectAllPartyNoticeList() {
-		
-		return partynoticeDao.selectAllPartyNoticeList();
+	public List<ManagerEvent> selectAllManagerEventList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public void insertPartyNotice(PartyNotice partynotice) {
-		
-		partynoticeDao.insertPartyNotice(partynotice);
+	public void insertManagerEvent(ManagerEvent managerevent) {
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public int selectPartyNoticeNo() {
+	public int selectManagerEventNo() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
+	
 
 }
 

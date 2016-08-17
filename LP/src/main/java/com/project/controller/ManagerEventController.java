@@ -16,19 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.model.dto.ManagerEvent;
 import com.project.model.dto.PartyNotice;
 import com.project.model.dto.Quest;
 import com.project.model.service.BoardService;
+import com.project.model.service.ManagerEventService;
 import com.project.model.service.PartyNoticeService;
 
 @Controller
-@RequestMapping(value="/pboard/")
-public class PartyNoticeController {
+@RequestMapping(value="/eboard/")
+public class ManagerEventController {
 	
 	
 	@Autowired
-	@Qualifier("partynoticeService")
-	private PartyNoticeService partynoticeservice;
+	@Qualifier("managereventService")
+	private ManagerEventService managereventservice;
 	
 
 	@Autowired
@@ -36,16 +38,16 @@ public class PartyNoticeController {
 	private BoardService boardService;
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(PartyNoticeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ManagerEventController.class);
 
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
-	public ModelAndView PartyNoticeListGet(PartyNotice partynotice){
-	    ModelAndView mv = new ModelAndView("board/partynotice/listview");
-	    List<PartyNotice> partynotices = partynoticeservice.selectAllPartyNoticeList();
+	public ModelAndView ManagerEventListGet(ManagerEvent managerevent){
+	    ModelAndView mv = new ModelAndView("board/me/listview");
+	    List<ManagerEvent> managerevents = managereventservice.selectAllManagerEventList();
 	   
 	    
-	    mv.addObject("partynotices", partynotices);
-		mv.addObject("partynotice", partynotice);
+	 mv.addObject("managerevents", managerevents);
+	mv.addObject("managerevent", managerevent);
 		
 		
 	    return mv;
@@ -53,11 +55,11 @@ public class PartyNoticeController {
 	}
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.GET)
-	public ModelAndView PartyNoticeInsertGet(@ModelAttribute PartyNotice partynotice,Model model){
-	    ModelAndView mv = new ModelAndView("board/partynotice/registerform");
+	public ModelAndView ManagerEventInsertGet(@ModelAttribute ManagerEvent managerevent,Model model){
+	    ModelAndView mv = new ModelAndView("board/me/registerform");
 
 	   
-	    model.addAttribute("partynotice",partynotice);
+	    model.addAttribute("managerevent",managerevent);
        
         
 	    return mv;
@@ -65,7 +67,7 @@ public class PartyNoticeController {
 	
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.POST)
-	public String PartyNoticeInsertPost(MultipartHttpServletRequest req,PartyNotice partynotice ,Model model,BindingResult result) {
+	public String ManagerEventInsertPost(MultipartHttpServletRequest req,ManagerEvent managerevent ,Model model,BindingResult result) {
 		/*logger.info("partynotice.context: {}");*/
 	  
 		
@@ -75,11 +77,11 @@ public class PartyNoticeController {
 		//boardService.insertBoard();
 		int boardNo = boardService.selectBoardNo(memberNo);	
 		
-		partynotice.setBoardNo(boardNo);
+		managerevent.setBoardNo(boardNo);
 		
-		partynoticeservice.insertPartyNotice(partynotice);
+		managereventservice.insertManagerEvent(managerevent);
 		
-		 System.out.println(partynotice.getTitle());
+		 
 		 
 	    return "redirect:listview.action";
 	}

@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -144,6 +145,29 @@ public class QuestBoardController {
 	    return "redirect:listview.action";
 	    
 	    
+	}
+	
+	
+	@RequestMapping(value="questview.action", method = RequestMethod.GET)
+	public ModelAndView QuestViewGet(@RequestParam("questNo") String questNo, Model model){
+		
+	    ModelAndView mv = new ModelAndView("board/quest/questview");
+        
+	    if (questNo == null || questNo.length() == 0){ 
+			mv.setViewName("redirect:listview.action");
+			return mv;
+		}
+		
+		Quest quest = questService.searchQuest(Integer.parseInt(questNo));
+		
+		List<QPicture> qpictures = questService.searchQpicture(Integer.parseInt(questNo));
+
+		System.out.println(qpictures);
+		quest.setQpicture(qpictures);
+		
+		mv.addObject("quest", quest);
+	    
+	    return mv;
 	}
 
 	

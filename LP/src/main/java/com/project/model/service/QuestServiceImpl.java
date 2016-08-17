@@ -64,6 +64,24 @@ public class QuestServiceImpl implements QuestService {
 		return qpicture;
 	}
 
+	@Override
+	public Quest searchQuest(int questNo) {
+		
+		Quest quest = questDao.searchQuest(questNo);
+		
+		return quest;
+	}
+
+	@Override
+	public List<QPicture> searchQpicture(int questNo) {
+		
+		List<QPicture> qpicture = questDao.searchQpicture(questNo);
+		
+		
+		return qpicture;
+	}
+
+
 	
 	
 	

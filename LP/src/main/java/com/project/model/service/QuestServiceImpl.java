@@ -60,8 +60,8 @@ public class QuestServiceImpl implements QuestService {
 
 	@Override
 	public QPicture selectQPicture() {
-		// TODO Auto-generated method stub
-		return null;
+		QPicture qpicture = questDao.selectQPicture();
+		return qpicture;
 	}
 
 	

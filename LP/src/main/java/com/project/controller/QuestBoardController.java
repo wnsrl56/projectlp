@@ -48,8 +48,7 @@ public class QuestBoardController {
 	    ModelAndView mv = new ModelAndView("board/quest/listview");
 	
 	    List<Quest> quests = questService.selectAllQuests();
-	    
-	    /*QPicture qpicture = questService.selectQPicture();
+/*	    QPicture qpicture = questService.selectQPicture();
 	    
 	    mv.addObject("qpicture", qpicture);*/
 		mv.addObject("quests", quests);
@@ -112,6 +111,8 @@ public class QuestBoardController {
 					files.add(f);
 					int newUploadNo = 0;
 					if (i == 0) {
+						quest.setSavedFilePath(uniqueFileName);
+						quest.setRealFilePath(fileName);
 						questService.insertQuest(quest);// Upload
 						//questService.insertQuest(quest);// Upload
 						newUploadNo = questService.selectQuestNo(quest);

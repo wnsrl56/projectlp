@@ -9,6 +9,7 @@
 <c:import url="../../../views/include/import.jsp"/>
 <!--  end of head -->
 
+
 <!--  start to body -->
 <body>
 <!--  include header -->
@@ -43,23 +44,64 @@
     <c:otherwise>
     
     <c:forEach var="quest" items="${ quests }">
-    		<div class="col">
-				  <div class="col-sm-6 col-md-4">
+    		<!-- <div class="col"> -->
+    		<div style="width: 1200px" >
+				  <div class="col-sm-6 col-md-3">
 				    <div class="thumbnail">
-				      <%-- <img src="<c:url value='/resources/image/${ board.savedFileName }'/>" alt="..."> --%>
-				      <img src="#" />
+										<table>
+											<tr>
+												<td><span class="glyphicon glyphicon-user btn-lg"
+													aria-hidden="true"></span></td>
+												<td>${ quest.writer }<br> ${ quest.regDate }
+												</td>
+												<td align="right">
+													<!-- <span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true"></span> -->
+													<div class="dropdown">
+														<div class="dropdown-toggle"
+															id="dropdownMenu1" data-toggle="dropdown"
+															aria-expanded="true">
+															<span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true"></span>
+														</div>
+														<ul class="dropdown-menu" role="menu"
+															aria-labelledby="dropdownMenu1">
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp;스크랩</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>&nbsp;공유</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;신고</a></li>
+														</ul>
+													</div>
+
+												</td>
+											</tr>
+										</table>
+										<hr>
+										<img src="${cp}/resources/image/${ quest.savedFilePath }" alt="..." style="width: 300px; height: 200px"> 
 				      <div class="caption">
-				        <h3>${ quest.title }</h3>
-				        <p>${ quest.writer }</p>
+				      	<hr>
+				      		#태그
+				      	<hr>
 				        <p>
 				        <%-- <a href="<c:url value='/board/boardview.action'/>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%>
 				        <%-- <a href="<c:url value='/board/boardview.action'/>" id="activeModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%> 
 				       	<div>
-				       	<c:url value="boardview.action" var="viewUrl">
-        					<c:param name="questNo" value="${ quest.questNo }" />
-        				</c:url>		       
-				        <a id="activeModal"	href="${ viewUrl }" class="btn btn-primary btn-lg">답변하기</a>
-				        </div>
+												<table>
+													<tr>
+														<td><c:url value="boardview.action"
+																var="viewUrl">
+																<c:param name="questNo" value="${ quest.questNo }" />
+															</c:url> <a id="activeModal" href="${ viewUrl }"> <span
+																class="glyphicon glyphicon-pencil" aria-hidden="true">답변하기!!</span></a></td>
+														<td>
+															<c:url value="good.action"
+																var="viewUrl">
+																<c:param name="questNo" value="${ quest.questNo }" />
+															</c:url> <a id="activeModal" href="${ viewUrl }"  style="color: red" >&nbsp; <span
+																class="glyphicon glyphicon-heart-empty" aria-hidden="true">좋아요!!</span></a></td>
+													</tr>
+												</table>
+											</div>
 				        <!-- <a href="#" class="btn btn-default" role="button" >Button</a></p> -->
 				      </div>
 				    </div>

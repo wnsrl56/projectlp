@@ -36,9 +36,9 @@
 		 <!-- insert -->
 		 <insert id="insertPartyNotice" parameterType="partynotice">
 			 INSERT INTO 
-			 PartyNotice(NoticeNo,Context,RegDate,Deleted,BoardNo,ViewCount,Title)
+			 PartyNotice(NoticeNo,Context,Deleted,BoardNo,ViewCount,Title)
 			 VALUES
-			 ( #{NoticeNo} , #{Context} , #{RegDate} , #{Deleted} , #{BoardNo} , #{ViewCount} , #{Title} );
+			 ( #{noticeNo} , #{context} , #{deleted} , #{boardNo} , #{viewCount} , #{title} );
 			 
 			
 		  </insert>

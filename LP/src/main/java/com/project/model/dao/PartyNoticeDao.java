@@ -8,7 +8,7 @@ import com.project.model.dto.PartyNotice;
 public interface PartyNoticeDao {
 
 	// 삽입
-	public void insertPartyNotice(PartyNotice partyNotice);
+	public void insertPartyNotice(PartyNotice partynotice);
 
 	// 조회
 	public List<PartyNotice> selectAllPartyNoticeList();

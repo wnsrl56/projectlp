@@ -36,9 +36,9 @@
 		 <!-- insert -->
 		 <insert id="insertQuest" parameterType="quest">
 			 INSERT INTO 
-			 Quest(BoardNo,Title,Context,Writer)
+			 Quest(BoardNo,Title,Context,Writer, SavedFilePath, RealFilePath)
  			 VALUES
- 			 (#{boardNo}, #{title}, #{context}, #{writer});
+ 			 (#{boardNo}, #{title}, #{context}, #{writer}, #{savedFilePath}, #{realFilePath});
 		  </insert>
 		  
 		  <insert id="insertQPicture" parameterType="qpicture">
@@ -55,9 +55,17 @@
 		  </select>
 		  
 		  <select id="selectAllQuests" resultType="quest">
-				SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted
+				SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
 				FROM quest
+				ORDER BY QuestNo DESC
 		  </select>
+		  
+		  <select id="selectQPicture" resultType="qpicture">
+				SELECT QPictureNo, SavedFilePath, RealFilePath, RegDate, QuestNo
+				FROM qpicture
+		  </select>
+		  
+		 
 		  
 		  <select id = "selectAllQuestList" parameterType="quest">
 		  <![CDATA[

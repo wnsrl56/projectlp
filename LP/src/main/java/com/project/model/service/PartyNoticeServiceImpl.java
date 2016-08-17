@@ -31,6 +31,13 @@ public class PartyNoticeServiceImpl implements PartyNoticeService {
 		return partynoticeDao.selectAllPartyNoticeList();
 	}
 
+	@Override
+	public void insertPartyNotice(PartyNotice partynotice) {
+		
+		partynoticeDao.insertPartyNotice(partynotice);
+		
+	}
+
 
 }
 

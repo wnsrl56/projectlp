@@ -35,17 +35,20 @@
   	  <h3> 공지사항 </h3>
   	  <hr>
   	  
-  	  <form:form modelAttribute="partynotice"  action="insert.action" method="post" enctype="multipart/form-data">
+  	  <form modelAttribute="partynotice"  action="insert.action" method="post" enctype="multipart/form-data">
   	  
-  	  <form:hidden path=""/>
+  	  
+  	  
+  	  <input type="hidden" id="memberNo" name="memberNo" value="${ loginuser.memberNo }">
   	  
   	  <tr>
   	    <th scope="row"> 제목 </th>
-  	    <form:input path="title" class="form-control" rows="5" placeholder="작성하시오" />
+  	    <input name="title" class="form-control" rows="5" placeholder="작성하시오" />
   	    
   	    </tr>
   	     <td colspan="2" class="view_text">
-  	     <form:input path="context" id="context" class="form-control" rows="5" placeholder="써라" />
+  	     <input name="context" id="context" class="form-control" rows="5" placeholder="써라" />
+  	   
   	     </td>
   	     
   	  
@@ -54,7 +57,7 @@
   	  
   	  <button class="btn btn-warning">목록으로<i class="fa fa-check spaceLeft"></i></button>
   	  </div>
-  	  </form:form>>
+  	  </form>>
 
   		<%-- 
 		<form:form modelAttribute="board"  action="insert.action" method="post" enctype="multipart/form-data">
@@ -96,7 +99,7 @@
 </body>
 <!--  end of body -->
 
-<script type = "text/javascript">
+<!-- <script type = "text/javascript">
 $(document).ready(function(){
     $("#list").on("click", function(e){
         e.preventDefault();
@@ -109,9 +112,9 @@ function fn_openBoardList(){
     comSubmit.setUrl("<c:url value='/board/partynotice/listview' />");
     comSubmit.submit();
 }
-</script>
+</script> -->
 
-<script>
+<!-- <script>
 
 var upload = document.getElementsByTagName('input')[0],
     holder = document.getElementById('holder'),
@@ -143,7 +146,7 @@ upload.onchange = function (e) {
 
   return false;
 };
-</script>
+</script> -->
 
 
 	

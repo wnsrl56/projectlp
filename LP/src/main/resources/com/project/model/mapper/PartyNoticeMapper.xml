@@ -43,7 +43,16 @@
 			
 		  </insert>
 		  
+		  <select id="selectPartyNoticeNo" resultType="int">
+				SELECT count(*) 
+				FROM partynotice 
+		  </select>
 		  
+		  <select id="selectAllPartyNoticeList" resultType="partynotice">
+				SELECT NoticeNo, BoardNo, Title, Context, RegDate,  ViewCount,  Deleted
+				FROM partynotice
+				ORDER BY NoticeNo DESC
+		  </select>
 		 
 	
 

@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.dto.PartyNotice;
+import com.project.model.dto.Quest;
 import com.project.model.service.BoardService;
 import com.project.model.service.PartyNoticeService;
 
@@ -37,11 +39,17 @@ public class PartyNoticeController {
 	private static final Logger logger = LoggerFactory.getLogger(PartyNoticeController.class);
 
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
-	public ModelAndView PartyNoticeListGet(Map<String,Object> Map){
+	public ModelAndView PartyNoticeListGet(PartyNotice partynotice){
 	    ModelAndView mv = new ModelAndView("board/partynotice/listview");
-	        
-        
+	    List<PartyNotice> partynotices = partynoticeservice.selectAllPartyNoticeList();
+	   
+	    
+	    mv.addObject("partynotices", partynotices);
+		mv.addObject("partynotice", partynotice);
+		
+		
 	    return mv;
+	    
 	}
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.GET)

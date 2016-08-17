@@ -27,7 +27,7 @@ public class PartyNoticeServiceImpl implements PartyNoticeService {
 
 	@Override
 	public List<PartyNotice> selectAllPartyNoticeList() {
-		// TODO Auto-generated method stub
+		
 		return partynoticeDao.selectAllPartyNoticeList();
 	}
 
@@ -36,6 +36,12 @@ public class PartyNoticeServiceImpl implements PartyNoticeService {
 		
 		partynoticeDao.insertPartyNotice(partynotice);
 		
+	}
+
+	@Override
+	public int selectPartyNoticeNo() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 

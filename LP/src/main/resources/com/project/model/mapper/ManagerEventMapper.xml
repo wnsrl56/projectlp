@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 논리적 클래스 만들기 -->  
+<mapper namespace="com.project.model.mapper.PartyNoticeMapper">
+
+
+<!-- interface에 따른 query language 생성 -->
+
+<!--  template -->
+
+<!-- 	
+	
+	<sql id="selectDefault"></sql>
+
+	<insert id="d" parameterType="d"></insert>
+	
+	<select id="d" resultType="d">
+			<include refid="selectDefault" />
+	</select>
+	
+		<sql id="selectDefault">
+ 			SELECT *
+ 			FROM MEMBER
+ 		</sql>
+  
+ 		<select id="selectAllMemberList" resultType="member">
+			<include refid="selectDefault" />
+		</select>
+	
+ -->		
+ 
+
+
+		 <!-- insert -->
+		 <insert id="insertManagerEvent" parameterType="managerevent">
+			 INSERT INTO 
+			 ManagerEvent(EventNo,Title,Context,RegDate,Writer,ViewCount,Deleted,BoardNo)
+			 VALUES
+			 ( #{eventNo} , #{title} , #{context} , #{regDate} , #{writer} , #{viewCount},#{deleted}, #{ boardNo} );
+			 
+			
+		  </insert>
+		  
+		  <select id="selectManagerEventNo" resultType="int">
+				SELECT count(*) 
+				FROM managerevent
+		  </select>
+		  
+		  <select id="selectAllManagerEventList" resultType="managerevent">
+				SELECT EventNo, Title, Context, RegDate, Writer, ViewCount,  Deleted, BoardNo
+				FROM managerevent
+				ORDER BY EventNo DESC
+		  </select>
+		 
+	
+
+</mapper> 	
+	
+
+	
+	
+	

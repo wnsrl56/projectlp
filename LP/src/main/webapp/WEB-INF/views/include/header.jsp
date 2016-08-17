@@ -27,10 +27,12 @@
                 <li>
                 <a href="${ cp }/pboard/listview.action">PartyNotice</a>
                 </li>             
-                </li>  
+               
                 <li>
                        <a href="${ cp }/cboard/listview.action" id="linkComm">Comm</a>
-                </li>                   
+                </li>      
+                <li> <a href="${ cp }/eboard/listview.action">EM</a>
+                </li>             
               <c:choose>
             	<%-- <c:when test="${ sessionScope.loginuser == null }"> --%>
             	<c:when test="${ empty sessionScope.loginuser }">

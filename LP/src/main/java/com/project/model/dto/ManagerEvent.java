@@ -3,7 +3,7 @@ package com.project.model.dto;
 import java.io.Serializable;
 import java.util.Date;
 
-public class MemberEvent  implements Serializable{
+public class ManagerEvent  implements Serializable{
 
 	private int eventNo;
 	private int boardNo;

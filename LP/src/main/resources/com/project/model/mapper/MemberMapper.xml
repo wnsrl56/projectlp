@@ -44,6 +44,11 @@
 		 <select id="selectAllMemberList" resultType="Member">
 		 	SELECT * from member	 	 
 		 </select>
+		 <select id="checkMemberByEmailAndPassword" parameterType="hashMap" resultType="int">
+		 	SELECT count(*) from member	 		
+		 	WHERE Email = #{email} AND Password = password(#{password}) 
+		 </select>
+		 
 		 
 		 
 		 

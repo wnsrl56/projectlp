@@ -27,5 +27,6 @@ public interface MemberDao {
 	
 	// 로그인
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account);
-	
+	// 계정 확인
+	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
 }

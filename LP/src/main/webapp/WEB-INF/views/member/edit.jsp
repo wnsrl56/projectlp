@@ -20,6 +20,7 @@
         	<c:import url="/WEB-INF/views/include/header.jsp" />
         </div>
         <div align="center"><h1>회원정보 수정 <small></small></h1></div>
+        <c:set var="member" value="${ sessionScope.loginuser }"/>
         <div class="col-md-6 col-md-offset-3">
           <%-- <form:form action="register.action" method="post" modelAttribute="member" > --%>
           <form:form action="${cp}/member/edit.action" method="post" modelAttribute="member" >

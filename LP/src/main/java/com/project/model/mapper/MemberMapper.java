@@ -11,4 +11,6 @@ public interface MemberMapper {
 	public void insertMember(Member member);
 	Member selectMemberByEmailAndPassword(HashMap<String, String> account);
 	List<Member> selectAllMemberList();
+	// 계정 확인
+	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
 }

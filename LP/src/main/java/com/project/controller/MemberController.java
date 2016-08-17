@@ -45,8 +45,7 @@ public class MemberController {
 		System.out.println("gender : " + member.getSexual());
 		System.out.println("grade : " + member.getGrade());
 		System.out.println("submit : " + member.isSubmit());
-		
-			// pw암호화 서비스단으로 뺌						
+										
 		memberService.registerMember(member);
 		return "redirect:/home.action";			
 	}
@@ -74,14 +73,24 @@ public class MemberController {
 	}
 	// 회원정보 수정
 	@RequestMapping(value = "edit.action", method = RequestMethod.GET)
-	public String edit(){		
+	public String edit(){
+		System.out.println("call edit by get");
 		return "/member/edit";			
 	}
 	// 회원정보 수정 확인
 	@RequestMapping(value = "edit.action", method = RequestMethod.POST)
-	public String edit(Model model){				
+	public String edit(Model model){	
+		System.out.println("call edit by post");
+		return "/member/detail";			
+	}
+	// 회원 탈퇴
+	@RequestMapping(value = "leave.action", method = RequestMethod.POST)
+	public String leave(){	
+		System.out.println("call leave");
+		memberService.leaveMember();
 		return "/member/detail";			
 	}
 
+	
 	
 }

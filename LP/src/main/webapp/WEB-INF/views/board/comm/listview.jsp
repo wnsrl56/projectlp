@@ -21,23 +21,24 @@
 
 
 $(function() {
+	
 	 
 				//send context to server 	
 		 		$('#save').on('click',function(event){
 	 			
 	 			  var comm;
 	 				
-	 			  comm = {
+	 			  	 comm = {
 	 			  			"context" :$('#context').val(),
 	 			  			"title" : "test",
-	 			  			"writer" : $('#username').text()
-	 			  			 } ;
+	 			  			"writer" : $('#username').val()
+	 			  			 };
 	 			 	
 	 			 	comm = JSON.stringify(comm);
 	 			
 			 			$.ajax({
-			 		
-			 			url: "/lp/cboard/insert.action",
+			 			
+			 			url: "insert.action",
 			 			type : "post",
 			 		    data: comm,
 			 		    contentType: "application/json",
@@ -96,7 +97,7 @@ function getSingleReply(data,textid) {
  
 </script>
 
-
+<input type="hidden" id="username" value="${ loginuser.name }" /> 
 <div id="allcontainer" class="container-fluid " style="margin-top:80px" >
   
   	<div class="row" id="grid">
@@ -137,7 +138,7 @@ function getSingleReply(data,textid) {
 			<hr>
 		 
 		 <div class="row" id="textcontainer">
-		 	<table class="table">
+		 <%-- 	<table class="table">
 		 		<tr style="height:30px;background-color:orange">
         			<td>이메일(아이디)</td>
         			<td>이름</td>
@@ -153,10 +154,10 @@ function getSingleReply(data,textid) {
         		<tr style="height:30px">
         			<td>
         				<!-- view.action?memberid=...... 경로를 만들고 변수에 저장 -->
-        				<%-- <c:url value="view.action" var="viewUrl">
+        				<c:url value="view.action" var="viewUrl">
         					<c:param name="memberid" value="${ member.memberId }" />
         				</c:url>
-        				<a href="${ viewUrl }">${ member.memberId }</a> --%>
+        				<a href="${ viewUrl }">${ member.memberId }</a>
         				<a href="#">${ member.email }</a> 
         			</td>
         			<td>${ member.name }</td>
@@ -169,7 +170,7 @@ function getSingleReply(data,textid) {
         			<td>${ member.deleted }</td>        			
         		</tr>
         	</c:forEach>
-		 	</table>
+		 	</table> --%>
 		 	</div>
 							
 						 </div>

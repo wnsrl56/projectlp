@@ -47,7 +47,7 @@ public class CommBoardController {
 	@ResponseBody
 	public String CInsertPost(@RequestBody Comm comm,Model model,BindingResult result) {
 		logger.info("board.context: {}");
-		
+		System.out.println("hihi");
 		System.out.println(comm.getTitle()+":"+comm.getContext()+":"+comm.getWriter());
 		
 		commService.insertComm(comm);

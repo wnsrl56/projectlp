@@ -53,4 +53,12 @@ public class AccountController {
 		session.removeAttribute("loginuser");//로그아웃
 		return "redirect:/home.action";
 	}
+	
+	@RequestMapping(value = "check.action", method = RequestMethod.GET)
+	public String check(String email, String password) {
+		//계정확인
+		String result = memberService.checkMember(email, password);
+		return "redirect:/home.action";
+	}
+	
 }

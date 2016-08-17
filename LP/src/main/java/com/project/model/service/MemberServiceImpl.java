@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.common.Util;
 import com.project.model.dao.MemberDao;
@@ -44,6 +45,29 @@ public class MemberServiceImpl implements MemberService {
 		ArrayList<Member> lists = (ArrayList)memberDao.selectAllMemberList();
 		System.out.println("list size" + lists.size() + "@service");
 		return lists;
+	}
+
+
+	@Override
+	public void leaveMember() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	@ResponseBody
+	public String checkMember(String email, String password) {		
+		HashMap<String, String> account = new HashMap<>();
+		account.put("email", email );
+		account.put("password", password);
+		int result =	memberDao.checkMemberByEmailAndPassword(account);
+		if (result == 1) // 성공
+			return "success";
+		else {
+			System.out.println(result);
+			return null;
+		}
 	}
 	
 	

@@ -54,6 +54,11 @@ public class MysqlMemberDao implements MemberDao {
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account) {
 		return memberMapper.selectMemberByEmailAndPassword(account);
 	}
+
+	@Override
+	public int checkMemberByEmailAndPassword(HashMap<String, String> account) {
+		return memberMapper.checkMemberByEmailAndPassword(account);
+	}
 	
 
 }

@@ -7,13 +7,13 @@
 <!-- 설정내용 넣어놓기 -->
 <c:import url="../../../views/include/import.jsp"/>
 <!--  end of head -->
-
+<link href="${cp}/resources/css/questpreview.css" rel="stylesheet">
 <!--  start to body -->
 <body>
 <!--  include header -->
 <c:import url="../../../views/include/header.jsp"/>
 
-<link href="${cp}/resources/css/questpreview.css" rel="stylesheet">
+
 <!--  include body -->
   	 <script>
      $(function() {

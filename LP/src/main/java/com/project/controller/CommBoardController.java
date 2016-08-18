@@ -1,6 +1,5 @@
 package com.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.common.ChangeTime;
 import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
-import com.project.model.dto.ListCommReply;
 import com.project.model.service.CommReplyService;
 import com.project.model.service.CommService;
 
@@ -41,21 +40,43 @@ public class CommBoardController {
 	
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
 	public ModelAndView CommBoardListGet(@ModelAttribute Comm comm,@ModelAttribute CommReply commReply){
-		
+		 ModelAndView mv = new ModelAndView("board/comm/listview");
 		//list 가져오기
 		//List<Comm> comms = commService.selectAllCommList();
 		int end =0;
 		//최근 갯수 가져오기
 		List<Comm> comms = commService.selectCommListOrderByDesc(0,1);
-		List<CommReply> replies =commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(0).getCommNo());
-	
+		List<CommReply> replies = null;
 		
-	
+		
+			replies =commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(0).getCommNo());
+			List<String> datelength = null;
+			String datelength2 = null;
 			
-	System.out.println("secces");
+			
+			for(int index=0; index<comms.size();index++){
+			 ChangeTime ct = new ChangeTime();
+			 datelength2 = ct.changeDate(comms.get(index).getRegDate());
+			 comms.get(index).setDateChanged(datelength2);
+			 System.out.println("날짜데이터"+comms.get(index).getDateChanged());
+			}
+			
+			for(int index=0; index<replies.size();index++){
+				 ChangeTime ct = new ChangeTime();
+				  datelength2 = ct.changeDate(replies.get(index).getRegDate());
+				  replies.get(index).setDateChanged(datelength2);
+				  System.out.println("날짜데이터"+replies.get(index).getDateChanged());
+				 }
+		
+			
+				
+			System.out.println("secces");
+			
+			
 		
 		
-	    ModelAndView mv = new ModelAndView("board/comm/listview");
+		
+	   
 	    //System.out.println(comms.get(0).getContext());
 	    
 	    mv.addObject("comms",comms);

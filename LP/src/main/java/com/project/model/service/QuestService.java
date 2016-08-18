@@ -16,4 +16,8 @@ public interface QuestService {
 	List<Map<String, Object>> selectAllQuestList(Map<String, Object> map) throws Exception;
 	public List<Quest> selectAllQuests();	
 	public QPicture selectQPicture();
+	public Quest searchQuest(int questNo);
+	public List<QPicture> searchQpicture(int questNo);
+	
+	
 }	

@@ -84,13 +84,10 @@ public class MemberController {
 		return "/member/detail";			
 	}
 	// 회원 탈퇴
-	@RequestMapping(value = "leave.action", method = RequestMethod.POST)
-	public String leave(){	
+	@RequestMapping(value = "leave.action", method = RequestMethod.GET)	
+	public String leave(HttpSession session){	
 		System.out.println("call leave");
-		memberService.leaveMember();
-		return "/member/detail";			
-	}
-
-	
-	
+		memberService.leaveMember(session);
+		return "redirect:/home.action";
+	}	
 }

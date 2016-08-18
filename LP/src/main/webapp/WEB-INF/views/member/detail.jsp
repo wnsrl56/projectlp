@@ -12,57 +12,52 @@
 	// 개인정보 수정
 	$(document).ready(function () {
     	$('#edit').on('click', function (event) {
-           $('#checkPwModal').modal('show');
-        	   //var confirm = check();
-        	   // 맞으면 수정폼 호출(edit.action)
-        	   // 틀리면 오류메세지 출력
-        })
-        $('#checkPw').on('click', function (event) {
-        	alert($('#modalPw').val);
-        	if ( $('#modalPw').val == !null )
-        		checkPw();
-        	/* else 
-        		$('pwMsg') */
-		})
-	})  
-	
-	function edit() { 
-		// 수정하려면 아이디 / 비번 입력 받기
-		// 아이디 /pw 입력
-		// ID/PW 조회 요청
-		// 맞으면 edit.jsp 로
-		// 틀리면 다시 입력
-		// 입력/ 취소 버튼		
-	}
-           
-    function checkPw() { 
-    		// 서버로 ID/PW 보냄
-    		// 결과 받아오기
-    	var account;
-    	var result;
-		account = {
-			  		"email" :$('#modalEmail').val(),
-			  		"password" : $('#modalPw').val()
-			  	};		
-			
-		$.ajax({
-			url: "/lp/account/check.action",
-		 	type : "post",
-		 	data: {
-		  		"email" :$('#modalEmail').val(),
-		  		"password" : $('#modalPw').val()
-		  	},
-		 	
-		 	success : function(data, status, xhr) {		 		
-		 		location.reload();
-  			}, 
-  			
-  			error:function(request,status,error){
-		 		alert("오류");
-		    }
-		});    		
-    }
+    		var flag = "edit"; // 탈퇴/수정 구분 위한 flag	
+    		checkPw(flag);
+    	});
     	
+    	$('#leave').on('click', function (event) {
+    		var flag = "leave"; // 탈퇴/ 수정 구분 위한 flag	
+    		checkPw(flag);
+    	});
+	    	
+    // 비밀번호 확인	
+  	function checkPw(flag) {
+    	    	  		
+    	$('#checkPwModal').modal('show'); // 모달 띄우기
+    	$('#checkPw').on('click', function (event) { // 모달에 확인 버튼 누르면
+    	
+    		var account;
+    		account = {
+    			  		"email" : $('#modalEmail').val(),
+    	  				"password" : $('#modalPw').val()
+        			  };
+    		
+        	if ( $('#modalPw').val != null ) {
+        		$.ajax({
+        			url: "/LP/account/check.action",
+        		 	type : "post",
+        		 	data : account,
+        			success : function(data, status, xhr) {
+   			 			if (flag == "edit") { // 수정       			 		
+   			 				url = "edit.action";
+   	    		 			location.href = url;
+   			 			} else if (flag == "leave") { // 탈퇴
+  			 				url = "leave.action";
+   	    		 			location.href = url;
+   			 			} else {
+   			 				alert("flag error"); // 에러
+   			 			}
+   	  				},         	  			
+        	  		error:function(request,status,error) {
+        			 		alert("ajax 응답 오류");
+        			 		alert(request, status);
+        			    }
+        			});		        		        			
+        		}
+        	});	        	
+    	}	    
+	})  		
 	</script>
 </head>
 <body>

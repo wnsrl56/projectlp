@@ -63,6 +63,12 @@ public class OracleMemberDao implements MemberDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void deleteMemberByEmail(String email) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

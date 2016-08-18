@@ -29,4 +29,6 @@ public interface MemberDao {
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account);
 	// 계정 확인
 	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
+
+	public void deleteMemberByEmail(String email);
 }

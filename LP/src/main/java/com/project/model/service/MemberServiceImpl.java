@@ -3,6 +3,8 @@ package com.project.model.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -49,9 +51,10 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public void leaveMember() {
-		// TODO Auto-generated method stub
-		
+	public void leaveMember(HttpSession session) {
+		Member member = (Member)session.getAttribute("loginuser");
+		String email = member.getEmail();
+		memberDao.deleteMemberByEmail(email);			
 	}
 
 
@@ -61,12 +64,19 @@ public class MemberServiceImpl implements MemberService {
 		HashMap<String, String> account = new HashMap<>();
 		account.put("email", email );
 		account.put("password", password);
-		int result =	memberDao.checkMemberByEmailAndPassword(account);
+		System.out.println("ajax로 받은 email @memberService: "+ email);
+		System.out.println("ajax로 받은 pw @memberService: "+ password);
+		int result = memberDao.checkMemberByEmailAndPassword(account);
+		Member member = memberDao.selectMemberByEmailAndPassword(account);
+			System.out.println("계정확인 결과" + result);
+			System.out.println(member.getEmail() + member.getName());
 		if (result == 1) // 성공
 			return "success";
-		else {
-			System.out.println(result);
-			return null;
+		else if (result == 0 ) {			
+			return "fail";
+		} else {
+			System.out.println("오류 : 둘 이상의 동일 아이디 존재");
+			return "fail";
 		}
 	}
 	

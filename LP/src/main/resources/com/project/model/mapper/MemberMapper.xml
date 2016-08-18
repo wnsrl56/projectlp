@@ -48,7 +48,11 @@
 		 	SELECT count(*) from member	 		
 		 	WHERE Email = #{email} AND Password = password(#{password}) 
 		 </select>
-		 
+		 <update id="deleteMemberByEmail" parameterType="String"> 
+		 	UPDATE member
+		 	SET deleted = 1
+		 	WHERE Email = #{email}
+		 </update>
 		 
 		 
 		 

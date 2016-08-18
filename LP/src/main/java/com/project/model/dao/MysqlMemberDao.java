@@ -35,30 +35,32 @@ public class MysqlMemberDao implements MemberDao {
 	public Member searchMemberByIndex(int index) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	
+	}	
 
 	@Override
 	public void updateMember(HashMap<String, ?> hash) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
 	public void deleteMemberByIndex(int index) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
+	
 	// 로그인
 	@Override
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account) {
 		return memberMapper.selectMemberByEmailAndPassword(account);
 	}
-
+	
+	// 비밀번호 확인
 	@Override
 	public int checkMemberByEmailAndPassword(HashMap<String, String> account) {
 		return memberMapper.checkMemberByEmailAndPassword(account);
 	}
-	
 
+	@Override
+	public void deleteMemberByEmail(String email) {
+		memberMapper.deleteMemberByEmail(email);		
+	}
 }

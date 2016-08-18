@@ -15,6 +15,29 @@
      <script src="<c:url value='/resources/js/registerbootstrap.min.js'/>" > </script> --%>
 </head>
 <body>	
+
+	<div class="modal fade" id="selectGrade" tabindex="-1" role="dialog"
+		aria-labelledby="selectGradeLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="돌아가기">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="checkPwModalLabel">학년 선택</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+						<button type="button" class="btn btn-default" >초1</button>
+						<button type="button" class="btn btn-default" >초2</button>
+						<button type="button" class="btn btn-default" >초3</button>
+					</div>					
+				</div>				
+			</div>
+		</div>
+	</div>
+
 	  <article class="container">	  
         <div class="page-header">
         	<c:import url="/WEB-INF/views/include/header.jsp" />
@@ -26,7 +49,7 @@
           <form:form action="${cp}/member/edit.action" method="post" modelAttribute="member" >
             <div class="form-group">
               <label for="email">이메일 주소</label>
-              <input type="email" class="form-control" name="email" placeholder="이메일 주소">
+              <input type="email" class="form-control" name="email" placeholder="이메일 주소" value="${member.email}">
             </div>
             <div class="form-group">
               <label for="password">비밀번호</label>
@@ -39,7 +62,7 @@
             </div>
             <div class="form-group">
               <label for="name">이름</label>
-              <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요">
+              <input type="text" class="form-control" name="name" placeholder="이름을 입력해 주세요" value="${member.name}">
             </div>
             <div class="form-group">
               <label for="sexual">성별</label> &nbsp;
@@ -49,12 +72,14 @@
             </div>
             <div class="form-group">
               <label for="grade">학년</label> &nbsp;
-              <input class="" type="radio" name="grade" value="초" checked> 초등학생 &nbsp;&nbsp;
+              <input type="text" name="grade" value="${member.grade}" >
+              
+              <!-- <input class="" type="radio" name="grade" value="초" checked> 초등학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="중"> 중학생  &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="고"> 고등학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="재수생"> 재수생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="대학생"> 대학생 &nbsp;&nbsp;
-  			  <input class="" type="radio" name="grade" value="일반인"> 일반인 <br>  
+  			  <input class="" type="radio" name="grade" value="일반인"> 일반인 <br>   -->
             </div>
             <div class="form-group">
               <label for="userType">사용자 구분</label> &nbsp;

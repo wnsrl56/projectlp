@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.model.dto.Member;
 import com.project.model.service.MemberService;
@@ -53,12 +54,12 @@ public class AccountController {
 		session.removeAttribute("loginuser");//로그아웃
 		return "redirect:/home.action";
 	}
-	
-	@RequestMapping(value = "check.action", method = RequestMethod.GET)
+	@ResponseBody
+	@RequestMapping(value = "check.action", method = RequestMethod.POST)
 	public String check(String email, String password) {
 		//계정확인
 		String result = memberService.checkMember(email, password);
-		return "redirect:/home.action";
+		return result;
 	}
 	
 }

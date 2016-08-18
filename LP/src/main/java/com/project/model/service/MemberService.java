@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.project.model.dto.Member;
 
 public interface MemberService {	
@@ -14,7 +16,7 @@ public interface MemberService {
 		//회원 목록 (관리자용)		
 		public ArrayList<Member> listAllMembers();
 		//회원 탈퇴
-		public void leaveMember();	
+		public void leaveMember(HttpSession session);	
 		
 		public String checkMember(String email, String password);
 	

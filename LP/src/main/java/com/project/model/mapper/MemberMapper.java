@@ -13,4 +13,5 @@ public interface MemberMapper {
 	List<Member> selectAllMemberList();
 	// 계정 확인
 	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
+	public void deleteMemberByEmail(String email);
 }

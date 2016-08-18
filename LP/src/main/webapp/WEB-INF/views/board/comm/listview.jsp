@@ -187,8 +187,9 @@ $(function() {
 					     									 <li><a href="#" id="username"> ${ comm.writer }</a></li>
 					     									 	<!--  dropdown button -->
 					     									 	<span style="float:right">
-					            								     <div class="btn-group">
-																		  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					     									 		<span class="label label-primary">${ comm.dateChanged }</span>
+					            								     <div class="btn-group pullRight">
+					            								        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 																		   <span class="caret"></span>
 																		  </button>
 																			  <ul class="dropdown-menu">
@@ -240,6 +241,7 @@ $(function() {
 													       				 
 									       							 </div>
 									       							 	</c:forEach>
+									       							
 									       								<p>&nbsp;&nbsp;</p>
 									       							 <div class="col-md-12">
 									       							<div class="input-group" name="replyinput">

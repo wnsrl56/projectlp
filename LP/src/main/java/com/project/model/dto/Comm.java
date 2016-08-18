@@ -12,7 +12,17 @@ public class Comm implements Serializable {
 	private String writer;
 	private Date regDate;
 	private boolean deleted;
+	private String dateChanged;
 	
+	
+	
+	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	
 	public int getCommNo() {
 		return commNo;

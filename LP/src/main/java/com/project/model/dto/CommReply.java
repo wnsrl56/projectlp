@@ -11,8 +11,14 @@ public class CommReply implements Serializable{
 	private String writer;
 	private Date regDate;
 	private boolean deleted;
+	private String DateChanged;
 	
-	
+	public String getDateChanged() {
+		return DateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		DateChanged = dateChanged;
+	}
 	public int getCommReplyNo() {
 		return commReplyNo;
 	}

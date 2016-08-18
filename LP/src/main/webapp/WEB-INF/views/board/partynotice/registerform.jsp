@@ -43,11 +43,11 @@
   	  
   	  <tr>
   	    <th scope="row"> 제목 </th>
-  	    <input name="title" class="form-control" rows="5" placeholder="작성하시오" />
+  	    <input name="title" class="form-control" rows="5" placeholder="공지사항" />
   	    
   	    </tr>
   	     <td colspan="2" class="view_text">
-  	     <input name="context" id="context" class="form-control" rows="5" placeholder="써라" />
+  	     <input name="context" id="context" class="form-control" rows="5" placeholder="내용" />
   	   
   	     </td>
   	     
@@ -57,7 +57,7 @@
   	  
   	  <button class="btn btn-warning">목록으로<i class="fa fa-check spaceLeft"></i></button>
   	  </div>
-  	  </form>>
+  	  </form>
 
   		<%-- 
 		<form:form modelAttribute="board"  action="insert.action" method="post" enctype="multipart/form-data">

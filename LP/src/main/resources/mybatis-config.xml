@@ -19,9 +19,9 @@
 	 -->
 	<properties>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/lp?characterEncoding=UTF-8" />
+		<property name="url" value="jdbc:mysql://210.16.214.194:3306/lp?characterEncoding=UTF-8" />
 		<property name="username" value="lp" />
-		<property name="password" value="admin" />			
+		<property name="password" value="Admin@123" />			
 	</properties>
 	
 	<!--  별명 매칭하기 타이핑을 줄여준다.-->

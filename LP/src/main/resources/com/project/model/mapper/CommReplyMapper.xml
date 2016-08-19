@@ -33,7 +33,7 @@
  		<!--  기본 불러오기 구문 -->
 		<sql id="selectDefault">
 		SELECT 
-		commreply.CommNo,commreply.CommReplyNo,commreply.Context,commreply.Writer,commreply.Deleted,commreply.RegDate 
+		CommNo,CommReplyNo,Context,Writer,Deleted,RegDate 
 		FROM 
 		CommReply
 		</sql>  
@@ -44,7 +44,7 @@
 		 <!-- no group user comm의 boardno == 2 -->
 		 <insert id="insertCommReply" parameterType="commReply">
 			INSERT INTO 
-			CommReply(commreply.CommNo, commreply.Context, commreply.Writer) 
+			CommReply(CommNo,Context, Writer) 
 			VALUES
 			(#{commNo},#{context},#{writer});
 			</insert>
@@ -52,16 +52,24 @@
 		<!--  select -->
 		<select id="selectAllCommReplyList" resultType="commReply">
 			<include refid="selectDefault" /> 
-			WHERE deleted=0
+			WHERE Deleted=0
 		</select>
 		
 		<!--  select limits -->
 		<select id="selectCommReplyListOrderByDesc" parameterType="hashMap" resultType="commReply">
 			<include refid="selectDefault" />  
-			WHERE deleted=0 AND commNo = #{ commIndex }
+			WHERE Deleted=0 AND commNo = #{ commIndex }
 			ORDER BY RegDate 
 			DESC LIMIT #{ start },#{ end };
 		</select>
+		
+		<select id="selectCommReplyListOrderByDescOther" parameterType="hashMap" resultType="commReply">
+			<include refid="selectDefault" />  
+			WHERE Deleted=0 AND commNo = #{ commIndex }
+			ORDER BY RegDate 
+			DESC LIMIT #{ start },#{ end };
+		</select>
+		
 
 </mapper> 	
 	

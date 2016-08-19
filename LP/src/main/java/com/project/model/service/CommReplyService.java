@@ -15,6 +15,7 @@ public interface CommReplyService {
 		//조회
 		public List<CommReply> selectAllCommReplyList();
 		public List<CommReply> selectCommReplyListOrderByDesc(int start, int end,int commIndex) ;
+		public CommReply[] selectCommReplyListOrderByDescOther(int start, int end,int commIndex);
 		public CommReply searchCommReplyByIndex(int index);
 		
 		

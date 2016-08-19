@@ -39,34 +39,49 @@ public class CommBoardController {
 	
 	
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
-	public ModelAndView CommBoardListGet(@ModelAttribute Comm comm,@ModelAttribute CommReply commReply){
+	public ModelAndView CommBoardListGet(@ModelAttribute Comm comm){
 		 ModelAndView mv = new ModelAndView("board/comm/listview");
 		//list 가져오기
 		//List<Comm> comms = commService.selectAllCommList();
-		int end =0;
+		int end =2;
 		//최근 갯수 가져오기
-		List<Comm> comms = commService.selectCommListOrderByDesc(0,1);
+		List<Comm> comms = commService.selectCommListOrderByDesc(0,end);
+		
+		
+		List<CommReply>[] AllReplies = null;
 		List<CommReply> replies = null;
+		//test
 		
+			if(comms == null){
+				
+				System.out.println("에러에러");
+			}
 		
-			replies =commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(0).getCommNo());
-			List<String> datelength = null;
-			String datelength2 = null;
+			for(int i=0;i<comms.size();i++){
+				
+				comms.get(i).setReply(commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(i).getCommNo()));
+				
+			
+			}
+			
+			//System.out.println(comms.get(0).getReply().get(0).getContext());
+			
+			String datechange = null;
 			
 			
 			for(int index=0; index<comms.size();index++){
 			 ChangeTime ct = new ChangeTime();
-			 datelength2 = ct.changeDate(comms.get(index).getRegDate());
-			 comms.get(index).setDateChanged(datelength2);
-			 System.out.println("날짜데이터"+comms.get(index).getDateChanged());
+			 datechange = ct.changeDate(comms.get(index).getRegDate());
+			 comms.get(index).setDateChanged(datechange);
+			// System.out.println("날짜데이터"+comms.get(index).getDateChanged());
 			}
 			
-			for(int index=0; index<replies.size();index++){
+		/*	for(int index=0; index<replies.size();index++){
 				 ChangeTime ct = new ChangeTime();
-				  datelength2 = ct.changeDate(replies.get(index).getRegDate());
-				  replies.get(index).setDateChanged(datelength2);
-				  System.out.println("날짜데이터"+replies.get(index).getDateChanged());
-				 }
+				  datechange = ct.changeDate(replies.get(index).getRegDate());
+				  replies.get(index).setDateChanged(datechange);
+				  //System.out.println("날짜데이터"+replies.get(index).getDateChanged());
+				 }*/
 		
 			
 				
@@ -80,7 +95,11 @@ public class CommBoardController {
 	    //System.out.println(comms.get(0).getContext());
 	    
 	    mv.addObject("comms",comms);
-	    mv.addObject("replies",replies);
+	    
+	    
+	
+	    
+	    
 	    return mv;
 	}
 	

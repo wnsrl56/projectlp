@@ -39,20 +39,26 @@
 		 
 		 <select id="selectMemberByEmailAndPassword" parameterType="hashMap" resultType="Member">
 		 	SELECT * from member	 		
-		 	WHERE Email = #{email} AND Password = password(#{password}) 
+		 	WHERE Email = #{email} AND Password = password(#{password}) AND Deleted = 0 
 		 </select>
 		 <select id="selectAllMemberList" resultType="Member">
 		 	SELECT * from member	 	 
 		 </select>
-		 <select id="checkMemberByEmailAndPassword" parameterType="hashMap" resultType="int">
+		 <select id="countMemberByEmailAndPassword" parameterType="hashMap" resultType="int">
 		 	SELECT count(*) from member	 		
-		 	WHERE Email = #{email} AND Password = password(#{password}) 
+		 	WHERE Email = #{email} AND Password = password(#{password}) AND Deleted = 0 
 		 </select>
 		 <update id="deleteMemberByEmail" parameterType="String"> 
 		 	UPDATE member
 		 	SET deleted = 1
 		 	WHERE Email = #{email}
 		 </update>
+		 
+		 <select id="countMemberByEmail" parameterType="String" resultType="int">
+		 	SELECT count(*) from member	 		
+		 	WHERE Email = #{email}
+		 </select>
+		 
 		 
 		 
 		 

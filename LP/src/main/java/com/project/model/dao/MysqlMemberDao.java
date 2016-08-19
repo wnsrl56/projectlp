@@ -55,12 +55,18 @@ public class MysqlMemberDao implements MemberDao {
 	
 	// 비밀번호 확인
 	@Override
-	public int checkMemberByEmailAndPassword(HashMap<String, String> account) {
-		return memberMapper.checkMemberByEmailAndPassword(account);
+	public int countMemberByEmailAndPassword(HashMap<String, String> account) {
+		return memberMapper.countMemberByEmailAndPassword(account);
 	}
-
+	// 계정 삭제
 	@Override
 	public void deleteMemberByEmail(String email) {
 		memberMapper.deleteMemberByEmail(email);		
+	}
+	
+	// 이메일 중복 확인
+	@Override
+	public int countMemberByEmail(String email) {
+		return memberMapper.countMemberByEmail(email);
 	}
 }

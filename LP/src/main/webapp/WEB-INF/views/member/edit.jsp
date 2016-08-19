@@ -49,7 +49,7 @@
           <form:form action="${cp}/member/edit.action" method="post" modelAttribute="member" >
             <div class="form-group">
               <label for="email">이메일 주소</label>
-              <input type="email" class="form-control" name="email" placeholder="이메일 주소" value="${member.email}">
+              <input type="email" class="form-control" name="email" placeholder="이메일 주소" value="${member.email}" readonly="readonly">
             </div>
             <div class="form-group">
               <label for="password">비밀번호</label>
@@ -68,7 +68,7 @@
               <label for="sexual">성별</label> &nbsp;
               <input class="" type="radio" name="sexual" value="male" checked> Male&nbsp;&nbsp; 
   			  <input class="" type="radio" name="sexual" value="female"> Female&nbsp;&nbsp;
-  			  <input class="" type="radio" name="sexual" value="other"> Other <br>              
+  			  <!-- <input class="" type="radio" name="sexual" value="other"> Other <br> -->              
             </div>
             <div class="form-group">
               <label for="grade">학년</label> &nbsp;
@@ -81,11 +81,11 @@
   			  <input class="" type="radio" name="grade" value="대학생"> 대학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="일반인"> 일반인 <br>   -->
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="userType">사용자 구분</label> &nbsp;
               <input class="" type="radio" name="userType" value="사용자" checked> 사용자 &nbsp;&nbsp; 
   			  <input class="" type="radio" name="userType" value="관리자"> 관리자 &nbsp;&nbsp;  			                
-            </div>
+            </div> -->
            
             <div class="form-group">
                 <label>약관 동의</label>

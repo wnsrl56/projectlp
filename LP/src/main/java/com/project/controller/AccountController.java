@@ -62,4 +62,15 @@ public class AccountController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "check.action", method = RequestMethod.GET)
+	public String check(String email) {				
+		// 이메일 중복확인
+		String result = memberService.checkMember(email);
+		return result;
+	}
+	
+	
+	
+	
 }

@@ -18,6 +18,9 @@ public interface MemberService {
 		//회원 탈퇴
 		public void leaveMember(HttpSession session);	
 		
+		// 비밀번호 재확인 (회원정보 수정 삭제시 확인용)
 		public String checkMember(String email, String password);
+		// 이메일 중복확인용
+		public String checkMember(String email);
 	
 }	

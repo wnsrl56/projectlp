@@ -38,14 +38,9 @@ public class MemberController {
 	public String register(Member member, BindingResult result) {		
 		if (result.hasErrors()) {
 			return "/member/registerform";
-		}
-		
-		System.out.println("email : " + member.getEmail());
-		System.out.println("name : " + member.getName());
-		System.out.println("gender : " + member.getSexual());
-		System.out.println("grade : " + member.getGrade());
-		System.out.println("submit : " + member.isSubmit());
-										
+		}	
+		System.out.println(member.getEmail());
+		System.out.println(member.getName());
 		memberService.registerMember(member);
 		return "redirect:/home.action";			
 	}

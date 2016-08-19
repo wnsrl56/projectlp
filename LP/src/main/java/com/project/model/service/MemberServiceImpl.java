@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
 	public void leaveMember(HttpSession session) {
 		Member member = (Member)session.getAttribute("loginuser");
 		String email = member.getEmail();
-		memberDao.deleteMemberByEmail(email);			
+		memberDao.deleteMemberByEmail(email);	
 	}
 
 
@@ -63,16 +63,28 @@ public class MemberServiceImpl implements MemberService {
 	public String checkMember(String email, String password) {		
 		HashMap<String, String> account = new HashMap<>();
 		account.put("email", email );
-		account.put("password", password);
-		System.out.println("ajax로 받은 email @memberService: "+ email);
-		System.out.println("ajax로 받은 pw @memberService: "+ password);
-		int result = memberDao.checkMemberByEmailAndPassword(account);
-		Member member = memberDao.selectMemberByEmailAndPassword(account);
-			System.out.println("계정확인 결과" + result);
-			System.out.println(member.getEmail() + member.getName());
+		account.put("password", password);		
+		int result = memberDao.countMemberByEmailAndPassword(account);
+		//Member member = memberDao.selectMemberByEmailAndPassword(account);
+			
 		if (result == 1) // 성공
 			return "success";
 		else if (result == 0 ) {			
+			return "fail";
+		} else {
+			System.out.println("오류 : 둘 이상의 동일 아이디 존재");
+			return "fail";
+		}
+	}
+	
+	@Override
+	@ResponseBody
+	public String checkMember(String email) {		
+		int result = memberDao.countMemberByEmail(email);
+					
+		if (result == 0) // 성공 (중복 아이디 없음)
+			return "success";
+		else if (result == 1 ) { // 중복아이디 존재			
 			return "fail";
 		} else {
 			System.out.println("오류 : 둘 이상의 동일 아이디 존재");

@@ -28,7 +28,9 @@ public interface MemberDao {
 	// 로그인
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account);
 	// 계정 확인
-	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
-
+	public int countMemberByEmailAndPassword(HashMap<String, String> account);
+	// 계정 삭제
 	public void deleteMemberByEmail(String email);
+	// 계정 중복확인(이메일)
+	public int countMemberByEmail(String email);
 }

@@ -12,6 +12,7 @@ public interface MemberMapper {
 	Member selectMemberByEmailAndPassword(HashMap<String, String> account);
 	List<Member> selectAllMemberList();
 	// 계정 확인
-	public int checkMemberByEmailAndPassword(HashMap<String, String> account);
+	public int countMemberByEmailAndPassword(HashMap<String, String> account);
 	public void deleteMemberByEmail(String email);
+	public int countMemberByEmail(String email);
 }

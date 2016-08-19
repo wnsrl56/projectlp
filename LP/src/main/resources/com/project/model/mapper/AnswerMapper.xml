@@ -35,14 +35,14 @@
 		 SELECT
 		 QuestNo,AnswerNo,Context,Writer,Title,RegDate,Deleted 
 		 FROM 
-		 answer
+		 Answer
 		</sql>  
  
 		  
 		<!--  select -->
 		<select id="selectAllAnswerList" resultType="answer">
 			<include refid="selectDefault" /> 
-			WHERE deleted=0
+			WHERE Deleted=0
 		</select>
 		
 		<!--  select limits -->
@@ -76,7 +76,7 @@
 		<!--  select limits -->
 		<select id="selectAnswerReplyListOrderByDesc" parameterType="hashMap" resultType="AnswerReply">
 			<include refid="selectReplyDefault" />  
-			WHERE deleted = 0 AND AnswerNo = #{ answerIndex }
+			WHERE Deleted = 0 AND AnswerNo = #{ answerIndex }
 			ORDER BY RegDate 
 			DESC LIMIT #{ start },#{ end };
 		</select>
@@ -85,14 +85,14 @@
 		<!--Comment insert -->
 	<insert id="insertAnswer" parameterType="answer">
 		INSERT INTO
-		answer(QuestNo,Title,Context,Writer)
+		Answer(QuestNo,Title,Context,Writer)
 		VALUES
 		(#{questNo},#{title},#{context},#{writer})
 	</insert>
 
 	<insert id="insertAnswerReply" parameterType="answerReply">
 		INSERT INTO
-		ansReply(AnswerNo, Context, Writer)
+		AnsReply(AnswerNo, Context, Writer)
 		VALUES
 		(#{answerNo},#{context},#{writer});
 	</insert>

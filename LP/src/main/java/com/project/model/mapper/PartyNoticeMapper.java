@@ -11,5 +11,5 @@ public interface PartyNoticeMapper {
 	public void insertPartyNotice(PartyNotice partynotice);
 	public int selectPartyNoticeNo();
 	public List<PartyNotice> selectAllPartyNoticeList();
-
+	public void deletePartyNoticeByIndex(int index);
 }

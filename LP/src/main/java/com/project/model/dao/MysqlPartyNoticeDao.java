@@ -58,7 +58,7 @@ public class MysqlPartyNoticeDao implements PartyNoticeDao {
 	@Override
 	public void deletePartyNoticeByIndex(int index) {
 		// TODO Auto-generated method stub
-		
+		partynoticeMapper.deletePartyNoticeByIndex(index);
 	}
 	
 	

@@ -11,6 +11,57 @@
 
 <!--  start to body -->
 <body>
+	<script type="text/javascript">
+	$(function () {
+		$("a[data-noticeno]").on('click',function(event){
+			//alert($(this).attr('data-noticeno'));
+			$('#collapseExample div').text($(this).attr('data-noticeno'));
+			$('#collapseExample').slideToggle();
+			
+		})
+		
+		$("button").on('click',function(event){
+			
+			
+			 //alert($(this).attr('id'))
+			
+				
+			  partynotice = {
+ 			  			"noticeNo" : $(this).attr('id')
+ 			  			 } ;
+ 			 	
+			 partynotice = JSON.stringify(partynotice);
+ 			
+		 			$.ajax({
+		 		
+		 			url: "/lp/pboard/delete.action",
+		 			type : "post",
+		 		    data: partynotice,
+		 		    contentType: "application/json",
+		 			success : function(data, status, xhr) {
+		 				
+		 				// alert("저장했습니다.");
+		 				 location.reload();
+		 				
+		 			},beforeSend:function(){
+		 		       
+		 				 
+		 		    },
+		 			
+		 			error:function(request,status,error){
+		 		      // alert("저장에 실패했습니다.");
+		 	       }
+		
+					
+		
+		});
+	});
+	
+	});
+	
+	
+	
+	</script>
 	<!--  include header -->
 	<c:import url="../../../views/include/header.jsp" />
 
@@ -19,21 +70,20 @@
 	<div id="allcontainer" class="container-fluid "
 		style="margin-top: 80px">
 
-		
-
-			 <div class="col-md-2" role="main" id="sidebar">
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="insert.action"><p
-								class="text-center">공지사항 등록</p></a></li>
-				</ul>
 
 
+		<div class="col-md-2" role="main" id="sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				<li role="presentation" class="active"><a href="insert.action"><p class="text-center">공지사항 등록</p></a></li>
+			</ul>
 
-			</div>
-			<!-- sidebar end -->
-			
 
-			<div class="col-md-6" role="complementary" id="list">
+
+		</div>
+		<!-- sidebar end -->
+
+
+		<div class="col-md-6" role="complementary" id="list">
 
 			<c:choose>
 				<c:when test="empty partynotices">
@@ -49,43 +99,48 @@
 
 					<h3>Notice</h3>
 					<hr>
-					
-					
-					
-						<table class="table table-condensed" style ="margin:auto">
-
-							<tr style="height: 25px" align="center">
-								<th>글 번호</th>
-								<th>제목</th>
-								<th>조회수</th>
-								<th>날짜</th>
-							</tr>
-
-							<c:forEach var="partynotice" items="${ partynotices }">
-								<%-- AAA.rows는 레코드 배열을 반환한다 --%>
 
 
+					<div class="collapse" id="collapseExample">
+									<div class="well">
+										
+									</div>
+								</div>
+					<table class="table table-condensed" style="margin: auto">
 
-
-
-								<tr>
-									<td>${ partynotice.noticeNo }</td>
-
-									<td>${ partynotice.title }
-									<td>${ partynotice.viewCount }</td>
-
-
-									<td>${ partynotice.regDate }</td>
-								</tr>
-
-
-
-							</c:forEach>
+						<tr style="height: 25px" align="center">
+							<th>글 번호</th>
+							<th>제목</th>
+							<th>등록일</th>
+							<th>조회수</th>
 							
-						
 
-						</table>
+						</tr>
 						
+						<c:forEach var="partynotice" items="${ partynotices }" varStatus="status">
+							<%-- AAA.rows는 레코드 배열을 반환한다 --%>
+							<tr>
+								<td>${ partynotice.noticeNo }</td>
+
+								<td>
+								<a class="btn btn-primary" href="#" data-noticeno="${partynotice.context}">${ partynotice.title }</a>
+								</td>
+								
+								
+								
+								<td>${ partynotice.dateChanged }</td>
+								<td>${ partynotice.viewCount }</td>
+						<th><button type="button" class="btn btn-primary" id="${ partynotice.noticeNo }">
+							삭제
+							</button></th>
+								
+							</tr>
+						</c:forEach>
+
+
+
+					</table>
+
 				</c:otherwise>
 
 			</c:choose>
@@ -93,13 +148,13 @@
 
 		</div>
 
-	
-	
-	<!-- list end -->
+
+
+		<!-- list end -->
 
 
 
-	<%-- <div class="modal-dialog">
+		<%-- <div class="modal-dialog">
 	    <div class="modal-content">
 	      <!-- header -->
 	      <div class="modal-header">
@@ -134,9 +189,10 @@
 
 	<!--  modal phase -->
 	<script type="text/javascript">
+
 		$('a').on('click', function() {
 
-			$('.modal').modal();
+		
 			/* 	 $.ajax({
 			    	          url:'/PS/board/check.action',
 			    	          type:'POST',

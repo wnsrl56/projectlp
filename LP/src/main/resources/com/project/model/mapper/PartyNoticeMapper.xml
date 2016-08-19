@@ -45,14 +45,21 @@
 		  
 		  <select id="selectPartyNoticeNo" resultType="int">
 				SELECT count(*) 
-				FROM partynotice 
+				FROM PartyNotice 
 		  </select>
 		  
 		  <select id="selectAllPartyNoticeList" resultType="partynotice">
 				SELECT NoticeNo, BoardNo, Title, Context, RegDate,  ViewCount,  Deleted
-				FROM partynotice
+				FROM PartyNotice
+				WHERE Deleted = '0'
 				ORDER BY NoticeNo DESC
+				
 		  </select>
+		  
+		  <update id="deletePartyNoticeByIndex" parameterType="int">
+		UPDATE PartyNotice SET Deleted = '1' WHERE NoticeNo = #{NoticeNo}
+	</update>
+
 		 
 	
 

@@ -24,7 +24,7 @@
   	
   	 <div class="col-md-2" role="main" id="sidebar">
   		<ul class="nav nav-pills nav-stacked">
-     		 <li role="presentation" class="active"><a href="insert.action"><p class="text-center" style= "text-align: center">이벤트</p></a></li>
+     		 <li role="presentation" class="active"><a href=""><p class="text-center" style= "text-align: center">이벤트</p></a></li>
             
         </ul>
         
@@ -34,30 +34,9 @@
   	  <div class="col-md-6" role="complementary" id="list">
   	  <h3> 이벤트 </h3>
   	  <hr>
-  	  
-  	  <form modelAttribute="managerevent"  action="insert.action" method="post" enctype="multipart/form-data">
-  	  
-  	  
-  	  
-  	  <input type="hidden" id="memberNo" name="memberNo" value="${ loginuser.memberNo }">
-  	  
-  	  <tr>
-  	    <th scope="row"> 제목 </th>
-  	    <input name="title" class="form-control" rows="5" placeholder="작성하시오" />
-  	    
-  	    </tr>
-  	     <td colspan="2" class="view_text">
-  	     <input name="context" id="context" class="form-control" rows="5" placeholder="써라" />
   	   
-  	     </td>
-  	     
-  	  
-  	  <div class="form-group text-center">
-  	  <button type="submit" class="btn btn-info ">등록<i class="fa fa-check spaceLeft"></i></button>
-  	  
-  	  <button class="btn btn-warning">목록으로<i class="fa fa-check spaceLeft"></i></button>
-  	  </div>
-  	  </form>>
+  	   <img src="${ cp }/resources/images/2.jpg">
+  	 
 
   		<%-- 
 		<form:form modelAttribute="board"  action="insert.action" method="post" enctype="multipart/form-data">

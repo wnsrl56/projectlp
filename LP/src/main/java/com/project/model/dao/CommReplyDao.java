@@ -15,6 +15,7 @@ public interface CommReplyDao {
 	//조회
 	public List<CommReply> selectAllCommReplyList();
 	public List<CommReply> selectCommReplyListOrderByDesc(HashMap<String,?> period);
+	public CommReply[] selectCommReplyListOrderByDescOther(HashMap<String,?> period);
 	public CommReply searchCommReplyByIndex(int index);
 	
 	

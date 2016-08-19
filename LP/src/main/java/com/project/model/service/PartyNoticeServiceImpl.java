@@ -44,6 +44,13 @@ public class PartyNoticeServiceImpl implements PartyNoticeService {
 		return 0;
 	}
 
+	@Override
+	public void deletePartyNoticeByIndex(int index) {
+		
+		partynoticeDao.deletePartyNoticeByIndex(index);
+		
+	}
+
 
 }
 

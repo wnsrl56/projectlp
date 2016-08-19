@@ -54,9 +54,9 @@ public class ManagerEventController {
 	    
 	}
 	
-	@RequestMapping(value="insert.action", method = RequestMethod.GET)
+	@RequestMapping(value="detail.action", method = RequestMethod.GET)
 	public ModelAndView ManagerEventInsertGet(@ModelAttribute ManagerEvent managerevent,Model model){
-	    ModelAndView mv = new ModelAndView("board/me/registerform");
+	    ModelAndView mv = new ModelAndView("board/me/detail");
 
 	   
 	    model.addAttribute("managerevent",managerevent);
@@ -66,7 +66,7 @@ public class ManagerEventController {
 	}
 	
 	
-	@RequestMapping(value="insert.action", method = RequestMethod.POST)
+	@RequestMapping(value="detail.action", method = RequestMethod.POST)
 	public String ManagerEventInsertPost(MultipartHttpServletRequest req,ManagerEvent managerevent ,Model model,BindingResult result) {
 		/*logger.info("partynotice.context: {}");*/
 	  
@@ -86,7 +86,37 @@ public class ManagerEventController {
 	    return "redirect:listview.action";
 	}
 
+	@RequestMapping(value="detail2.action", method = RequestMethod.GET)
+	public ModelAndView ManagerEventDetailGet(@ModelAttribute ManagerEvent managerevent,Model model){
+	    ModelAndView mv = new ModelAndView("board/me/detail2");
+
+	   
+	    model.addAttribute("managerevent",managerevent);
+       
+        
+	    return mv;
+	}
 	
+	
+	@RequestMapping(value="detail2.action", method = RequestMethod.POST)
+	public String ManagerEventDetailPost(MultipartHttpServletRequest req,ManagerEvent managerevent ,Model model,BindingResult result) {
+		/*logger.info("partynotice.context: {}");*/
+	  
+		
+		
+		
+		int memberNo =  Integer.parseInt(req.getParameter("memberNo")); 
+		//boardService.insertBoard();
+		int boardNo = boardService.selectBoardNo(memberNo);	
+		
+		managerevent.setBoardNo(boardNo);
+		
+		managereventservice.insertManagerEvent(managerevent);
+		
+		 
+		 
+	    return "redirect:listview.action";
+	}
 
 	
 }

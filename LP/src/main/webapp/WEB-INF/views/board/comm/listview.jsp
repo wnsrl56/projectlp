@@ -221,7 +221,7 @@ $(function() {
 															<div class="row">
 																	<!--  top manu bar -->
 														 			
-																	<c:forEach var="replies" items="${ replies }">
+																<c:forEach var="reply" items="${ comm.reply }">
 																	<div class="col-md-12">
 																	 <!--  profile picture -->
 																		
@@ -231,11 +231,11 @@ $(function() {
 													       				 	<div class="col-md-2" id="profile" style="width:80px;height:80px">
 																			<a href="#" class="thumbnail">
 																				<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
-																				<span> ${ replies.writer }</span>
+																				<span> ${reply.writer }</span>
 																			</a>
 																		</div>
 																		
-													       				 	  <span class="panel-info">${ replies.context }</span>
+													       				 	  <span class="panel-info">${ reply.context }</span>
 																		    </div>
 																		    </div>
 													       				 

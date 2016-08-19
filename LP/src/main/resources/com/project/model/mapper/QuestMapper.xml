@@ -63,18 +63,18 @@
 		  
 		  <select id="selectQuestNo" resultType="int">
 				SELECT count(*) 
-				FROM quest 
+				FROM Quest 
 		  </select>
 		  
 		  <select id="selectAllQuests" resultType="quest">
 				SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
-				FROM quest
+				FROM Quest
 				ORDER BY QuestNo DESC
 		  </select>
 		  
 		  <select id="selectQPicture" resultType="qpicture">
 				SELECT QPictureNo, SavedFilePath, RealFilePath, RegDate, QuestNo
-				FROM qpicture
+				FROM QPicture
 		  </select>
 		  
 		  

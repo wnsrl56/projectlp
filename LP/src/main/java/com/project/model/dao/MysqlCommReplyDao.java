@@ -56,4 +56,10 @@ public class MysqlCommReplyDao implements CommReplyDao {
 		return commReplyMapper.selectCommReplyListOrderByDesc(period);
 	}
 
+	@Override
+	public CommReply[] selectCommReplyListOrderByDescOther(HashMap<String, ?> period) {
+		// TODO Auto-generated method stub
+		return commReplyMapper.selectCommReplyListOrderByDescOther(period);
+	}
+
 }

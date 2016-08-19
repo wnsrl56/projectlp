@@ -62,4 +62,16 @@ public class CommReplyServiceImpl implements CommReplyService {
 		return commReplyDao.selectCommReplyListOrderByDesc(period);
 	}
 
+	@Override
+	public CommReply[] selectCommReplyListOrderByDescOther(int start, int end, int commIndex) {
+		// TODO Auto-generated method stub
+		
+		HashMap<String, Integer> period = new HashMap<>();
+		period.put("start",start);
+		period.put("end",end);
+		period.put("commIndex",commIndex);
+		
+		return commReplyDao.selectCommReplyListOrderByDescOther(period);
+	}
+
 }

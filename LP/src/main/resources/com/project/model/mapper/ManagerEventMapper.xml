@@ -38,19 +38,19 @@
 			 INSERT INTO 
 			 ManagerEvent(EventNo,Title,Context,RegDate,Writer,ViewCount,Deleted,BoardNo)
 			 VALUES
-			 ( #{eventNo} , #{title} , #{context} , #{regDate} , #{writer} , #{viewCount},#{deleted}, #{ boardNo} );
+			 ( #{eventNo} , #{title} , #{context} , #regDate} , #{writer} , #{viewCount},#{deleted}, #{ boardNo} );
 			 
 			
 		  </insert>
 		  
 		  <select id="selectManagerEventNo" resultType="int">
 				SELECT count(*) 
-				FROM managerevent
+				FROM ManagerEvent
 		  </select>
 		  
 		  <select id="selectAllManagerEventList" resultType="managerevent">
 				SELECT EventNo, Title, Context, RegDate, Writer, ViewCount,  Deleted, BoardNo
-				FROM managerevent
+				FROM ManagerEvent
 				ORDER BY EventNo DESC
 		  </select>
 		 

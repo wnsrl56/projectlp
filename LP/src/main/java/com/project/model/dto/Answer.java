@@ -2,6 +2,7 @@ package com.project.model.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Answer implements Serializable{
 
@@ -13,11 +14,17 @@ public class Answer implements Serializable{
 	private Date regDate;
 	private int goodCount;
 	private boolean deleted;
-	
-	
+	private List<AnswerReply> reply;
 	private String dateChanged;
 	
 	
+	
+	public List<AnswerReply> getReply() {
+		return reply;
+	}
+	public void setReply(List<AnswerReply> reply) {
+		this.reply = reply;
+	}
 	public String getDateChanged() {
 		return dateChanged;
 	}

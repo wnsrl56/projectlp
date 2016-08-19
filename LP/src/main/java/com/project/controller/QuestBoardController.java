@@ -296,9 +296,6 @@ public class QuestBoardController {
 	public String goodPost(@RequestBody Answer answer ,Model model,BindingResult result) {
 		logger.info("board.context: {}");
 		
-		System.out.println("ddddddddddddd");
-		System.out.println(answer.getQuestNo());
-		System.out.println("ddddddddddddd");
 		
 		questService.updateGoodCount(answer.getQuestNo());
         

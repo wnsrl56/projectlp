@@ -38,7 +38,8 @@
 		 </insert>
 		 
 		 <select id="selectMemberByEmailAndPassword" parameterType="hashMap" resultType="Member">
-		 	SELECT * from Member	 		
+		 	SELECT * 
+		 	from Member	 		
 		 	WHERE Email = #{email} AND Password = password(#{password}) 
 		 </select>
 		 <select id="selectAllMemberList" resultType="Member">

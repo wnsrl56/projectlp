@@ -80,14 +80,14 @@
 		  
 		  <select id="searchQpicture" resultType="qpicture">
 				SELECT QPictureNo, SavedFilePath, RealFilePath, RegDate, QuestNo
-				FROM qpicture
+				FROM QPicture
 				WHERE QuestNo = #{ questNo }
 		  </select>
 		  
 		  
 		  <select id="searchQuest" resultType="quest">
 			 SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
- 			 FROM quest
+ 			 FROM Quest
  			 WHERE QuestNo = #{ questNo } 
 		  </select>
 		  

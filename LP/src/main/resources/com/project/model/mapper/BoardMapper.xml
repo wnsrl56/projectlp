@@ -42,8 +42,8 @@
 		  </insert>
 		  
 		  <select id="selectBoardNo" resultType="int">
-				SELECT boardNo 
-				FROM board 
+				SELECT BoardNo 
+				FROM Board 
 				WHERE MemberNo =  #{MemberNo}  and BoardType = 'quest';
 		  </select>
 		  

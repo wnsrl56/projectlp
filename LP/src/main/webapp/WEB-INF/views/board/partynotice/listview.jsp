@@ -17,8 +17,50 @@
 			//alert($(this).attr('data-noticeno'));
 			$('#collapseExample div').text($(this).attr('data-noticeno'));
 			$('#collapseExample').slideToggle();
+			
 		})
-	})
+		
+		$("button").on('click',function(event){
+			
+			
+			 //alert($(this).attr('id'))
+			
+				
+			  partynotice = {
+ 			  			"noticeNo" : $(this).attr('id')
+ 			  			 } ;
+ 			 	
+			 partynotice = JSON.stringify(partynotice);
+ 			
+		 			$.ajax({
+		 		
+		 			url: "/lp/pboard/delete.action",
+		 			type : "post",
+		 		    data: partynotice,
+		 		    contentType: "application/json",
+		 			success : function(data, status, xhr) {
+		 				
+		 				// alert("저장했습니다.");
+		 				 location.reload();
+		 				
+		 			},beforeSend:function(){
+		 		       
+		 				 
+		 		    },
+		 			
+		 			error:function(request,status,error){
+		 		      // alert("저장에 실패했습니다.");
+		 	       }
+		
+					
+		
+		});
+	});
+	
+	});
+	
+	
+	
 	</script>
 	<!--  include header -->
 	<c:import url="../../../views/include/header.jsp" />
@@ -71,6 +113,7 @@
 							<th>제목</th>
 							<th>등록일</th>
 							<th>조회수</th>
+							
 
 						</tr>
 						
@@ -85,8 +128,11 @@
 								
 								
 								
-								<td>${ partynotice.regDate }</td>
+								<td>${ partynotice.dateChanged }</td>
 								<td>${ partynotice.viewCount }</td>
+						<th><button type="button" class="btn btn-primary" id="${ partynotice.noticeNo }">
+							삭제
+							</button></th>
 								
 							</tr>
 						</c:forEach>
@@ -146,7 +192,7 @@
 
 		$('a').on('click', function() {
 
-			$('.modal').modal();
+		
 			/* 	 $.ajax({
 			    	          url:'/PS/board/check.action',
 			    	          type:'POST',

@@ -51,8 +51,15 @@
 		  <select id="selectAllPartyNoticeList" resultType="partynotice">
 				SELECT NoticeNo, BoardNo, Title, Context, RegDate,  ViewCount,  Deleted
 				FROM partynotice
+				WHERE deleted = '0'
 				ORDER BY NoticeNo DESC
+				
 		  </select>
+		  
+		  <update id="deletePartyNoticeByIndex" parameterType="int">
+		UPDATE partynotice SET deleted = '1' WHERE noticeno = #{noticeNo}
+	</update>
+
 		 
 	
 

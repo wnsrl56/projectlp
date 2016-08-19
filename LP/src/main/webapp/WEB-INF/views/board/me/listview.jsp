@@ -23,8 +23,8 @@
 
 			 <div class="col-md-2" role="main" id="sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="insert.action"><p
-								class="text-center">이벤트 등록</p></a></li>
+					<li role="presentation" class="active"><a href=""><p
+								class="text-center">이벤트</p></a></li>
 				</ul>
 
 
@@ -46,45 +46,47 @@
 
 				<c:otherwise>
 
-
+	
 					<h3>Event</h3>
 					<hr>
 					
+					<div class="clearfix">
+					<div class="col-sm-6 ng-scope" ng-repeat="notice in notices" ng-if="notice.Category!='TopRow' &amp;&amp; notice.Category!='FrontLine' &amp;&amp; notice.Visible == true">
+				
+					 <div class="panel" style="padding: 15px;">
+						
 					
 					
-						<table class="table table-condensed" style ="margin:auto">
-
-							<tr style="height: 25px" align="center">
-								<th>글 번호</th>
-								<th>제목</th>
-								<th>조회수</th>
-								<th>날짜</th>
-							</tr>
-
-							<c:forEach var="managerevent" items="${ managerevents }">
-								<%-- AAA.rows는 레코드 배열을 반환한다 --%>
-
-
-
-
-
-								<tr>
-									<td>${ managerevent.eventNo }</td>
-
-									<td>${ managerevent.title }
-									<td>${ managerevent.viewCount }</td>
-
-
-									<td>${ managerevent.regDate }</td>
-								</tr>
+						<a href="detail.action" style="display: block;">
+						
+								
+						
+								<p style="text-align:left">6기모집중!!</p>
+								<img src="${ cp }/resources/images/bapul1.jpg">
+							    &nbsp;
+								</a>
+								
+								<a href="detail2.action" style="display: block;">
+								
+								<p style="text-align:left">상위 1%!!</p>
+								
+								
+								<img src="${ cp }/resources/images/bapul2.jpg">
+							    
+							    </a>
+								
+								
+								
+					</div>
+				</div>
 
 
-
-							</c:forEach>
+							
 							
 						
 
-						</table>
+						</div>
+						</div>
 						
 				</c:otherwise>
 

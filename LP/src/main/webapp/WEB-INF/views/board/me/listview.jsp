@@ -11,57 +11,6 @@
 
 <!--  start to body -->
 <body>
-	<script type="text/javascript">
-	$(function () {
-		$("a[data-noticeno]").on('click',function(event){
-			//alert($(this).attr('data-noticeno'));
-			$('#collapseExample div').text($(this).attr('data-noticeno'));
-			$('#collapseExample').slideToggle();
-			
-		})
-		
-		$("button").on('click',function(event){
-			
-			
-			 //alert($(this).attr('id'))
-			
-				
-			  partynotice = {
- 			  			"noticeNo" : $(this).attr('id')
- 			  			 } ;
- 			 	
-			 partynotice = JSON.stringify(partynotice);
- 			
-		 			$.ajax({
-		 		
-		 			url: "/lp/pboard/delete.action",
-		 			type : "post",
-		 		    data: partynotice,
-		 		    contentType: "application/json",
-		 			success : function(data, status, xhr) {
-		 				
-		 				// alert("저장했습니다.");
-		 				 location.reload();
-		 				
-		 			},beforeSend:function(){
-		 		       
-		 				 
-		 		    },
-		 			
-		 			error:function(request,status,error){
-		 		      // alert("저장에 실패했습니다.");
-		 	       }
-		
-					
-		
-		});
-	});
-	
-	});
-	
-	
-	
-	</script>
 	<!--  include header -->
 	<c:import url="../../../views/include/header.jsp" />
 
@@ -70,77 +19,75 @@
 	<div id="allcontainer" class="container-fluid "
 		style="margin-top: 80px">
 
+		
+
+			 <div class="col-md-2" role="main" id="sidebar">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href=""><p
+								class="text-center">이벤트</p></a></li>
+				</ul>
 
 
-		<div class="col-md-2" role="main" id="sidebar">
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" class="active"><a href="insert.action"><p class="text-center">공지사항 등록</p></a></li>
-			</ul>
 
+			</div>
+			<!-- sidebar end -->
+			
 
-
-		</div>
-		<!-- sidebar end -->
-
-
-		<div class="col-md-6" role="complementary" id="list">
+			<div class="col-md-6" role="complementary" id="list">
 
 			<c:choose>
 				<c:when test="empty partynotices">
 					<table width="700" border="1" cellpadding="0" cellspacing="0">
 						<tr>
-							<td align="center">게시판에 저장된 글이 없습니다.</td>
+							<td align="center">이벤트에 저장된 글이 없습니다.</td>
 						</tr>
 					</table>
 				</c:when>
 
 				<c:otherwise>
 
-
-					<h3>Notice</h3>
+	
+					<h3>Event</h3>
 					<hr>
-
-
-					<div class="collapse" id="collapseExample">
-									<div class="well">
-										
-									</div>
-								</div>
-					<table class="table table-condensed" style="margin: auto">
-
-						<tr style="height: 25px" align="center">
-							<th>글 번호</th>
-							<th>제목</th>
-							<th>등록일</th>
-							<th>조회수</th>
-							
-
-						</tr>
+					
+					<div class="clearfix">
+					<div class="col-sm-6 ng-scope" ng-repeat="notice in notices" ng-if="notice.Category!='TopRow' &amp;&amp; notice.Category!='FrontLine' &amp;&amp; notice.Visible == true">
+				
+					 <div class="panel" style="padding: 15px;">
 						
-						<c:forEach var="partynotice" items="${ partynotices }" varStatus="status">
-							<%-- AAA.rows는 레코드 배열을 반환한다 --%>
-							<tr>
-								<td>${ partynotice.noticeNo }</td>
-
-								<td>
-								<a class="btn btn-primary" href="#" data-noticeno="${partynotice.context}">${ partynotice.title }</a>
-								</td>
+					
+					
+						<a href="detail.action" style="display: block;">
+						
+								
+						
+								<p style="text-align:left">6기모집중!!</p>
+								<img src="${ cp }/resources/images/bapul1.jpg">
+							    &nbsp;
+								</a>
+								
+								<a href="detail2.action" style="display: block;">
+								
+								<p style="text-align:left">상위 1%!!</p>
+								
+								
+								<img src="${ cp }/resources/images/bapul2.jpg">
+							    
+							    </a>
 								
 								
 								
-								<td>${ partynotice.dateChanged }</td>
-								<td>${ partynotice.viewCount }</td>
-						<th><button type="button" class="btn btn-primary" id="${ partynotice.noticeNo }">
-							삭제
-							</button></th>
-								
-							</tr>
-						</c:forEach>
+					</div>
+				</div>
 
 
+							
+							
+						
 
-					</table>
-
+						</div>
+						</div>
+						
 				</c:otherwise>
 
 			</c:choose>
@@ -148,13 +95,13 @@
 
 		</div>
 
+	
+	
+	<!-- list end -->
 
 
-		<!-- list end -->
 
-
-
-		<%-- <div class="modal-dialog">
+	<%-- <div class="modal-dialog">
 	    <div class="modal-content">
 	      <!-- header -->
 	      <div class="modal-header">
@@ -189,10 +136,9 @@
 
 	<!--  modal phase -->
 	<script type="text/javascript">
-
 		$('a').on('click', function() {
 
-		
+			$('.modal').modal();
 			/* 	 $.ajax({
 			    	          url:'/PS/board/check.action',
 			    	          type:'POST',

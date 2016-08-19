@@ -21,7 +21,7 @@
   
   <div class="row" id="grid">
  	 
- 	 <div class="col-md-2" role="main" id="sidebar">
+ 	 <div class="col-sm-2 col-md-2" role="main" id="sidebar">
   		<ul class="nav nav-pills nav-stacked">
      		 <li role="presentation" class="active"><a href="insert.action"><p class="text-center">질문 하기</p></a></li>
          </ul>
@@ -29,7 +29,7 @@
        
   	 </div><!-- sidebar end --> 
   	 
-  	  <div class="col-md-6" role="complementary" id="list">
+  	  <div class="col-sm-9 col-md-9" role="complementary" id="list">
   	
   		 
     <c:choose> 
@@ -45,13 +45,13 @@
     
     <c:forEach var="quest" items="${ quests }">
     		<!-- <div class="col"> -->
-    		<div style="width: 1200px" >
+    		<!-- <div style="width: 100%;" > -->
 				  <div class="col-sm-6 col-md-3">
 				    <div class="thumbnail">
 										<table>
 											<tr>
 												<td><span class="glyphicon glyphicon-user btn-lg"
-													aria-hidden="true"></span></td>
+													aria-hidden="true" style="color: navy;"></span></td>
 												<td>${ quest.writer }<br> ${ quest.regDate }
 												</td>
 												<td align="right">
@@ -60,16 +60,16 @@
 														<div class="dropdown-toggle"
 															id="dropdownMenu1" data-toggle="dropdown"
 															aria-expanded="true">
-															<span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true"></span>
+															<span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true" style="color:gray;"></span>
 														</div>
 														<ul class="dropdown-menu" role="menu"
 															aria-labelledby="dropdownMenu1">
 															<li role="presentation"><a role="menuitem"
-																tabindex="-1" href="#"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp;스크랩</a></li>
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp;스크랩</a></li>
 															<li role="presentation"><a role="menuitem"
-																tabindex="-1" href="#"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>&nbsp;공유</a></li>
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>&nbsp;공유</a></li>
 															<li role="presentation"><a role="menuitem"
-																tabindex="-1" href="#"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;신고</a></li>
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;신고</a></li>
 														</ul>
 													</div>
 
@@ -80,7 +80,7 @@
 										<img src="${cp}/resources/image/${ quest.savedFilePath }" alt="..." style="width: 300px; height: 200px"> 
 				      <div class="caption">
 				      	<hr>
-				      		#태그
+				      		<a href="#" style="color:gray;">#태그</a>
 				      	<hr>
 				        <p>
 				        <%-- <a href="<c:url value='/board/boardview.action'/>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%>
@@ -88,24 +88,29 @@
 				       	<div>
 												<table>
 													<tr>
-														<td><c:url value="boardview.action"
+														<td><c:url value="questview.action"
 																var="viewUrl">
 																<c:param name="questNo" value="${ quest.questNo }" />
 															</c:url> <a id="activeModal" href="${ viewUrl }"> <span
-																class="glyphicon glyphicon-pencil" aria-hidden="true">답변하기!!</span></a></td>
+																class="glyphicon glyphicon-pencil" aria-hidden="true"><b>답변하기!!</b> </span></a></td>
 														<td>
 															<c:url value="good.action"
 																var="viewUrl">
 																<c:param name="questNo" value="${ quest.questNo }" />
-															</c:url> <a id="activeModal" href="${ viewUrl }"  style="color: red" >&nbsp; <span
-																class="glyphicon glyphicon-heart-empty" aria-hidden="true">좋아요!!</span></a></td>
+															</c:url> <a id="activeModal" href="${ viewUrl }"  >&nbsp; <span
+																class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: hotpink"><b>좋아요!!</b>&nbsp;&nbsp;</span></a></td>
+					
+														<td align="right">
+															<span class="glyphicon glyphicon-copy" aria-hidden="true" style="color: gray;">&nbsp;</span>
+															<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true" style="color: gray;"></span>
+														</td>
 													</tr>
 												</table>
 											</div>
 				        <!-- <a href="#" class="btn btn-default" role="button" >Button</a></p> -->
 				      </div>
 				    </div>
-				  </div>
+				  <!-- </div> -->
 				</div>
      	</c:forEach> 
     

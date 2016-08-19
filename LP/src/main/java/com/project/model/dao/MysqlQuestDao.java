@@ -82,6 +82,24 @@ public class MysqlQuestDao implements QuestDao {
 		return qpicture;
 	}
 
+	@Override
+	public Quest searchQuest(int questNo) {
+		
+		Quest quest = questMapper.searchQuest(questNo);
+		
+		return quest;
+	}
+
+	@Override
+	public List<QPicture> searchQpicture(int questNo) {
+		
+		List<QPicture> qpicture = questMapper.searchQpicture(questNo);
+		
+		return qpicture;
+	}
+
+	
+
 
 	
 	

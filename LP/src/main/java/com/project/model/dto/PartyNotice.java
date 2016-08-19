@@ -13,8 +13,14 @@ public class PartyNotice implements Serializable{
 	private Date regDate;
 	private boolean deleted;
 	private int viewCount;
+	private String dateChanged;
 	
-	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	public int getNoticeNo() {
 		return noticeNo;
 	}

@@ -14,5 +14,7 @@ public interface QuestMapper {
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();
 	public QPicture selectQPicture();
+	public Quest searchQuest(int questNo);
+	public List<QPicture> searchQpicture(int questNo);
 
 }

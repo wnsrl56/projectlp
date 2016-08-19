@@ -65,6 +65,21 @@
 				FROM QPicture
 		  </select>
 		  
+		  
+		  <select id="searchQpicture" resultType="qpicture">
+				SELECT QPictureNo, SavedFilePath, RealFilePath, RegDate, QuestNo
+				FROM qpicture
+				WHERE QuestNo = #{ questNo }
+		  </select>
+		  
+		  
+		  <select id="searchQuest" resultType="quest">
+			 SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
+ 			 FROM quest
+ 			 WHERE QuestNo = #{ questNo } 
+		  </select>
+		  
+		 
 		 
 		  
 		  <select id = "selectAllQuestList" parameterType="quest">

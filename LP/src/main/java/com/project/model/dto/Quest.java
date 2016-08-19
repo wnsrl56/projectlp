@@ -2,6 +2,7 @@ package com.project.model.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Quest implements Serializable {
 
@@ -17,8 +18,15 @@ public class Quest implements Serializable {
 	private String savedFilePath;
 	private String realFilePath;
 	
+	private List<QPicture> Qpicture;
 	
 	
+	public List<QPicture> getQpicture() {
+		return Qpicture;
+	}
+	public void setQpicture(List<QPicture> qpicture) {
+		Qpicture = qpicture;
+	}
 	public String getSavedFilePath() {
 		return savedFilePath;
 	}

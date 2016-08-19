@@ -5,7 +5,7 @@
 
 	<c:set var="cp" value="${pageContext.request.contextPath}"/>
   <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -27,10 +27,12 @@
                 <li>
                 <a href="${ cp }/pboard/listview.action">PartyNotice</a>
                 </li>             
-                </li>  
+               
                 <li>
                        <a href="${ cp }/cboard/listview.action" id="linkComm">Comm</a>
-                </li>                   
+                </li>      
+                <li> <a href="${ cp }/eboard/listview.action">EM</a>
+                </li>             
               <c:choose>
             	<%-- <c:when test="${ sessionScope.loginuser == null }"> --%>
             	<c:when test="${ empty sessionScope.loginuser }">

@@ -81,6 +81,21 @@ public class QuestServiceImpl implements QuestService {
 		return qpicture;
 	}
 
+	@Override
+	public void updateAnswerCount(Quest quest) {
+		
+		questDao.updateAnswerCount(quest);
+		
+	}
+
+	@Override
+	public void updateGoodCount(int questNo) {
+	
+		questDao.updateGoodCount(questNo);
+	}
+	
+
+
 
 	
 	

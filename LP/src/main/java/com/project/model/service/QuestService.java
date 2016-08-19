@@ -12,6 +12,10 @@ public interface QuestService {
 
 	public void insertQuest(Quest quest);
 	public void insertQPicture(QPicture qfile);
+	public void updateAnswerCount(Quest quest);
+	public void updateGoodCount(int questNo);
+	
+	
 	public int selectQuestNo(Quest quest);
 	List<Map<String, Object>> selectAllQuestList(Map<String, Object> map) throws Exception;
 	public List<Quest> selectAllQuests();	

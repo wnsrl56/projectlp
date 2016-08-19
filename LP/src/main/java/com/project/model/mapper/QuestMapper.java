@@ -11,6 +11,9 @@ public interface QuestMapper {
 	
 	public void insertQuest(Quest quest);
 	public void insertQPicture(QPicture qpicture);
+	public void updateAnswerCount(Quest quest);
+	public void updateGoodCount(int questNo);
+	
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();
 	public QPicture selectQPicture();

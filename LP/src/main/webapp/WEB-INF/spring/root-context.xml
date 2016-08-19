@@ -77,4 +77,8 @@
 		<property name="mapperInterface" value="com.project.model.mapper.ManagerEventMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="answerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.AnswerMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>

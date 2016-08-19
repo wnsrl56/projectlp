@@ -52,7 +52,7 @@
 											<tr>
 												<td><span class="glyphicon glyphicon-user btn-lg"
 													aria-hidden="true" style="color: navy;"></span></td>
-												<td>${ quest.writer }<br> ${ quest.regDate }
+												<td>${ quest.writer }<br> <span class="label label-primary">${ quest.dateChanged }</span>
 												</td>
 												<td align="right">
 													<!-- <span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true"></span> -->
@@ -92,17 +92,23 @@
 																var="viewUrl">
 																<c:param name="questNo" value="${ quest.questNo }" />
 															</c:url> <a id="activeModal" href="${ viewUrl }"> <span
-																class="glyphicon glyphicon-pencil" aria-hidden="true"><b>답변하기!!</b> </span></a></td>
-														<td>
-															<c:url value="good.action"
-																var="viewUrl">
-																<c:param name="questNo" value="${ quest.questNo }" />
-															</c:url> <a id="activeModal" href="${ viewUrl }"  >&nbsp; <span
-																class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: hotpink"><b>좋아요!!</b>&nbsp;&nbsp;</span></a></td>
-					
-														<td align="right">
+																class="glyphicon glyphicon-pencil" aria-hidden="true"><b>답변하기(${ quest.viewCount })</b> </span></a></td>
+													<td>
+														<div id="inputcontainer">
+															<input type="hidden" id="questNo"
+																value="${ quest.questNo }" />
+															<nav class="pull-right">
+															<a type="submit" id="good${ quest.questNo }" class="won" style="cursor:pointer">&nbsp;<span
+																class="glyphicon glyphicon-heart-empty"
+																aria-hidden="true" style="color: hotpink"><b>좋아요(${ quest.goodCount })</b>&nbsp;</span></a>
+															
+																<!-- <button type="submit" class="btn btn-danger" id="good">좋아요</button> -->
+															</nav>
+														</div>
+													</td>
+													<td align="right">
 															<span class="glyphicon glyphicon-copy" aria-hidden="true" style="color: gray;">&nbsp;</span>
-															<span class="glyphicon glyphicon-cloud-upload" aria-hidden="true" style="color: gray;"></span>
+															<!-- <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true" style="color: gray;"></span> -->
 														</td>
 													</tr>
 												</table>
@@ -187,47 +193,55 @@
   	 
 	</div>
 	
-<!--  modal phase -->	
+				
+
 <script type="text/javascript">
+		//forAjax
+		$(function() {
 
+			//send context to server 	
+			$('.won').on('click', function(event) {
 
-	$('a').on('click',function(){
-		
-	
-		
-		$('.modal').modal();
-	/* 	 $.ajax({
-	    	          url:'/PS/board/check.action',
-	    	          type:'POST',
-	    	          data:boardNo,
-	    	          dataType:'text',
-	    	          success: function (result) {
-	    	             
-	    	                 	
-	    					
-	  							
-	    	  					
-	    	  						
-	    	  					/* $('#registerBtn').on('click',function(){
-	    	  						$.ajax({
-	    						    	          url:'/TP/member/register.action',
-	    						    	          type:'POST',
-	    						    	          data:member,
-	    						    	          contentType:'application/json',
-	    						    	  		  success: function (result) {
+				var answer;
+				var questNo;
+				
+				var check = $(this).attr('id');
+				if(check.indexOf('good') >= 0){
+					
+					questNo = check.substring(4,check.length);
+					
+				answer = {
+					"questNo" : questNo
+				};
+				answer = JSON.stringify(answer);
 
-	    						  		    	   
-	    						    	  			 alert('성공성공1');
-	    						    	  		 }
-	    						    	  		 });
-	    	  					}); */
-	    	  					
-	    	             
-	    	  		  
-	    	         
-	
-	});
+				$.ajax({
 
+					url : "/lp/qboard/good.action",
+					type : "post",
+					data : answer,
+					contentType : "application/json",
+					success : function(data, status, xhr) {
+
+						// alert("저장했습니다.");
+						location.reload();
+
+					},
+					beforeSend : function() {
+
+					},
+
+					error : function(request, status, error) {
+						alert("저장에 실패했습니다.");
+					}
+
+				});
+				
+				}
+
+			})
+
+		});
 
 </script>
 

@@ -34,6 +34,8 @@
 		<typeAlias type="com.project.model.dto.CommReply" alias="CommReply"/>
 		<typeAlias type="com.project.model.dto.QPicture" alias="QPicture"/>
 		<typeAlias type="com.project.model.dto.ManagerEvent" alias="ManagerEvent"/>
+		<typeAlias type="com.project.model.dto.Answer" alias="Answer"/>
+		<typeAlias type="com.project.model.dto.AnswerReply" alias="AnswerReply"/>
 	</typeAliases>
 	
 	<!--  환경 설정 -->
@@ -66,7 +68,7 @@
 		<mapper resource="com/project/model/mapper/CommMapper.xml" />
 		<mapper resource="com/project/model/mapper/CommReplyMapper.xml" />
 		<mapper resource="com/project/model/mapper/ManagerEventMapper.xml" />
-		
+		<mapper resource="com/project/model/mapper/AnswerMapper.xml" />
 	</mappers>
 
 </configuration>

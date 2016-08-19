@@ -98,6 +98,19 @@ public class MysqlQuestDao implements QuestDao {
 		return qpicture;
 	}
 
+	@Override
+	public void updateAnswerCount(Quest quest) {
+		
+		questMapper.updateAnswerCount(quest);
+		
+	}
+
+	@Override
+	public void updateGoodCount(int questNo) {
+
+		questMapper.updateGoodCount(questNo);
+	}
+
 	
 
 

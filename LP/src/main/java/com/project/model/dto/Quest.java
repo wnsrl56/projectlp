@@ -17,10 +17,17 @@ public class Quest implements Serializable {
 	private boolean deleted;
 	private String savedFilePath;
 	private String realFilePath;
+	private String dateChanged;
 	
 	private List<QPicture> Qpicture;
 	
 	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	public List<QPicture> getQpicture() {
 		return Qpicture;
 	}

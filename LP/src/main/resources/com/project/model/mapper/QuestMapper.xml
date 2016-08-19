@@ -49,6 +49,18 @@
  			 (#{questNo}, #{savedFilePath}, #{realFilePath}, #{writer} );
 		  </insert>
 		  
+		  <update id="updateAnswerCount" parameterType="quest">
+		  UPDATE Quest 
+		  SET ViewCount= #{ viewCount } 
+		  WHERE QuestNo = #{ questNo };
+		  </update>
+		  
+		  <update id="updateGoodCount" parameterType="quest">
+		  UPDATE Quest 
+		  SET GoodCount= GoodCount + 1 
+		  WHERE QuestNo = #{ questNo };
+		  </update>
+		  
 		  <select id="selectQuestNo" resultType="int">
 				SELECT count(*) 
 				FROM quest 

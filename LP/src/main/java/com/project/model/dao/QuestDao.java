@@ -12,6 +12,8 @@ public interface QuestDao {
 	//삽입
 	public void insertQuest(Quest quest);
 	public void insertQPicture(QPicture qpicture);
+	public void updateAnswerCount(Quest quest);
+	public void updateGoodCount(int questNo);
 	
 	//조회
 	public List<Map<String, Object>> selectAllQuestList(Map<String, Object> map);

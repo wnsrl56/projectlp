@@ -150,34 +150,24 @@
               <!-- <input type="text" class="form-control" id="roomPrice" placeholder="방가격을 입력해 주세요"> -->
               <form:input path="context" cssStyle="width:280px; color:black" />
             </div>
-            
-            
-            <div class="form-group">
-          	<label for="Tag">태그</label>
-      	  <div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-			  <span class="caret"></span></button>
-			  <ul class="dropdown-menu">
-			    <li><a href="#">HTML</a></li>
-			    <li><a href="#">CSS</a></li>
-			    <li><a href="#">JavaScript</a></li>
-			  </ul>
-		  </div> 
-		  
-		<!--   <button class="btn dropdown-toggle" name="recordinput" data-toggle="dropdown">
-            Record
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                  <li><a href="#">A</a></li>
-                  <li><a href="#">CNAME</a></li>
-                  <li><a href="#">MX</a></li>
-                  <li><a href="#">PTR</a></li>
-            </ul> -->
-		  
-              <!-- <input type="text" class="form-control" id="roomType" placeholder="방종류을 입력해 주세요"> -->
-            </div>
-            <!-- 
+
+
+					<div class="form-group">
+						<label for="Tag">태그</label>
+
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								Dropdown Example <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">HTML</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><a href="#">JavaScript</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- 
      		<div class="form-group">
      			<label for="exampleInputFile">파일 업로드</label>
             	<input type="file" name="attachone" id="file"  />

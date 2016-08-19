@@ -12,7 +12,15 @@ public class AnswerReply implements Serializable{
 	private Date regDate;
 	private boolean deleted;
 	
+	private String dateChanged;
 	
+	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	public int getAnsReplyNo() {
 		return ansReplyNo;
 	}

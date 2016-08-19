@@ -31,9 +31,11 @@ public class ChangeTime {
 		timediff = timediff/1000;
 		
 		if(timediff < 60){
-			dateToString = "몇 초 전";
+			dateToString =  timediff + " 초 전";
 		}else if(timediff < 3600){
-			dateToString = "몇 분 전";
+			dateToString = (timediff/60) + " 분 전";
+		}else if(timediff < 86400){
+			dateToString = (timediff/3600) + " 시간 전";
 		}else{
 			dateToString =  (new SimpleDateFormat("yyyy-MM월-dd일-HH시").format(realRegDate));
 		}

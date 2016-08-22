@@ -49,6 +49,14 @@
  			 (#{questNo}, #{savedFilePath}, #{realFilePath}, #{writer} );
 		  </insert>
 		  
+		   <insert id="insertTag" parameterType="tag">
+		     
+			 INSERT INTO 
+			 QuestTag(TagNo, QuestNo)
+ 			 VALUES
+ 			 (#{ tagNo }, #{questNo} );
+		  </insert>
+		  
 		  <update id="updateAnswerCount" parameterType="quest">
 		  UPDATE Quest 
 		  SET ViewCount= #{ viewCount } 
@@ -67,9 +75,26 @@
 		  </select>
 		  
 		  <select id="selectAllQuests" resultType="quest">
-				SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
+				<!-- SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
 				FROM Quest
+				ORDER BY QuestNo DESC -->
+				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
+				FROM Quest, Tag, QuestTag
+				WHERE Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
 				ORDER BY QuestNo DESC
+		  </select>
+		  
+		  <select id="selectAllTagQuests" resultType="quest">
+				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName
+				FROM Quest, Tag, QuestTag
+				WHERE Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo and Tag.TagNo = #{ tagNo }
+				ORDER BY QuestNo DESC
+		  </select>
+		  
+		  	  
+		  <select id="selectAllTag" resultType="tag">
+				SELECT TagNo, TagName, TagType
+				FROM Tag
 		  </select>
 		  
 		  <select id="selectQPicture" resultType="qpicture">
@@ -91,6 +116,32 @@
  			 WHERE QuestNo = #{ questNo } 
 		  </select>
 		  
+		  
+		  
+		  
+		  
+		    <select id="selectAllNoneQuests" resultType="quest">
+				<!-- SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
+				FROM Quest
+				ORDER BY QuestNo DESC -->
+				<!-- SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
+				FROM Quest, Tag, QuestTag
+				WHERE Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
+				ORDER BY QuestNo DESC -->
+				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
+				FROM Quest, Answer, Tag, QuestTag
+				WHERE Quest.QuestNo != Answer.QuestNo and Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
+				group by Quest.QuestNo
+				ORDER BY Quest.QuestNo DESC;
+		  </select>
+		  
+		  <select id="selectAllNoneTagQuests" resultType="quest">
+				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
+				FROM Quest, Answer, Tag, QuestTag
+				WHERE Quest.QuestNo != Answer.QuestNo and Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo and Tag.TagNo = #{ tagNo }
+				group by Quest.QuestNo
+				ORDER BY Quest.QuestNo DESC;
+		  </select>
 		 
 		 
 		  

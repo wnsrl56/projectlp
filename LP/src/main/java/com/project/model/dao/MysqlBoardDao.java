@@ -64,6 +64,11 @@ public class MysqlBoardDao implements BoardDao {
 		return null;
 	}
 
+	@Override
+	public List<Board> selectAllBoard() {
+		return boardMapper.selectAllBoard();
+	}
+
 
 
 }

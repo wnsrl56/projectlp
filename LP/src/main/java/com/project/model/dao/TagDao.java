@@ -3,6 +3,7 @@ package com.project.model.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.project.model.dto.Quest;
 import com.project.model.dto.Tag;
 
 public interface TagDao {
@@ -13,8 +14,9 @@ public interface TagDao {
 	
 	//조회
 	public List<Tag> selectAllTagList();
+	public List<Quest> selectAllTagQuests(int tagNo);
 	public Tag searchTagByIndex(int index);
-	
+	public List<Quest> selectAllNoneTagQuests(int tagNo);
 	
 	//수정
 	//put으로 알아서 추가하던가, 명시적으로 만들어서 쓰면 될듯

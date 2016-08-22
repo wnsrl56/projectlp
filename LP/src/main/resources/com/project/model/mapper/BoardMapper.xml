@@ -47,6 +47,12 @@
 				WHERE MemberNo =  #{MemberNo}  and BoardType = 'quest';
 		  </select>
 		  
+		  <select id="selectAllBoard" resultType="board">
+				SELECT BoardNo, BoardType
+				FROM Board
+				ORDER BY BoardNo DESC
+		  </select>
+		  
 		  
 		  
 		  <select id = "selectAllBoardList" parameterType="board">

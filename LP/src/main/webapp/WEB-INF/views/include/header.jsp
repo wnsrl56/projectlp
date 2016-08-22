@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">                
                 <li>
-                       <a href="${ cp }/qboard/listview.action">Quest</a>
+                       <a href="${ cp }/qboard/listview.action?tagNo=0">Quest</a>
                        
                 </li>       
                 <li>

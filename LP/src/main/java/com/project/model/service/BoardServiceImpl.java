@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.project.model.dao.BoardDao;
+import com.project.model.dto.Board;
 import com.project.model.dto.Quest;
 
 
@@ -48,6 +49,14 @@ public class BoardServiceImpl implements BoardService {
 		int boardNo = boardDao.selectBoardNo(memberNo);
 		
 		return boardNo;
+	}
+
+
+
+	@Override
+	public List<Board> selectAllBoard() {
+		
+		return boardDao.selectAllBoard();
 	}
 
 

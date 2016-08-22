@@ -36,6 +36,7 @@
 		<typeAlias type="com.project.model.dto.ManagerEvent" alias="ManagerEvent"/>
 		<typeAlias type="com.project.model.dto.Answer" alias="Answer"/>
 		<typeAlias type="com.project.model.dto.AnswerReply" alias="AnswerReply"/>
+		<typeAlias type="com.project.model.dto.Tag" alias="Tag"/>
 	</typeAliases>
 	
 	<!--  환경 설정 -->

@@ -205,7 +205,7 @@
 											<!--  top manu bar -->
 											<div class="col-md-12">
 												<ul class="nav nav-pills">
-													<li><a href="#" id="username"> ${ answer.writer }</a></li>
+													<li><a href="#" id="username"> ${ answer.writer } </a></li>
 													<!--  dropdown button -->
 													<span style="float: right"> <span
 														class="label label-primary">${ answer.dateChanged }</span>
@@ -233,19 +233,25 @@
 													</div>
 
 												</div>
-
+												
 											</div>
-
+							
 
 											<!-- reply -->
 
+											<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseReply${ answer.answerNo }" aria-expanded="false" aria-controls="collapseExample">
+										  댓글 더 보기
+										</a>
+					
+									<div class="collapse" id="collapseReply${ answer.answerNo }">
+  										<div class="well">
 											<div class="row">
 												<div class="col-md-12" id="replytable">
 													<div class="col-md-10" name="replytable">
 														<div class="row">
 															<!--  top manu bar -->
 
-															<c:forEach var="replies" items="${ replies }">
+															<c:forEach var="reply" items="${ answer.reply }">
 																<div class="col-md-12">
 																	<!--  profile picture -->
 
@@ -256,11 +262,11 @@
 																				style="width: 80px; height: 80px">
 																				<a href="#"> <img
 																					src="${cp}/resources/images/profile.jpg" alt=""
-																					class="img-circle" style="width: 30px; height: 30px"> <span> ${ replies.writer }</span>
+																					class="img-circle" style="width: 30px; height: 30px"> <span> ${ reply.writer }</span>
 																				</a>
 																			</div>
 
-																			<span class="panel-info">${ replies.context }</span>
+																			<span class="panel-info">${ reply.context }</span>
 																		</div>
 																	</div>
 
@@ -286,11 +292,18 @@
 																</div>
 															</div>
 															<!--  end of replyinput -->
+															
+															
 
 														</div>
 													</div>
 												</div>
 											</div>
+											
+		<!-- ------------------------------------------------ -->									
+										 </div>
+									</div>
+		<!-- ------------------------------------------------ -->											
 
 										</div>
 										<p>&nbsp;&nbsp;</p>
@@ -324,6 +337,12 @@
 						</div>
 					</div>
 					<p>&nbsp;&nbsp;</p>
+					<div class="form-group" align="right">
+						<label for="exampleInputFile">파일 업로드</label> <input type="file"
+							name="attach" multiple="multiple" id="files" />
+						<!-- <input type="file" name="attach" /> -->
+						<output id="result" />
+					</div>
 					<div class="col-md-11">
 						<nav class="pull-right">
 							<button type="submit" class="btn btn-danger" id="save">답변

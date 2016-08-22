@@ -31,6 +31,7 @@ import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
+import com.project.model.dto.QuestTag;
 import com.project.model.dto.Tag;
 import com.project.model.service.AnswerService;
 import com.project.model.service.BoardService;
@@ -51,43 +52,129 @@ public class QuestBoardController {
 	@Autowired
 	@Qualifier("boardService")
 	private BoardService boardService;
-	
-	@Autowired
-	@Qualifier("commService")
-	private CommService commService;
-	
-	@Autowired
-	@Qualifier("commReplyService")
-	private CommReplyService commReplyService;
-	
+
 	@Autowired
 	@Qualifier("answerService")
 	private AnswerService answerService;
 	
-
-	@RequestMapping(value="listview.action", method = RequestMethod.GET)
+	@RequestMapping(value="listviewnone.action", method = RequestMethod.POST)
 	/*public ModelAndView QuestBoardListGet(Map<String,Object> Map){*/
-	public ModelAndView QuestBoardListGet(Quest quest){
+	public ModelAndView QuestnoneListGet(Quest quest, Tag tag, QuestTag questtag){
 	    ModelAndView mv = new ModelAndView("board/quest/listview");
 	
-	    List<Quest> quests = questService.selectAllQuests();
-/*	    QPicture qpicture = questService.selectQPicture();
+	    System.out.println("dddddddddddddddddddd");
+	    System.out.println(questtag.getTagNo());
+	    System.out.println("dddddddddddddddddddd");
+		
+	    int tagNo = questtag.getTagNo();
+
+	    List<Quest> quests;
 	    
-	    mv.addObject("qpicture", qpicture);*/
+	    if(tagNo == 0){
+	    	 quests = questService.selectAllNoneQuests();
+	    } else {
+	    	 quests = questService.selectAllNoneTagQuests(tagNo);
+	    }
 	    
-	    String datelength2 = null;
+	    List<Tag> tags = questService.selectAllTag();
+	    
+	    
+	    String datelength = null;
 	    
 	    for(int index=0; index<quests.size();index++){
 			 ChangeTime ct = new ChangeTime();
-			 datelength2 = ct.changeDate(quests.get(index).getRegDate());
-			 quests.get(index).setDateChanged(datelength2);
+			 datelength = ct.changeDate(quests.get(index).getRegDate());
+			 quests.get(index).setDateChanged(datelength);
 			 System.out.println("날짜데이터"+quests.get(index).getDateChanged());
 			}
 	    
 		mv.addObject("quests", quests);
 		mv.addObject("quest", quest);
+		mv.addObject("tags", tags);
+		mv.addObject("tag", tag);
 		
+	    return mv;
+	    
+	}
+	
+	
+	@RequestMapping(value="listviewreal.action", method = RequestMethod.POST)
+	/*public ModelAndView QuestBoardListGet(Map<String,Object> Map){*/
+	public ModelAndView QuestListGet(Quest quest, Tag tag, QuestTag questtag){
+	    ModelAndView mv = new ModelAndView("board/quest/listview");
+	
+	    System.out.println("dddddddddddddddddddd");
+	    System.out.println(questtag.getTagNo());
+	    System.out.println("dddddddddddddddddddd");
 		
+	    int tagNo = questtag.getTagNo();
+
+	    List<Quest> quests;
+	    
+	    if(tagNo == 0){
+	    	 quests = questService.selectAllQuests();
+	    } else {
+	    	 quests = questService.selectAllTagQuests(tagNo);
+	    }
+	    
+	    List<Tag> tags = questService.selectAllTag();
+	    
+	    
+	    String datelength = null;
+	    
+	    for(int index=0; index<quests.size();index++){
+			 ChangeTime ct = new ChangeTime();
+			 datelength = ct.changeDate(quests.get(index).getRegDate());
+			 quests.get(index).setDateChanged(datelength);
+			 System.out.println("날짜데이터"+quests.get(index).getDateChanged());
+			}
+	    
+		mv.addObject("quests", quests);
+		mv.addObject("quest", quest);
+		mv.addObject("tags", tags);
+		mv.addObject("tag", tag);
+		
+	    return mv;
+	    
+	}
+	
+	
+
+	@RequestMapping(value="listview.action", method = RequestMethod.GET)
+	/*public ModelAndView QuestBoardListGet(Map<String,Object> Map){*/
+	public ModelAndView QuestBoardListGet(Quest quest, Tag tag,int tagNo){
+	    ModelAndView mv = new ModelAndView("board/quest/listview");
+	
+	    System.out.println("dddddddddddddddddddd");
+	    System.out.println(tagNo);
+	    System.out.println("dddddddddddddddddddd");
+	    
+	    List<Quest> quests;
+	    
+	    if(tagNo == 0){
+	    	 quests = questService.selectAllQuests();
+	    } else {
+	    	 quests = questService.selectAllTagQuests(tagNo);
+	    }
+	    
+/*	    QPicture qpicture = questService.selectQPicture();
+	    mv.addObject("qpicture", qpicture);*/
+	    List<Tag> tags = questService.selectAllTag();
+	    
+	    
+	    String datelength = null;
+	    
+	    for(int index=0; index<quests.size();index++){
+			 ChangeTime ct = new ChangeTime();
+			 datelength = ct.changeDate(quests.get(index).getRegDate());
+			 quests.get(index).setDateChanged(datelength);
+			 System.out.println("날짜데이터"+quests.get(index).getDateChanged());
+			}
+	    
+		mv.addObject("quests", quests);
+		mv.addObject("quest", quest);
+		mv.addObject("tags", tags);
+		mv.addObject("tag", tag);
 		
 	    return mv;
 	}
@@ -96,22 +183,35 @@ public class QuestBoardController {
 	public ModelAndView QuestInsertGet(@ModelAttribute Quest quest,@ModelAttribute Board board, @ModelAttribute Tag tag){
 		
 	    ModelAndView mv = new ModelAndView("board/quest/registerform");
+	    
+	    List<Tag> tags = questService.selectAllTag();
         
+	    mv.addObject("tags",tags);
+	    mv.addObject("tag", tag);
+	    
 	    return mv;
 	}
 	
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.POST)
-	public String QuestInsertPost(MultipartHttpServletRequest req, Quest quest, Board board, Model model, BindingResult result) {
+	public String QuestInsertPost(MultipartHttpServletRequest req, Quest quest, Board board, Tag tag, BindingResult result,int memberNo,int tagNo) {
 		logger.info("board.context: {}");
 	     
 		if (result.hasErrors()) {
 
 			return "index";
 		}
+	
+		tag.setTagNo(tagNo);
+		tag.setQuestNo(questService.selectQuestNo(quest));	//tagnum, questno
+		System.out.println(tag.getTagNo());
+		System.out.println(tag.getQuestNo());
 		
-		int memberNo =  Integer.parseInt(req.getParameter("memberNo")); 
+		questService.insertTag(tag);
+		
 		//boardService.insertBoard();
+		
+		
 		int boardNo = boardService.selectBoardNo(memberNo);	
 		quest.setBoardNo(boardNo);
 		
@@ -176,7 +276,7 @@ public class QuestBoardController {
 			// throw new RuntimeException(ex);}
 		}
 			
-	    return "redirect:listview.action";
+	    return "redirect:listview.action?tagNo=0";
 	    
 	    
 	}
@@ -205,53 +305,59 @@ public class QuestBoardController {
 	    
 		//list 가져오기
 		//List<Comm> comms = commService.selectAllCommList();
-		int end =0;
+		int end =2;
 		//최근 갯수 가져오기
 		/*List<Comm> comms = commService.selectCommListOrderByDesc(0,1);
 		List<CommReply> replies = null;*/
 		
-		List<Answer> answers = answerService.selectAnswerListOrderByDesc(0,2, Integer.parseInt(questNo));
-		List<AnswerReply> replies = null;
+		List<Answer> answers = answerService.selectAnswerListOrderByDesc(0,end, Integer.parseInt(questNo));
+		
 		
 		/*replies = commReplyService.selectCommReplyListOrderByDesc(0,3, comms.get(0).getCommNo());*/
-		/*replies = answerService.selectAnswerReplyListOrderByDesc(0,3, answers.get(0).getQuestNo());*/
-		int ansReply = 0;
-		
+		/*replies = answerService.selectAnswerReplyListOrderByDesc(0,3, answers.get(0).getQuestNo());*/	
 		
 		/*if(answers.get(0).getQuestNo() == 0){*/
-		if (answerService.answerCount(Integer.parseInt(questNo)) == 0) {
+	/*	if (answerService.answerCount(Integer.parseInt(questNo)) == 0) {
 			ansReply = 0;
 		} else {
-			/*ansReply = answers.get(0).getQuestNo();
-			System.out.println(answers.get(0).getQuestNo());*/
+			
 			ansReply =  Integer.parseInt(questNo);
+		}*/
+		
+		/*replies = answerService.selectAnswerReplyListOrderByDesc(0,3, 3);*/
+
+		
+		for(int i=0;i<answers.size();i++){
+			
+			answers.get(i).setReply(answerService.selectAnswerReplyListOrderByDesc(0,3, answers.get(i).getAnswerNo()));
+			
+		
 		}
 		
-		replies = answerService.selectAnswerReplyListOrderByDesc(0,3, 3);
-			List<String> datelength = null;
-			String datelength2 = null;
+		
+			String datelength = null;
 			
 			
 			for(int index=0; index<answers.size();index++){
 			 ChangeTime ct = new ChangeTime();
-			 datelength2 = ct.changeDate(answers.get(index).getRegDate());
-			 answers.get(index).setDateChanged(datelength2);
+			 datelength = ct.changeDate(answers.get(index).getRegDate());
+			 answers.get(index).setDateChanged(datelength);
 			 System.out.println("날짜데이터"+answers.get(index).getDateChanged());
 			}
 			
-			for(int index=0; index<replies.size();index++){
+		/*	for(int index=0; index<replies.size();index++){
 				 ChangeTime ct = new ChangeTime();
-				  datelength2 = ct.changeDate(replies.get(index).getRegDate());
-				  replies.get(index).setDateChanged(datelength2);
+				  datelength = ct.changeDate(replies.get(index).getRegDate());
+				  replies.get(index).setDateChanged(datelength);
 				  System.out.println("날짜데이터"+replies.get(index).getDateChanged());
 				 }
-		
+		*/
 			System.out.println("secces");
 			
 	    //System.out.println(comms.get(0).getContext());
 	    
 	    mv.addObject("answers",answers);
-	    mv.addObject("replies",replies);
+	    /*mv.addObject("replies",replies);*/
 		
 	    return mv;
 	}

@@ -18,10 +18,24 @@ public class Quest implements Serializable {
 	private String savedFilePath;
 	private String realFilePath;
 	private String dateChanged;
+	private String tagName;
+	private int tagNo;
 	
+
+	public int getTagNo() {
+		return tagNo;
+	}
+	public void setTagNo(int tagNo) {
+		this.tagNo = tagNo;
+	}
 	private List<QPicture> Qpicture;
 	
-	
+	public String getTagName() {
+		return tagName;
+	}
+	public void setTagName(String tagName) {
+		this.tagName = tagName;
+	}
 	public String getDateChanged() {
 		return dateChanged;
 	}

@@ -111,6 +111,12 @@ public class MysqlQuestDao implements QuestDao {
 		questMapper.updateGoodCount(questNo);
 	}
 
+	@Override
+	public List<Quest> selectAllNoneQuests() {
+		
+		return questMapper.selectAllNoneQuests();
+	}
+
 	
 
 

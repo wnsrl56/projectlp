@@ -23,6 +23,8 @@ public interface QuestDao {
 	public QPicture selectQPicture();
 	public Quest searchQuest(int questNo);
 	public List<QPicture> searchQpicture(int questNo);
+	public List<Quest> selectAllNoneQuests();
+	
 	
 	//수정
 	//put으로 알아서 추가하던가, 명시적으로 만들어서 쓰면 될듯

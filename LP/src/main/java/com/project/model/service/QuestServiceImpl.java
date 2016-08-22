@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import com.project.model.dao.BoardDao;
 import com.project.model.dao.QuestDao;
+import com.project.model.dao.TagDao;
 import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
+import com.project.model.dto.Tag;
 
 
 @Service("questService")
@@ -24,6 +26,10 @@ public class QuestServiceImpl implements QuestService {
 	@Autowired
 	@Qualifier("mysqlQuestDao")
 	private QuestDao questDao;
+	
+	@Autowired
+	@Qualifier("mysqlTagDao")
+	private TagDao tagDao;
 
 	@Override
 	public List<Map<String, Object>> selectAllQuestList(Map<String, Object> map) throws Exception {
@@ -92,6 +98,34 @@ public class QuestServiceImpl implements QuestService {
 	public void updateGoodCount(int questNo) {
 	
 		questDao.updateGoodCount(questNo);
+	}
+
+	@Override
+	public List<Tag> selectAllTag() {
+	
+		return tagDao.selectAllTagList();
+	}
+
+	@Override
+	public void insertTag(Tag tag) {
+		
+		tagDao.insertTag(tag);
+		
+	}
+
+	@Override
+	public List<Quest> selectAllTagQuests(int tagNo) {
+		return tagDao.selectAllTagQuests(tagNo);
+	}
+
+	@Override
+	public List<Quest> selectAllNoneQuests() {
+		return questDao.selectAllNoneQuests();
+	}
+	
+	@Override
+	public List<Quest> selectAllNoneTagQuests(int tagNo) {
+		return tagDao.selectAllNoneTagQuests(tagNo);
 	}
 	
 

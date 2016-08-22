@@ -131,7 +131,6 @@
 			  <form:hidden path="writer" value="${ loginuser.email }"/>
 			  <%-- <form:hidden path="MemberNo" value="${ loginuser.memberNo }"/> --%>
 			   <input type="hidden" id="memberNo" name="memberNo" value="${ loginuser.memberNo }">
-			   
 			  <div class="form-group">
               <label for="QuestTitle">제목</label>
               <!-- <input type="text" class="form-control" id="roomTitle" placeholder="방이름을 입력해 주세요"> -->
@@ -153,9 +152,15 @@
 
 
 					<div class="form-group">
-						<label for="Tag">태그</label>
+						<label for="Tag">태그</label> 
+						<select class="form-control" style="width: 300px" name="tagNo">
+							 <c:forEach var="tag" items="${ tags }">
+							<option value="${ tag.tagNo }">${ tag.tagName }</option>
+							</c:forEach> 
+						</select>
+							
 
-						<div class="dropdown">
+						<!-- <div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
 								Dropdown Example <span class="caret"></span>
@@ -165,7 +170,7 @@
 								<li><a href="#">CSS</a></li>
 								<li><a href="#">JavaScript</a></li>
 							</ul>
-						</div>
+						</div> -->
 					</div>
 					<!-- 
      		<div class="form-group">
@@ -189,7 +194,7 @@
           </form:form>
           </div>
   
-	
+
 		  
       </div><!-- list end --> 
   	 
@@ -200,6 +205,8 @@
 	</div>
 	
 </div>
+
+
 
 </body>
 <!--  end of body -->

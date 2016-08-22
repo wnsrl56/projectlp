@@ -20,6 +20,10 @@
     		var flag = "leave"; // 탈퇴/ 수정 구분 위한 flag	
     		checkPw(flag);
     	});
+    	$('#back').on('click', function (event) {
+    		url = "/LP/home.action";
+	 		location.href = url;
+    	});
 	    	
     // 비밀번호 확인	
   	function checkPw(flag) {
@@ -39,15 +43,22 @@
         		 	type : "post",
         		 	data : account,
         			success : function(data, status, xhr) {
-   			 			if (flag == "edit") { // 수정       			 		
-   			 				url = "edit.action";
-   	    		 			location.href = url;
-   			 			} else if (flag == "leave") { // 탈퇴
-  			 				url = "leave.action";
-   	    		 			location.href = url;
-   			 			} else {
-   			 				alert("flag error"); // 에러
-   			 			}
+        				if (data == "success") {
+	   			 			if (flag == "edit") { // 수정       			 		
+	   			 				url = "edit.action";
+	   	    		 			location.href = url;
+	   			 			} else if (flag == "leave") { // 탈퇴
+	  			 				url = "leave.action";
+	   	    		 			location.href = url;
+	   			 			} else {
+	   			 				alert("flag error"); // 에러
+	   			 			}
+        				} else if (data == "fail") {
+        					alert("비밀번호가 틀림!");
+        					return;
+        				} else {
+        					alert("error")
+        				}
    	  				},         	  			
         	  		error:function(request,status,error) {
         			 		alert("ajax 응답 오류");
@@ -65,7 +76,7 @@
 	<div style="height: 100px;"></div>
 	<div id="content" >
 		<c:set var="member" value="${ sessionScope.loginuser }"/>
-		<div>회원정보 ${ member.name }</div>
+		<div>회원정보 </div>
 		<table class="table">			
 			<tr>
 				<th>이름</th>

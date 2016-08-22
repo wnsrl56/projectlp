@@ -33,4 +33,6 @@ public interface MemberDao {
 	public void deleteMemberByEmail(String email);
 	// 계정 중복확인(이메일)
 	public int countMemberByEmail(String email);
+
+	public void updateMember(Member member);
 }

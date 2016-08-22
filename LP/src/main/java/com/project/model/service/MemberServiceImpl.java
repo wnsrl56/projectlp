@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void registerMember(Member member) {
 		// 비밀번호 암호화
-		//member.setPassword(Util.getHashedString(member.getPassword(), "SHA-256"));
+		member.setPassword(Util.getHashedString(member.getPassword(), "SHA-256"));
 		memberDao.insertMember(member);
 	}
 
@@ -33,12 +33,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberByIdAndPasswd(String email, String password) {
 		// 입력받은 비번 암호화
-		//password = Util.getHashedString(password, "SHA-256");
+		password = Util.getHashedString(password, "SHA-256");
 		HashMap<String, String> account = new HashMap<>();
 		account.put("email", email );
-		account.put("password", password);
-		
-				
+		account.put("password", password);				
 		return memberDao.selectMemberByEmailAndPassword(account);
 	}
 
@@ -60,16 +58,20 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	@ResponseBody
-	public String checkMember(String email, String password) {		
+	public String checkMember(String email, String password) {	
+		System.out.println("email password :" + email + password);
+		password = Util.getHashedString(password, "SHA-256");
 		HashMap<String, String> account = new HashMap<>();
 		account.put("email", email );
 		account.put("password", password);		
 		int result = memberDao.countMemberByEmailAndPassword(account);
 		//Member member = memberDao.selectMemberByEmailAndPassword(account);
 			
-		if (result == 1) // 성공
+		if (result == 1) {// 성공
+			System.out.println("Member checked!");
 			return "success";
-		else if (result == 0 ) {			
+		} else if (result == 0 ) {
+			System.out.println("Member check failed!");
 			return "fail";
 		} else {
 			System.out.println("오류 : 둘 이상의 동일 아이디 존재");
@@ -90,6 +92,12 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("오류 : 둘 이상의 동일 아이디 존재");
 			return "fail";
 		}
+	}
+
+	@Override
+	public void editMember(Member member) {
+		memberDao.updateMember(member);
+		
 	}
 	
 	

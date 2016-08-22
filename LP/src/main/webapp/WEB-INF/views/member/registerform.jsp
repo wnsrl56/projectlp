@@ -62,12 +62,72 @@
     	
     	$('#cancel').on('click', function (event) {
     		location.href = "/LP";	
-    	})	    
+    	})
+    	
+    	$('#selectGrade').on('click', function(event){
+    		// 모달띄우기
+    		$('#selectGradeModal').modal('show'); 
+    		// 마우스 호버링
+    		$('.selectGradeButton').mouseenter(function(){
+    			$(this).removeClass('btn-default').addClass('btn-primary');
+    		}).mouseleave(function(){
+    			$(this).removeClass('btn-primary').addClass('btn-default')});
+
+    	})    	
+    	// 학년 선택 후
+		$('.selectGradeButton').on('click', function(event){
+    		grade = $(this).text(); 		
+    		alert(grade);
+    		$('#selectGrade').text(grade);
+    		$('#grade').val(grade); // hidden input 창에 value 부여
+    		$('#selectGradeModal').modal('hide'); // 모달 닫기 
+    	}) 
+    	
+    	
 	})  		
 	</script> 
      
 </head>
-<body>	
+
+<body>
+	<div class="modal fade" id="selectGradeModal" tabindex="-1" role="dialog"
+		aria-labelledby="selectGradeModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="돌아가기">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="selectGradeModal">학년 선택</h4>
+				</div>
+				<div class="modal-body">
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 초1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초3 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 초4 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초5 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초6 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 중1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 중2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 중3 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 고1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 고2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 고3 </button>
+					</div>
+					<button type="button" class="btn btn-default selectGradeButton"> 대학생 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 일반인 </button>					
+				</div>				
+			</div>
+		</div>
+	</div>	
 	  <article class="container">	  
         <div class="page-header">
         	<c:import url="/WEB-INF/views/include/header.jsp" />
@@ -105,12 +165,14 @@
             </div>
             <div class="form-group">
               <label for="grade">학년</label> &nbsp;
-              <input class="" type="radio" name="grade" value="초" checked> 초등학생 &nbsp;&nbsp;
+              <button type="button" class="btn btn-default" id="selectGrade"> 학년선택 </button>
+              <input type="hidden" class="form-control" name="grade" id="grade" value="">
+              <!-- <input class="" type="radio" name="grade" value="초" checked> 초등학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="중"> 중학생  &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="고"> 고등학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="재수생"> 재수생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="대학생"> 대학생 &nbsp;&nbsp;
-  			  <input class="" type="radio" name="grade" value="일반인"> 일반인 <br>  
+  			  <input class="" type="radio" name="grade" value="일반인"> 일반인 <br>   -->
             </div>
             
             <!-- <div class="form-group">

@@ -13,10 +13,8 @@ import com.project.model.mapper.MemberMapper;
 
 @Repository(value = "mysqlMemberDao" )
 public class MysqlMemberDao implements MemberDao {
-
-	
 	// mapping 연결 
-	
+
 	@Autowired
 	@Qualifier("memberMapper")
 	private MemberMapper memberMapper;
@@ -68,5 +66,11 @@ public class MysqlMemberDao implements MemberDao {
 	@Override
 	public int countMemberByEmail(String email) {
 		return memberMapper.countMemberByEmail(email);
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		memberMapper.updateMember(member);
+		
 	}
 }

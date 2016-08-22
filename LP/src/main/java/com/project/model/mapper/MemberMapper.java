@@ -15,4 +15,5 @@ public interface MemberMapper {
 	public int countMemberByEmailAndPassword(HashMap<String, String> account);
 	public void deleteMemberByEmail(String email);
 	public int countMemberByEmail(String email);
+	public void updateMember(Member member);
 }

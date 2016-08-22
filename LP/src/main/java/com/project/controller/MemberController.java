@@ -28,14 +28,13 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "register.action", method = RequestMethod.GET)
-	public String registerForm(
-			//스프링 태그 라이브러리를 사용하기 위해 구성한 전달인자 
-			@ModelAttribute Member member) {
+	public String registerForm(//@ModelAttribute Member member//스프링 태그 라이브러리를 사용하기 위해 구성한 전달인자 
+			) {
 			return "/member/registerform";
 	}
 	
 	@RequestMapping(value = "register.action", method = RequestMethod.POST)
-	public String register(Member member, BindingResult result) {		
+	public String register(@ModelAttribute Member member, BindingResult result) {		
 		if (result.hasErrors()) {
 			return "/member/registerform";
 		}	
@@ -46,7 +45,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
-	public String list(Model model){		
+	public String list(Model model) {		
 		ArrayList<Member> lists = memberService.listAllMembers();
 		model.addAttribute("members", lists);
 		if (lists.isEmpty())
@@ -74,8 +73,10 @@ public class MemberController {
 	}
 	// 회원정보 수정 확인
 	@RequestMapping(value = "edit.action", method = RequestMethod.POST)
-	public String edit(Model model){	
-		System.out.println("call edit by post");
+	public String edit(@ModelAttribute Member member, HttpSession session){	
+		memberService.editMember(member);
+		System.out.println("call edit by post");		
+		session.setAttribute("loginuser", member);		
 		return "/member/detail";			
 	}
 	// 회원 탈퇴

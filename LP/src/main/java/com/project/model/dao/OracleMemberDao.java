@@ -70,4 +70,10 @@ public class OracleMemberDao implements MemberDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void updateMember(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
 }

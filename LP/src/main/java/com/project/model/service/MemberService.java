@@ -22,5 +22,6 @@ public interface MemberService {
 		public String checkMember(String email, String password);
 		// 이메일 중복확인용
 		public String checkMember(String email);
+		public void editMember(Member member);
 	
 }	

@@ -7,17 +7,31 @@
 <html>
 <head>
 	<c:import url="/WEB-INF/views/include/import.jsp" />
-	
-<title>회원가입</title>   
-    <!-- 회원가입 폼 관련 css, js -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-	<%--     <link href="${ cp }/resources/css/registerbootstrap.min.css" rel="stylesheet">
-     <script src="<c:url value='/resources/js/registerbootstrap.min.js'/>" > </script> --%>
+	<script type="text/javascript">
+	$('#selectGrade').on('click', function(event){
+    	// 모달띄우기
+    	$('#selectGradeModal').modal('show'); 
+    	// 마우스 호버링
+    	$('.selectGradeButton').mouseenter(function(){
+    		$(this).removeClass('btn-default').addClass('btn-primary');
+    	}).mouseleave(function(){
+    		$(this).removeClass('btn-primary').addClass('btn-default')});
+    })    	
+    // 학년 선택 후
+	$('.selectGradeButton').on('click', function(event){
+    	grade = $(this).text(); 		
+    	alert(grade);
+    	$('#selectGrade').text(grade);
+    	$('#grade').val(grade); // hidden input 창에 value 부여
+    	$('#selectGradeModal').modal('hide'); // 모달 닫기 
+    })
+    
+    </script>
+	<title>회원가입</title>      
 </head>
 <body>	
-
-	<div class="modal fade" id="selectGrade" tabindex="-1" role="dialog"
-		aria-labelledby="selectGradeLabel" aria-hidden="true">
+	<div class="modal fade" id="selectGradeModal" tabindex="-1" role="dialog"
+		aria-labelledby="selectGradeModal" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -25,18 +39,35 @@
 						aria-label="돌아가기">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="checkPwModalLabel">학년 선택</h4>
+					<h4 class="modal-title" id="selectGradeModal">학년 선택</h4>
 				</div>
 				<div class="modal-body">
 					<div>
-						<button type="button" class="btn btn-default" >초1</button>
-						<button type="button" class="btn btn-default" >초2</button>
-						<button type="button" class="btn btn-default" >초3</button>
-					</div>					
+					<button type="button" class="btn btn-default selectGradeButton"> 초1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초3 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 초4 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초5 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 초6 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 중1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 중2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 중3 </button>
+					</div>
+					<div>
+					<button type="button" class="btn btn-default selectGradeButton"> 고1 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 고2 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 고3 </button>
+					</div>
+					<button type="button" class="btn btn-default selectGradeButton"> 대학생 </button>
+					<button type="button" class="btn btn-default selectGradeButton"> 일반인 </button>					
 				</div>				
 			</div>
 		</div>
-	</div>
+	</div>	
 
 	  <article class="container">	  
         <div class="page-header">
@@ -71,9 +102,9 @@
   			  <!-- <input class="" type="radio" name="sexual" value="other"> Other <br> -->              
             </div>
             <div class="form-group">
-              <label for="grade">학년</label> &nbsp;
-              <input type="text" name="grade" value="${member.grade}" >
-              
+              <label for="grade">학년</label> &nbsp;              
+              <button type="button" class="btn btn-default" id="selectGrade"> ${member.grade} </button>
+              <input type="hidden" class="form-control" name="grade" id="grade" value="${member.grade}">
               <!-- <input class="" type="radio" name="grade" value="초" checked> 초등학생 &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="중"> 중학생  &nbsp;&nbsp;
   			  <input class="" type="radio" name="grade" value="고"> 고등학생 &nbsp;&nbsp;
@@ -98,8 +129,8 @@
               </div>
             </div>
             <div class="form-group text-center">
-              <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
-              <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button>
+              <button type="submit" class="btn btn-info">회원 정보 수정<i class="fa fa-check spaceLeft"></i></button>
+              <button type="submit" class="btn btn-warning">수정 취소<i class="fa fa-times spaceLeft"></i></button>
             </div>
           </form:form>
         </div>

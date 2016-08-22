@@ -66,8 +66,14 @@
 			</div>
 
 			<hr>
-
-				<c:choose> 
+ 	    
+       
+  	 </div><!-- sidebar end --> 
+  	 
+  	  <div class="col-sm-9 col-md-9" role="complementary" id="list">
+  	<input type="hidden" value="${ end }" id="endNo"/>
+  		 
+    <c:choose> 
     <c:when test="${ empty quest }">
         <table width="700" border="1" cellpadding="0" cellspacing="0">
         <tr>

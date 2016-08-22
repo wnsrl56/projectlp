@@ -166,6 +166,18 @@
 		  
 		  </select>
 		 
+		 
+		 <select id="selectQuestListOrderByDesc" parameterType="HashMap" resultType="quest">
+		   SELECT 
+		   BoardNo,QuestNo,Title,Context,RegDate,Writer,ViewCount,GoodCount,Deleted 
+		   FROM 
+		   Quest 
+		   WHERE 
+		   Deleted =0 
+		   ORDER BY 
+		   RegDate 
+		   DESC LIMIT #{ start }, #{ end };
+		  </select>
 	
 
 </mapper> 	

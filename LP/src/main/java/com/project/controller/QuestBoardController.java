@@ -3,7 +3,6 @@ package com.project.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,9 +157,18 @@ public class QuestBoardController {
 	    }
 	    
 /*	    QPicture qpicture = questService.selectQPicture();
+	  //  List<Quest> quests = questService.selectAllQuests();
+	    List<Quest> quests = null;
+	    int end = 4;
 	    mv.addObject("qpicture", qpicture);*/
 	    List<Tag> tags = questService.selectAllTag();
 	    
+
+	    	
+	    	/*quests = questService.selectQuestListOrderByDesc(0, end);*/
+	    	System.out.println("성공");
+	    	
+	   
 	    
 	    String datelength = null;
 	    
@@ -176,6 +184,7 @@ public class QuestBoardController {
 		mv.addObject("tags", tags);
 		mv.addObject("tag", tag);
 		
+		/*mv.addObject("end",end);*/
 	    return mv;
 	}
 	

@@ -1,5 +1,6 @@
 package com.project.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -126,6 +127,19 @@ public class QuestServiceImpl implements QuestService {
 	@Override
 	public List<Quest> selectAllNoneTagQuests(int tagNo) {
 		return tagDao.selectAllNoneTagQuests(tagNo);
+	}
+
+	@Override
+	public List<Quest> selectQuestListOrderByDesc(int start, int end) {
+		// TODO Auto-generated method stub
+		
+		HashMap<String, Object> period = new HashMap<>();
+		
+		
+		period.put("start", start);
+		period.put("end", end);
+		
+		return questDao.selectQuestListOrderByDesc(period);
 	}
 	
 

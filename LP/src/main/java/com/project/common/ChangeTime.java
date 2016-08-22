@@ -23,7 +23,7 @@ public class ChangeTime {
 		Date todaytimenum = calendar.getTime();
 		long ttimeNum = todaytimenum.getTime();
         String todaylength = (new SimpleDateFormat("yyyy-MM-dd-HH시mm분ss초").format(todaytimenum));
-		System.out.println("오늘날짜:"+todaylength);
+	//	System.out.println("오늘날짜:"+todaylength);
 		
 		
 		long timediff = ttimeNum - timenum;
@@ -41,8 +41,8 @@ public class ChangeTime {
 		}
 		
 		
-		System.out.println("현재 차이 시간:"+timediff);
-		System.out.println(dateToString);
+	//	System.out.println("현재 차이 시간:"+timediff);
+	//	System.out.println(dateToString);
 		
 		
 		return dateToString;

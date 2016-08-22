@@ -1,5 +1,6 @@
 package com.project.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ public interface QuestService {
 	
 	public int selectQuestNo(Quest quest);
 	List<Map<String, Object>> selectAllQuestList(Map<String, Object> map) throws Exception;
+	public List<Quest> selectQuestListOrderByDesc(int start, int end);
+	
 	public List<Quest> selectAllQuests();	
 	public QPicture selectQPicture();
 	public Quest searchQuest(int questNo);

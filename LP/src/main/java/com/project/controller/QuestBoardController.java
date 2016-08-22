@@ -3,7 +3,6 @@ package com.project.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,10 +69,15 @@ public class QuestBoardController {
 	public ModelAndView QuestBoardListGet(Quest quest){
 	    ModelAndView mv = new ModelAndView("board/quest/listview");
 	
-	    List<Quest> quests = questService.selectAllQuests();
-/*	    QPicture qpicture = questService.selectQPicture();
+	  //  List<Quest> quests = questService.selectAllQuests();
+	    List<Quest> quests = null;
+	    int end = 4;
 	    
-	    mv.addObject("qpicture", qpicture);*/
+	    	
+	    	quests = questService.selectQuestListOrderByDesc(0, end);
+	    	System.out.println("성공");
+	    	
+	   
 	    
 	    String datelength2 = null;
 	    
@@ -85,12 +89,43 @@ public class QuestBoardController {
 			}
 	    
 		mv.addObject("quests", quests);
-		mv.addObject("quest", quest);
-		
+		mv.addObject("end",end);
 		
 		
 	    return mv;
 	}
+	
+
+	@RequestMapping(value="morepost.action", method = RequestMethod.POST)
+	@ResponseBody
+	public  List<Quest> QuestBoardListPost(@RequestBody int start){
+	    
+	
+	        List<Quest> lists = null;
+	        
+	        
+	        lists = questService.selectQuestListOrderByDesc(start,4);
+	    	System.out.println("성공2");
+	    	
+	   
+	    System.out.println(lists.get(0).getContext());
+	    String datelength2 = null;
+	    
+	    for(int index=0; index<lists.size();index++){
+			 ChangeTime ct = new ChangeTime();
+			 datelength2 = ct.changeDate(lists.get(index).getRegDate());
+			 lists.get(index).setDateChanged(datelength2);
+			 System.out.println("날짜데이터"+lists.get(index).getDateChanged());
+			}
+	    
+	   
+	    
+	  
+	    return lists;
+	}
+	
+	
+	
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.GET)
 	public ModelAndView QuestInsertGet(@ModelAttribute Quest quest,@ModelAttribute Board board, @ModelAttribute Tag tag){

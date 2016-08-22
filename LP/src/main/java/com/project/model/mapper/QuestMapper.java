@@ -1,6 +1,8 @@
 package com.project.model.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
@@ -16,8 +18,13 @@ public interface QuestMapper {
 	
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();
+	public List<Quest> selectQuestListOrderByDesc(HashMap<String,?> period);
+	
 	public QPicture selectQPicture();
 	public Quest searchQuest(int questNo);
 	public List<QPicture> searchQpicture(int questNo);
+	
+	
+	
 
 }

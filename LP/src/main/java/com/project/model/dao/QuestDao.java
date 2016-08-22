@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.project.model.dto.Comm;
 import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
 
@@ -17,6 +18,7 @@ public interface QuestDao {
 	
 	//조회
 	public List<Map<String, Object>> selectAllQuestList(Map<String, Object> map);
+	public List<Quest> selectQuestListOrderByDesc(HashMap<String,?> period);
 	public Quest searchQuestByIndex(int index);
 	public int selectQuestNo();
 	public List<Quest> selectAllQuests();

@@ -111,6 +111,12 @@ public class MysqlQuestDao implements QuestDao {
 		questMapper.updateGoodCount(questNo);
 	}
 
+	@Override
+	public List<Quest> selectQuestListOrderByDesc(HashMap<String, ?> period) {
+		// TODO Auto-generated method stub
+		return questMapper.selectQuestListOrderByDesc(period);
+	}
+
 	
 
 

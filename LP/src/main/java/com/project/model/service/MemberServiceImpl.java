@@ -33,7 +33,10 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Member getMemberByIdAndPasswd(String email, String password) {
 		// 입력받은 비번 암호화
+	
 		password = Util.getHashedString(password, "SHA-256");
+		
+		System.out.println(password);
 		HashMap<String, String> account = new HashMap<>();
 		account.put("email", email );
 		account.put("password", password);				

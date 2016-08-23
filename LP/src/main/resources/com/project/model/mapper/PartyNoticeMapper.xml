@@ -36,14 +36,30 @@
 		 <!-- insert -->
 		 <insert id="insertPartyNotice" parameterType="partynotice">
 			 INSERT INTO 
-			 PartyNotice(NoticeNo,Context,RegDate,Deleted,BoardNo,ViewCount,Title)
+			 PartyNotice(NoticeNo,Context,Deleted,BoardNo,ViewCount,Title)
 			 VALUES
-			 ( #{NoticeNo} , #{Context} , #{RegDate} , #{Deleted} , #{BoardNo} , #{ViewCount} , #{Title} );
+			 ( #{noticeNo} , #{context} , #{deleted} , #{boardNo} , #{viewCount} , #{title} );
 			 
 			
 		  </insert>
 		  
+		  <select id="selectPartyNoticeNo" resultType="int">
+				SELECT count(*) 
+				FROM PartyNotice 
+		  </select>
 		  
+		  <select id="selectAllPartyNoticeList" resultType="partynotice">
+				SELECT NoticeNo, BoardNo, Title, Context, RegDate,  ViewCount,  Deleted
+				FROM PartyNotice
+				WHERE Deleted = '0'
+				ORDER BY NoticeNo DESC
+				
+		  </select>
+		  
+		  <update id="deletePartyNoticeByIndex" parameterType="int">
+		UPDATE PartyNotice SET Deleted = '1' WHERE NoticeNo = #{NoticeNo}
+	</update>
+
 		 
 	
 

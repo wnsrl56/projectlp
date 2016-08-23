@@ -7,13 +7,13 @@
 <!-- 설정내용 넣어놓기 -->
 <c:import url="../../../views/include/import.jsp"/>
 <!--  end of head -->
-
+<link href="${cp}/resources/css/questpreview.css" rel="stylesheet">
 <!--  start to body -->
 <body>
 <!--  include header -->
 <c:import url="../../../views/include/header.jsp"/>
 
-<link href="${cp}/resources/css/questpreview.css" rel="stylesheet">
+
 <!--  include body -->
   	 <script>
      $(function() {
@@ -131,7 +131,6 @@
 			  <form:hidden path="writer" value="${ loginuser.email }"/>
 			  <%-- <form:hidden path="MemberNo" value="${ loginuser.memberNo }"/> --%>
 			   <input type="hidden" id="memberNo" name="memberNo" value="${ loginuser.memberNo }">
-			   
 			  <div class="form-group">
               <label for="QuestTitle">제목</label>
               <!-- <input type="text" class="form-control" id="roomTitle" placeholder="방이름을 입력해 주세요"> -->
@@ -150,34 +149,30 @@
               <!-- <input type="text" class="form-control" id="roomPrice" placeholder="방가격을 입력해 주세요"> -->
               <form:input path="context" cssStyle="width:280px; color:black" />
             </div>
-            
-            
-            <div class="form-group">
-          	<label for="Tag">태그</label>
-      	  <div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-			  <span class="caret"></span></button>
-			  <ul class="dropdown-menu">
-			    <li><a href="#">HTML</a></li>
-			    <li><a href="#">CSS</a></li>
-			    <li><a href="#">JavaScript</a></li>
-			  </ul>
-		  </div> 
-		  
-		<!--   <button class="btn dropdown-toggle" name="recordinput" data-toggle="dropdown">
-            Record
-            <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                  <li><a href="#">A</a></li>
-                  <li><a href="#">CNAME</a></li>
-                  <li><a href="#">MX</a></li>
-                  <li><a href="#">PTR</a></li>
-            </ul> -->
-		  
-              <!-- <input type="text" class="form-control" id="roomType" placeholder="방종류을 입력해 주세요"> -->
-            </div>
-            <!-- 
+
+
+					<div class="form-group">
+						<label for="Tag">태그</label> 
+						<select class="form-control" style="width: 300px" name="tagNo">
+							 <c:forEach var="tag" items="${ tags }">
+							<option value="${ tag.tagNo }">${ tag.tagName }</option>
+							</c:forEach> 
+						</select>
+							
+
+						<!-- <div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								Dropdown Example <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">HTML</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><a href="#">JavaScript</a></li>
+							</ul>
+						</div> -->
+					</div>
+					<!-- 
      		<div class="form-group">
      			<label for="exampleInputFile">파일 업로드</label>
             	<input type="file" name="attachone" id="file"  />
@@ -199,7 +194,7 @@
           </form:form>
           </div>
   
-	
+
 		  
       </div><!-- list end --> 
   	 
@@ -210,6 +205,8 @@
 	</div>
 	
 </div>
+
+
 
 </body>
 <!--  end of body -->

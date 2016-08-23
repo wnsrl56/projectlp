@@ -33,6 +33,8 @@ $(function() {
 	 			  			"title" : "test",
 	 			  			"writer" : $('#username').val()
 	 			  			 };
+	 			  			"writer" : $('#currName').val()
+	 			  			 } ;
 	 			 	
 	 			 	comm = JSON.stringify(comm);
 	 			
@@ -43,7 +45,6 @@ $(function() {
 			 		    data: comm,
 			 		    contentType: "application/json",
 			 			success : function(data, status, xhr) {
-			 				alert("저장했습니다.");
 			 				
 			 				addlist();
 			 			},

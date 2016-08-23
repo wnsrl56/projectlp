@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.project.model.dto.Answer;
+import com.project.model.dto.Comm;
 
 public interface AnswerDao {
 
@@ -13,7 +14,9 @@ public interface AnswerDao {
 	
 	//조회
 	public List<Answer> selectAllAnswerList();
+	public List<Answer> selectAnswerListOrderByDesc(HashMap<String,?> period);
 	public Answer searchAnswerByIndex(int index);
+	public int answerCount(int questNo);
 	
 	
 	//수정

@@ -6,7 +6,14 @@ public class Tag implements Serializable{
 
 	private int tagNo;
 	private String tagName;
+	private int questNo;
 	
+	public int getQuestNo() {
+		return questNo;
+	}
+	public void setQuestNo(int questNo) {
+		this.questNo = questNo;
+	}
 	public int getTagNo() {
 		return tagNo;
 	}

@@ -30,6 +30,13 @@
 		</select>
 	
  -->		
+ 		<!--  기본 불러오기 구문 -->
+		<sql id="selectDefault">
+		 SELECT
+		 BoardNo,CommNo,Context,Writer,Title,RegDate,Deleted 
+		 FROM 
+		 Comm
+		</sql>  
  
 
 
@@ -37,14 +44,24 @@
 		 <!-- no group user comm의 boardno == 2 -->
 		 <insert id="insertComm" parameterType="comm">
 			 INSERT INTO 
-			   comm(comm.BoardNo,comm.Title,comm.Context,comm.Writer) 
+			   Comm(BoardNo,Title,Context,Writer) 
  			 VALUES
- 				(2,#{title},#{context},#{writer});
+ 				(2,#{title},#{context},#{writer})
 			</insert>
 		  
-		 
-		 
-	
+		<!--  select -->
+		<select id="selectAllCommList" resultType="comm">
+			<include refid="selectDefault" /> 
+			WHERE Deleted=0
+		</select>
+		
+		<!--  select limits -->
+		<select id="selectCommListOrderByDesc" parameterType="hashMap" resultType="comm">
+			<include refid="selectDefault" />  
+			WHERE Deleted=0 
+			ORDER BY RegDate 
+			DESC LIMIT #{ start },#{ end };
+		</select>
 
 </mapper> 	
 	

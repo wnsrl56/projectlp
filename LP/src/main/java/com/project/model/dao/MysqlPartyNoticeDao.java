@@ -29,15 +29,18 @@ public class MysqlPartyNoticeDao implements PartyNoticeDao {
 
 
 	@Override
-	public void insertPartyNotice(PartyNotice partyNotice) {
-		// TODO Auto-generated method stub
+	public void insertPartyNotice(PartyNotice partynotice) {
+		
+		partynoticeMapper.insertPartyNotice(partynotice);
 		
 	}
 
 	@Override
 	public List<PartyNotice> selectAllPartyNoticeList() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<PartyNotice> partynotices = partynoticeMapper.selectAllPartyNoticeList();
+		
+		return partynotices;
 	}
 
 	@Override
@@ -55,7 +58,7 @@ public class MysqlPartyNoticeDao implements PartyNoticeDao {
 	@Override
 	public void deletePartyNoticeByIndex(int index) {
 		// TODO Auto-generated method stub
-		
+		partynoticeMapper.deletePartyNoticeByIndex(index);
 	}
 	
 	

@@ -27,9 +27,9 @@
 	<!-- datasource for mysql -->	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/lp?useSSL=false"/>
+		<property name="url" value="jdbc:mysql://210.16.214.194:3306/lp?useSSL=false"/>
 		<property name="username" value="lp" />
-		<property name="password" value="admin" />			
+		<property name="password" value="Admin@123" />			
 	</bean>
 	
 	 
@@ -62,11 +62,23 @@
 	<bean id="partynoticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.project.model.mapper.PartyNoticeMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-
 	</bean>
 		
 	<bean id="commMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.project.model.mapper.CommMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="commReplyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.CommReplyMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="managereventMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.ManagerEventMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="answerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.project.model.mapper.AnswerMapper" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 </beans>

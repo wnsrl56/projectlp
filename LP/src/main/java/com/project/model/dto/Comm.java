@@ -2,6 +2,7 @@ package com.project.model.dto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Comm implements Serializable {
 
@@ -12,7 +13,24 @@ public class Comm implements Serializable {
 	private String writer;
 	private Date regDate;
 	private boolean deleted;
+	private String dateChanged;
+	private List<CommReply> reply;
 	
+	
+	
+	public List<CommReply> getReply() {
+		return reply;
+	}
+	public void setReply(List<CommReply> reply) {
+		this.reply = reply;
+	}
+	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	
 	public int getCommNo() {
 		return commNo;

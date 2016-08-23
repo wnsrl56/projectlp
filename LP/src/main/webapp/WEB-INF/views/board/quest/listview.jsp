@@ -9,6 +9,7 @@
 <c:import url="../../../views/include/import.jsp"/>
 <!--  end of head -->
 
+
 <!--  start to body -->
 <body>
 <!--  include header -->
@@ -19,17 +20,58 @@
 <div id="allcontainer" class="container-fluid " style="margin-top:80px" >
   
   <div class="row" id="grid">
- 	 
- 	 <div class="col-md-2" role="main" id="sidebar">
-  		<ul class="nav nav-pills nav-stacked">
-     		 <li role="presentation" class="active"><a href="insert.action"><p class="text-center">질문 하기</p></a></li>
-         </ul>
-        
+
+			<div class="col-sm-2 col-md-2" role="main" id="sidebar">
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href="insert.action"><p class="text-center">질문 하기</p></a></li>
+				</ul>
+
+
+				<!-- tag select -->
+				<hr>
+
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a
+							href="listview.action?tagNo=0"><p class="text-center">전체 보기</p></a></li>
+					<c:forEach var="tag" items="${ tags }">
+						<li role="presentation" class="active">
+							<c:url value="listview.action" var="viewTagUrl">
+								<c:param name="tagNo" value="${ tag.tagNo }" />
+							</c:url>		
+							<a href="${ viewTagUrl }"><p class="text-center">${ tag.tagName }</p></a></li>
+							
+					</c:forEach>
+				</ul>
+
+			</div>
+			<!-- sidebar end -->
+
+			<div class="col-sm-9 col-md-9" role="complementary" id="list">
+
+
+			<!-- 실시간 , 안풀린 문제 -->
+			<div class="row" id="inputcontainer">
+			<input type="hidden" id="tagNo" value="${ tag.tagNo }"/>
+			<input type="hidden" id="questNo" value="${ quest.questNo }"/>
+			 <input type="hidden" id="none" value="0"/>
+				<div class="btn-group" data-toggle="buttons">	
+					<label class="wonreal btn btn-primary active"><input type="radio"
+						name="options" id="real" autocomplete="off" checked>	
+						실시간
+					</label> <label class="wonnone btn btn-primary"> <input type="radio"
+						name="options" id="none" autocomplete="off">
+						안풀림
+					</label>
+				</div>
+			</div>
+
+			<hr>
+ 	    
        
   	 </div><!-- sidebar end --> 
   	 
-  	  <div class="col-md-6" role="complementary" id="list">
-  	
+  	  <div class="col-sm-9 col-md-9" role="complementary" id="list">
+  	<input type="hidden" value="${ end }" id="endNo"/>
   		 
     <c:choose> 
     <c:when test="${ empty quest }">
@@ -43,27 +85,86 @@
     <c:otherwise>
     
     <c:forEach var="quest" items="${ quests }">
-    		<div class="col">
-				  <div class="col-sm-6 col-md-4">
+    		<!-- <div class="col"> -->
+    		<!-- <div style="width: 100%;" > -->
+				  <div class="col-sm-6 col-md-3">
 				    <div class="thumbnail">
-				      <%-- <img src="<c:url value='/resources/image/${ board.savedFileName }'/>" alt="..."> --%>
-				      <img src="#" />
+										<table>
+											<tr>
+												<td><span class="glyphicon glyphicon-user btn-lg"
+													aria-hidden="true" style="color: navy;"></span></td>
+												<td>${ quest.writer }<br> <span class="label label-primary">${ quest.dateChanged }</span>
+												</td>
+												<td align="right">
+													<!-- <span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true"></span> -->
+													<div class="dropdown">
+														<div class="dropdown-toggle"
+															id="dropdownMenu1" data-toggle="dropdown"
+															aria-expanded="true">
+															<span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true" style="color:gray;"></span>
+														</div>
+														<ul class="dropdown-menu" role="menu"
+															aria-labelledby="dropdownMenu1">
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp;스크랩</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>&nbsp;공유</a></li>
+															<li role="presentation"><a role="menuitem"
+																tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;신고</a></li>
+														</ul>
+													</div>
+
+												</td>
+											</tr>
+										</table>
+										<hr>
+										<c:url value="questview.action" var="viewFormUrl">
+												<c:param name="questNo" value="${ quest.questNo }" />
+										</c:url> <a href="${ viewFormUrl }">
+										<img src="${cp}/resources/image/${ quest.savedFilePath }" alt="..." style="width: 300px; height: 200px">
+										</a> 
 				      <div class="caption">
-				        <h3>${ quest.title }</h3>
-				        <p>${ quest.writer }</p>
+				      	<hr>
+				      		<c:url value="listview.action" var="viewFormTagUrl">
+								<c:param name="tagNo" value="${ quest.tagNo }" />
+							</c:url>		
+				      		<a href="${ viewFormTagUrl }" style="color:gray;">#${ quest.tagName }</a>
+				      	<hr>
 				        <p>
 				        <%-- <a href="<c:url value='/board/boardview.action'/>" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%>
 				        <%-- <a href="<c:url value='/board/boardview.action'/>" id="activeModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">답변하기</a> --%> 
 				       	<div>
-				       	<c:url value="boardview.action" var="viewUrl">
-        					<c:param name="questNo" value="${ quest.questNo }" />
-        				</c:url>		       
-				        <a id="activeModal"	href="${ viewUrl }" class="btn btn-primary btn-lg">답변하기</a>
-				        </div>
+												<table>
+													<tr>
+														<td><c:url value="questview.action"
+																var="viewUrl">
+																<c:param name="questNo" value="${ quest.questNo }" />
+															</c:url> <a id="activeModal" href="${ viewUrl }"> <span
+																class="glyphicon glyphicon-pencil" aria-hidden="true"><b>답변하기(${ quest.viewCount })</b> </span></a></td>
+													<td>
+														<div id="inputcontainer">
+															<input type="hidden" id="questNo"
+																value="${ quest.questNo }" />
+															<nav class="pull-right">
+															<a type="submit" id="good${ quest.questNo }" class="won" style="cursor:pointer">&nbsp;<span
+																class="glyphicon glyphicon-question-sign"
+																aria-hidden="true" style="color: hotpink"><b>몰라요(${ quest.goodCount })</b>&nbsp;</span></a>
+															
+																<!-- <button type="submit" class="btn btn-danger" id="good">좋아요</button> -->
+															</nav>
+														</div>
+													</td>
+													<td align="right">
+															<span class="glyphicon glyphicon-copy" aria-hidden="true" style="color: gray;">&nbsp;</span>
+															<!-- <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true" style="color: gray;"></span> -->
+														</td>
+													</tr>
+												</table>
+											</div>
 				        <!-- <a href="#" class="btn btn-default" role="button" >Button</a></p> -->
 				      </div>
 				    </div>
-				  </div>
+				  <!-- </div> -->
 				</div>
      	</c:forEach> 
     
@@ -140,47 +241,135 @@
   	 
 	</div>
 	
-<!--  modal phase -->	
+				
+
 <script type="text/javascript">
+		//forAjax
+		$(function() {
 
+			//send context to server 	
+			$('.won').on('click', function(event) {
 
-	$('a').on('click',function(){
-		
-	
-		
-		$('.modal').modal();
-	/* 	 $.ajax({
-	    	          url:'/PS/board/check.action',
-	    	          type:'POST',
-	    	          data:boardNo,
-	    	          dataType:'text',
-	    	          success: function (result) {
-	    	             
-	    	                 	
-	    					
-	  							
-	    	  					
-	    	  						
-	    	  					/* $('#registerBtn').on('click',function(){
-	    	  						$.ajax({
-	    						    	          url:'/TP/member/register.action',
-	    						    	          type:'POST',
-	    						    	          data:member,
-	    						    	          contentType:'application/json',
-	    						    	  		  success: function (result) {
+				var answer;
+				var questNo;
+				
+				var check = $(this).attr('id');
+				if(check.indexOf('good') >= 0){
+					
+					questNo = check.substring(4,check.length);
+					
+				answer = {
+					"questNo" : questNo
+				};
+				answer = JSON.stringify(answer);
 
-	    						  		    	   
-	    						    	  			 alert('성공성공1');
-	    						    	  		 }
-	    						    	  		 });
-	    	  					}); */
-	    	  					
-	    	             
-	    	  		  
-	    	         
-	
-	});
+				$.ajax({
 
+					url : "/lp/qboard/good.action",
+					type : "post",
+					data : answer,
+					contentType : "application/json",
+					success : function(data, status, xhr) {
+
+						// alert("저장했습니다.");
+						location.reload();
+
+					},
+					beforeSend : function() {
+
+					},
+
+					error : function(request, status, error) {
+						alert("저장에 실패했습니다.");
+					}
+
+				});
+				
+				}
+
+			})
+			
+			/* 실시간, 안풀린거 --------------------------------------------------- */
+			
+			//send context to server 	
+	 		$('.wonreal').on('click',function(event){
+ 			
+ 			  var questtag;
+ 				
+ 			  alert("뭐라도좀");
+ 			 questtag = {
+ 			  			"tagNo" :$('#tagNo').val(),
+ 			  			"questNo" :$('#questNo').val()
+ 			  			 } ;
+ 			 	
+ 			questtag = JSON.stringify(questtag);
+ 			
+		 			$.ajax({
+		 		
+		 			url: "/lp/qboard/listviewreal.action",
+		 			type : "post",
+		 		    data: questtag,
+		 		    contentType: "application/json",
+		 			success : function(data, status, xhr) {
+		 				
+		 				// alert("저장했습니다.");
+		 				 location.reload();
+		 				
+		 			},beforeSend:function(){
+		 		       
+		 				 
+		 		    },
+		 			
+		 			error:function(request,status,error){
+		 		       alert("저장에 실패했습니다.");
+		 	       }
+ 			
+ 		   });
+ 		
+ 		});
+			
+/*	--------------------------------------------------------------------------------- */
+
+			//send context to server 	
+	 		$('.wonnone').on('click',function(event){
+ 			
+ 			  var questtag;
+ 				
+ 			  alert("뭐라도좀");
+ 			 questtag = {
+ 			  			"tagNo" :$('#tagNo').val(),
+ 			  			"questNo" :$('#questNo').val()
+ 			  			 } ;
+ 			 	
+ 			questtag = JSON.stringify(questtag);
+ 			
+		 			$.ajax({
+		 		
+		 			url: "/lp/qboard/listviewnone.action",
+		 			type : "post",
+		 		    data: questtag,
+		 		    contentType: "application/json",
+		 			success : function(data, status, xhr) {
+		 				
+		 				// alert("저장했습니다.");
+		 				 location.reload();
+		 				
+		 			},beforeSend:function(){
+		 		       
+		 				 
+		 		    },
+		 			
+		 			error:function(request,status,error){
+		 		       alert("저장에 실패했습니다.");
+		 	       }
+ 			
+ 		   });
+ 		
+ 		});
+
+	 	/*	--------------------------------------------------------------------------------- */			
+
+		});
 
 </script>
 

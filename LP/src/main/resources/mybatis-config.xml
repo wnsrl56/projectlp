@@ -19,9 +19,9 @@
 	 -->
 	<properties>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://127.0.0.1:3306/lp?characterEncoding=UTF-8" />
+		<property name="url" value="jdbc:mysql://210.16.214.194:3306/lp?characterEncoding=UTF-8" />
 		<property name="username" value="lp" />
-		<property name="password" value="admin" />			
+		<property name="password" value="Admin@123" />			
 	</properties>
 	
 	<!--  별명 매칭하기 타이핑을 줄여준다.-->
@@ -31,7 +31,12 @@
 		<typeAlias type="com.project.model.dto.Quest" alias="Quest"/>
 		<typeAlias type="com.project.model.dto.PartyNotice" alias="PartyNotice"/>
 		<typeAlias type="com.project.model.dto.Comm" alias="Comm"/>
+		<typeAlias type="com.project.model.dto.CommReply" alias="CommReply"/>
 		<typeAlias type="com.project.model.dto.QPicture" alias="QPicture"/>
+		<typeAlias type="com.project.model.dto.ManagerEvent" alias="ManagerEvent"/>
+		<typeAlias type="com.project.model.dto.Answer" alias="Answer"/>
+		<typeAlias type="com.project.model.dto.AnswerReply" alias="AnswerReply"/>
+		<typeAlias type="com.project.model.dto.Tag" alias="Tag"/>
 	</typeAliases>
 	
 	<!--  환경 설정 -->
@@ -45,7 +50,7 @@
 				<property name="driver" value="${driver}" />
 				<property name="url" value="${url}" />				
 				<property name="username" value="lp" />
-				<property name="password" value="admin" />
+				<property name="password" value="Admin@123" />
 			</dataSource>
 			
 		</environment>
@@ -62,8 +67,9 @@
 		<mapper resource="com/project/model/mapper/QuestMapper.xml" />
 		<mapper resource="com/project/model/mapper/PartyNoticeMapper.xml" />
 		<mapper resource="com/project/model/mapper/CommMapper.xml" />
-
-		
+		<mapper resource="com/project/model/mapper/CommReplyMapper.xml" />
+		<mapper resource="com/project/model/mapper/ManagerEventMapper.xml" />
+		<mapper resource="com/project/model/mapper/AnswerMapper.xml" />
 	</mappers>
 
 </configuration>

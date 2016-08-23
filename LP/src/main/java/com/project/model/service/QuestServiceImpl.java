@@ -1,5 +1,6 @@
 package com.project.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +13,10 @@ import org.springframework.stereotype.Service;
 
 import com.project.model.dao.BoardDao;
 import com.project.model.dao.QuestDao;
+import com.project.model.dao.TagDao;
 import com.project.model.dto.QPicture;
 import com.project.model.dto.Quest;
+import com.project.model.dto.Tag;
 
 
 @Service("questService")
@@ -24,6 +27,10 @@ public class QuestServiceImpl implements QuestService {
 	@Autowired
 	@Qualifier("mysqlQuestDao")
 	private QuestDao questDao;
+	
+	@Autowired
+	@Qualifier("mysqlTagDao")
+	private TagDao tagDao;
 
 	@Override
 	public List<Map<String, Object>> selectAllQuestList(Map<String, Object> map) throws Exception {
@@ -60,9 +67,83 @@ public class QuestServiceImpl implements QuestService {
 
 	@Override
 	public QPicture selectQPicture() {
-		// TODO Auto-generated method stub
-		return null;
+		QPicture qpicture = questDao.selectQPicture();
+		return qpicture;
 	}
+
+	@Override
+	public Quest searchQuest(int questNo) {
+		
+		Quest quest = questDao.searchQuest(questNo);
+		
+		return quest;
+	}
+
+	@Override
+	public List<QPicture> searchQpicture(int questNo) {
+		
+		List<QPicture> qpicture = questDao.searchQpicture(questNo);
+		
+		
+		return qpicture;
+	}
+
+	@Override
+	public void updateAnswerCount(Quest quest) {
+		
+		questDao.updateAnswerCount(quest);
+		
+	}
+
+	@Override
+	public void updateGoodCount(int questNo) {
+	
+		questDao.updateGoodCount(questNo);
+	}
+
+	@Override
+	public List<Tag> selectAllTag() {
+	
+		return tagDao.selectAllTagList();
+	}
+
+	@Override
+	public void insertTag(Tag tag) {
+		
+		tagDao.insertTag(tag);
+		
+	}
+
+	@Override
+	public List<Quest> selectAllTagQuests(int tagNo) {
+		return tagDao.selectAllTagQuests(tagNo);
+	}
+
+	@Override
+	public List<Quest> selectAllNoneQuests() {
+		return questDao.selectAllNoneQuests();
+	}
+	
+	@Override
+	public List<Quest> selectAllNoneTagQuests(int tagNo) {
+		return tagDao.selectAllNoneTagQuests(tagNo);
+	}
+
+	@Override
+	public List<Quest> selectQuestListOrderByDesc(int start, int end) {
+		// TODO Auto-generated method stub
+		
+		HashMap<String, Object> period = new HashMap<>();
+		
+		
+		period.put("start", start);
+		period.put("end", end);
+		
+		return questDao.selectQuestListOrderByDesc(period);
+	}
+	
+
+
 
 	
 	

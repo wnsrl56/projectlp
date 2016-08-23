@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.project.model.dto.AnswerReply;
+import com.project.model.dto.CommReply;
 
 public interface AnswerReplyDao {
 
@@ -13,13 +14,14 @@ public interface AnswerReplyDao {
 		
 		//조회
 		public List<AnswerReply> selectAllAnswerReplyList();
+		public List<AnswerReply> selectAnswerReplyListOrderByDesc(HashMap<String,?> period);
 		public AnswerReply searchAnswerReplyByIndex(int index);
 		
 		
 		//수정
 		//put으로 알아서 추가하던가, 명시적으로 만들어서 쓰면 될듯
 		public void updateAnswerReply(HashMap<String,?> hash);
-
+		
 		//삭제
 		public void deleteAnswerReplyByIndex(int index);
 		

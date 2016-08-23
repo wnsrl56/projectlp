@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 논리적 클래스 만들기 -->  
+<mapper namespace="com.project.model.mapper.AnswerMapper">
+
+
+<!-- interface에 따른 query language 생성 -->
+
+<!--  template -->
+
+<!-- 	
+	
+	<sql id="selectDefault"></sql>
+
+	<insert id="d" parameterType="d"></insert>
+	
+	<select id="d" resultType="d">
+			<include refid="selectDefault" />
+	</select>
+	
+		<sql id="selectDefault">
+ 			SELECT *
+ 			FROM MEMBER
+ 		</sql>
+  
+ 		<select id="selectAllMemberList" resultType="member">
+			<include refid="selectDefault" />
+		</select>
+	
+ -->		
+ 		<!--  기본 불러오기 구문 -->
+		<sql id="selectDefault">
+		 SELECT
+		 QuestNo,AnswerNo,Context,Writer,Title,RegDate,Deleted 
+		 FROM 
+		 Answer
+		</sql>  
+ 
+		  
+		<!--  select -->
+		<select id="selectAllAnswerList" resultType="answer">
+			<include refid="selectDefault" /> 
+			WHERE Deleted=0
+		</select>
+		
+		<!--  select limits -->
+		<select id="selectAnswerListOrderByDesc" parameterType="hashMap" resultType="answer">
+			<include refid="selectDefault" />  
+			WHERE deleted=0 AND QuestNo = #{ questIndex }
+			ORDER BY RegDate 
+			DESC LIMIT #{ start },#{ end };
+		</select>
+		
+		
+			<!--  기본 불러오기 구문 -->
+		<sql id="selectReplyDefault">
+		SELECT 
+		AnswerNo,AnsReplyNo,Context,Writer,Deleted,RegDate 
+		FROM 
+		AnsReply
+		</sql>  
+ 
+		<select id="answerCount" resultType="int">
+				SELECT count(*) 
+				FROM Answer
+				WHERE QuestNo = #{ questNo } 
+		  </select>
+		
+
+
+		 <!-- insert -->
+		 <!-- no group user comm의 boardno == 2 -->
+		
+		<!--  select limits -->
+		<select id="selectAnswerReplyListOrderByDesc" parameterType="hashMap" resultType="AnswerReply">
+			<include refid="selectReplyDefault" />  
+			WHERE Deleted = 0 AND AnswerNo = #{ answerIndex }
+			ORDER BY RegDate 
+			DESC LIMIT #{ start },#{ end };
+		</select>
+		
+		
+		<!--Comment insert -->
+	<insert id="insertAnswer" parameterType="answer">
+		INSERT INTO
+		Answer(QuestNo,Title,Context,Writer)
+		VALUES
+		(#{questNo},#{title},#{context},#{writer})
+	</insert>
+
+	<insert id="insertAnswerReply" parameterType="answerReply">
+		INSERT INTO
+		AnsReply(AnswerNo, Context, Writer)
+		VALUES
+		(#{answerNo},#{context},#{writer});
+	</insert>
+
+</mapper> 	
+	
+
+	
+	
+	

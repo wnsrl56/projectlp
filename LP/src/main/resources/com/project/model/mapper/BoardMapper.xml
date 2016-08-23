@@ -42,9 +42,15 @@
 		  </insert>
 		  
 		  <select id="selectBoardNo" resultType="int">
-				SELECT boardNo 
-				FROM board 
+				SELECT BoardNo 
+				FROM Board 
 				WHERE MemberNo =  #{MemberNo}  and BoardType = 'quest';
+		  </select>
+		  
+		  <select id="selectAllBoard" resultType="board">
+				SELECT BoardNo, BoardType
+				FROM Board
+				ORDER BY BoardNo DESC
 		  </select>
 		  
 		  

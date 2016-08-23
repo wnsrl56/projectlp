@@ -74,6 +74,57 @@ public class MysqlQuestDao implements QuestDao {
 		return quests;
 	}
 
+	@Override
+	public QPicture selectQPicture() {
+		
+		QPicture qpicture = questMapper.selectQPicture();
+		
+		return qpicture;
+	}
+
+	@Override
+	public Quest searchQuest(int questNo) {
+		
+		Quest quest = questMapper.searchQuest(questNo);
+		
+		return quest;
+	}
+
+	@Override
+	public List<QPicture> searchQpicture(int questNo) {
+		
+		List<QPicture> qpicture = questMapper.searchQpicture(questNo);
+		
+		return qpicture;
+	}
+
+	@Override
+	public void updateAnswerCount(Quest quest) {
+		
+		questMapper.updateAnswerCount(quest);
+		
+	}
+
+	@Override
+	public void updateGoodCount(int questNo) {
+
+		questMapper.updateGoodCount(questNo);
+	}
+
+	@Override
+	public List<Quest> selectAllNoneQuests() {
+		
+		return questMapper.selectAllNoneQuests();
+	}
+
+	@Override
+	public List<Quest> selectQuestListOrderByDesc(HashMap<String, ?> period) {
+		// TODO Auto-generated method stub
+		return questMapper.selectQuestListOrderByDesc(period);
+	}
+
+	
+
 
 	
 	

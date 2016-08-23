@@ -3,6 +3,7 @@ package com.project.model.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.project.model.dto.Comm;
 import com.project.model.dto.CommReply;
 
 public interface CommReplyDao {
@@ -13,6 +14,8 @@ public interface CommReplyDao {
 	
 	//조회
 	public List<CommReply> selectAllCommReplyList();
+	public List<CommReply> selectCommReplyListOrderByDesc(HashMap<String,?> period);
+	public CommReply[] selectCommReplyListOrderByDescOther(HashMap<String,?> period);
 	public CommReply searchCommReplyByIndex(int index);
 	
 	

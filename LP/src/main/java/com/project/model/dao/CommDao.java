@@ -13,7 +13,10 @@ public interface CommDao {
 	
 	//조회
 	public List<Comm> selectAllCommList();
+	public List<Comm> selectCommListOrderByDesc(HashMap<String,?> period);
+	
 	public Comm searchCommByIndex(int index);
+	
 	
 	
 	//수정

@@ -131,16 +131,15 @@
 			  <form:hidden path="writer" value="${ loginuser.email }"/>
 			  <%-- <form:hidden path="MemberNo" value="${ loginuser.memberNo }"/> --%>
 			   <input type="hidden" id="memberNo" name="memberNo" value="${ loginuser.memberNo }">
-			  <div class="form-group">
+			  <%-- <div class="form-group">
               <label for="QuestTitle">제목</label>
               <!-- <input type="text" class="form-control" id="roomTitle" placeholder="방이름을 입력해 주세요"> -->
               <form:input path="title" cssStyle="width:280px; color:black" />
               
-            </div>
+            </div> --%>
             <div class="form-group">
           	<label for="Writer">작성자</label>
                ${ loginuser.email } 
-               ${ loginuser.memberNo }
               <!-- <input type="text" class="form-control" id="roomType" placeholder="방종류을 입력해 주세요"> -->
             </div>
             

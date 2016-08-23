@@ -5,10 +5,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.project.common.Util;
 import com.project.model.dto.Member;
 import com.project.model.service.MemberService;
 
@@ -33,9 +33,8 @@ public class AccountController {
 	public String login(String email,String password, HttpSession session) {
 		System.out.println("login request");
 	
-	
-		//password = Util.getHashedString(password, "SHA-256");
-			// System.out.println(password);
+ 	 String test = Util.getHashedString("admin", "SHA-256");
+	 System.out.println(test);
 		Member member =	memberService.getMemberByIdAndPasswd(email, password);
 		
 		if (member != null) {

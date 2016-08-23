@@ -34,13 +34,13 @@
 		 <insert id="insertMember" parameterType="Member">
 			 INSERT INTO
 			 Member (Email, Password, Sexual, Name, Grade, Submit, UserType, ExtMember) 
-			 VALUES (#{email}, password(#{password}), #{sexual}, #{name}, #{grade}, #{submit}, #{userType}, #{extMember})
+			 VALUES (#{email}, #{password}, #{sexual}, #{name}, #{grade}, #{submit}, #{userType}, #{extMember})
 		 </insert>
 		 
 		 <select id="selectMemberByEmailAndPassword" parameterType="hashMap" resultType="Member">
 		 	SELECT * 
 		 	from Member	 		
-		 	WHERE Email = #{email} AND Password = password(#{password}) 
+		 	WHERE Email = #{email} AND Password = #{password}
 		 </select>
 		 <select id="selectAllMemberList" resultType="Member">
 		 	SELECT * from Member	 	 

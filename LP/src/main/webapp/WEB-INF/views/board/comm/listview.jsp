@@ -61,6 +61,7 @@ $(function() {
 				
 			
 			//send reply to server
+			//add to reply
 			$('.btn:submit').on('click',function(event){
 				var reply;
  				var commNo;

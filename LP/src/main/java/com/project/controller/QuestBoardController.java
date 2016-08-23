@@ -34,8 +34,6 @@ import com.project.model.dto.QuestTag;
 import com.project.model.dto.Tag;
 import com.project.model.service.AnswerService;
 import com.project.model.service.BoardService;
-import com.project.model.service.CommReplyService;
-import com.project.model.service.CommService;
 import com.project.model.service.QuestService;
 
 @Controller
@@ -56,13 +54,13 @@ public class QuestBoardController {
 	@Qualifier("answerService")
 	private AnswerService answerService;
 	
-	@RequestMapping(value="listviewnone.action", method = RequestMethod.POST)
-	/*public ModelAndView QuestBoardListGet(Map<String,Object> Map){*/
-	public ModelAndView QuestnoneListGet(Quest quest, Tag tag, QuestTag questtag){
-	    ModelAndView mv = new ModelAndView("board/quest/listview");
-	
+	@RequestMapping(value="listviewnone.action", method = RequestMethod.GET)
+	public ModelAndView QuestnoneListGet(Quest quest, Tag tag,QuestTag questtag,String test){
+	    ModelAndView mv2 = new ModelAndView("board/quest/listview");
+	    
 	    System.out.println("dddddddddddddddddddd");
 	    System.out.println(questtag.getTagNo());
+	    System.out.println(test);
 	    System.out.println("dddddddddddddddddddd");
 		
 	    int tagNo = questtag.getTagNo();
@@ -87,12 +85,12 @@ public class QuestBoardController {
 			 System.out.println("날짜데이터"+quests.get(index).getDateChanged());
 			}
 	    
-		mv.addObject("quests", quests);
-		mv.addObject("quest", quest);
-		mv.addObject("tags", tags);
-		mv.addObject("tag", tag);
+		mv2.addObject("quests", quests);
+		mv2.addObject("quest", quest);
+		mv2.addObject("tags", tags);
+		mv2.addObject("tag", tag);
 		
-	    return mv;
+	    return mv2;
 	    
 	}
 	
@@ -149,9 +147,9 @@ public class QuestBoardController {
 	    System.out.println("dddddddddddddddddddd");
 	    
 	    List<Quest> quests;
-	    
+	    int end = 4;
 	    if(tagNo == 0){
-	    	 quests = questService.selectAllQuests();
+	    	 quests = questService.selectQuestListOrderByDesc(0, end);
 	    } else {
 	    	 quests = questService.selectAllTagQuests(tagNo);
 	    }
@@ -183,10 +181,43 @@ public class QuestBoardController {
 		mv.addObject("quest", quest);
 		mv.addObject("tags", tags);
 		mv.addObject("tag", tag);
-		
-		/*mv.addObject("end",end);*/
+		mv.addObject("end",end);
 	    return mv;
 	}
+	
+	
+
+	@RequestMapping(value="morepost.action", method = RequestMethod.POST)
+	@ResponseBody
+	public  List<Quest> QuestBoardListPost(@RequestBody int start){
+	    
+	
+	        List<Quest> lists = null;
+	        
+	        
+	        lists = questService.selectQuestListOrderByDesc(start,4);
+	    	System.out.println("성공2");
+	    	
+	   
+	    System.out.println(lists.get(0).getContext());
+	    String datelength2 = null;
+	    
+	    for(int index=0; index<lists.size();index++){
+			 ChangeTime ct = new ChangeTime();
+			 datelength2 = ct.changeDate(lists.get(index).getRegDate());
+			 lists.get(index).setDateChanged(datelength2);
+			 System.out.println("날짜데이터"+lists.get(index).getDateChanged());
+			}
+	    
+	   
+	    
+	  
+	    return lists;
+	}
+	
+	
+	
+	
 	
 	@RequestMapping(value="insert.action", method = RequestMethod.GET)
 	public ModelAndView QuestInsertGet(@ModelAttribute Quest quest,@ModelAttribute Board board, @ModelAttribute Tag tag){

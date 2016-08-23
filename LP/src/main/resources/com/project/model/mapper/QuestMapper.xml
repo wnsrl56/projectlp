@@ -121,25 +121,21 @@
 		  
 		  
 		    <select id="selectAllNoneQuests" resultType="quest">
-				<!-- SELECT QuestNo, BoardNo, Title, Context, RegDate, Writer, ViewCount, GoodCount, Deleted, SavedFilePath, RealFilePath
-				FROM Quest
-				ORDER BY QuestNo DESC -->
-				<!-- SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
-				FROM Quest, Tag, QuestTag
-				WHERE Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
-				ORDER BY QuestNo DESC -->
 				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
-				FROM Quest, Answer, Tag, QuestTag
-				WHERE Quest.QuestNo != Answer.QuestNo and Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
-				group by Quest.QuestNo
-				ORDER BY Quest.QuestNo DESC;
+				FROM Quest
+                INNER JOIN QuestTag 
+                ON QuestTag.QuestNo = Quest.QuestNo
+                INNER JOIN Tag
+                ON Tag.TagNo = QuestTag.TagNo
+                WHERE Quest.QuestNo NOT IN (SELECT QuestNo FROM Answer)
+				ORDER BY Quest.QuestNo DESC
 		  </select>
 		  
-		  <select id="selectAllNoneTagQuests" resultType="quest">
+		  <select id="selectAllNoneTagQuests" parameterType="int"  resultType="quest">
 				SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
 				FROM Quest, Answer, Tag, QuestTag
-				WHERE Quest.QuestNo != Answer.QuestNo and Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo and Tag.TagNo = #{ tagNo }
-				group by Quest.QuestNo
+				WHERE Quest.QuestNo != Answer.QuestNo and Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo and Tag.TagNo = #{TagNo}
+				GROUP by Quest.QuestNo
 				ORDER BY Quest.QuestNo DESC;
 		  </select>
 		 

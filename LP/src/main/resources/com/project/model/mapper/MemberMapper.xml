@@ -1,34 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<!-- 논리적 클래스 만들기 -->  
+  
 <mapper namespace="com.project.model.mapper.MemberMapper">
-
-
 <!-- interface에 따른 query language 생성 -->
 
 <!--  template -->
 
 <!-- 	
-	
 	<sql id="selectDefault"></sql>
-
 	<insert id="d" parameterType="d"></insert>
-	
 	<select id="d" resultType="d">
 			<include refid="selectDefault" />
 	</select>
-	
 		<sql id="selectDefault">
  			SELECT *
  			FROM MEMBER
  		</sql>
-  
- 		<select id="selectAllMemberList" resultType="member">
+		<select id="selectAllMemberList" resultType="member">
 			<include refid="selectDefault" />
-		</select>
-	
+		</select>	
  -->		
 		 <!-- insert -->
 		 <insert id="insertMember" parameterType="Member">
@@ -36,20 +27,33 @@
 			 Member (Email, Password, Sexual, Name, Grade, Submit, UserType, ExtMember) 
 			 VALUES (#{email}, #{password}, #{sexual}, #{name}, #{grade}, #{submit}, #{userType}, #{extMember})
 		 </insert>
-		 
+
 		 <select id="selectMemberByEmailAndPassword" parameterType="hashMap" resultType="Member">
-		 	SELECT * 
-		 	from Member	 		
-		 	WHERE Email = #{email} AND Password = #{password}
+		 	SELECT * from Member	 		
+		 	WHERE Email = #{email} AND Password = #{password} AND Deleted = 0 
 		 </select>
 		 <select id="selectAllMemberList" resultType="Member">
 		 	SELECT * from Member	 	 
 		 </select>
+		 <select id="countMemberByEmailAndPassword" parameterType="hashMap" resultType="int">
+		 	SELECT count(*) from Member	 		
+		 	WHERE Email = #{email} AND Password = #{password} AND Deleted = 0 
+		 </select>
+		 <update id="deleteMemberByEmail" parameterType="String"> 
+		 	UPDATE Member
+		 	SET Deleted = 1
+		 	WHERE Email = #{email}
+		 </update>
 		 
-		 
-		 
-	
-
+		 <select id="countMemberByEmail" parameterType="String" resultType="int">
+		 	SELECT count(*) from Member	 		
+		 	WHERE Email = #{email}
+		 </select>
+		 <update id="updateMember" parameterType="Member">
+		 	UPDATE Member 
+		 	SET Password = #{password}, Sexual=#{sexual}, Name=#{name}, Grade=#{grade}, Submit=#{submit} 
+			WHERE Email = #{email}
+		 </update>
 </mapper> 	
 	
 

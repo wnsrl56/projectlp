@@ -17,44 +17,43 @@
 <!-- set Script -->
 <script type="text/javascript">
 
-
 //forAjax
+
+
 $(function() {
+	
 	 
 				//send context to server 	
 		 		$('#save').on('click',function(event){
 	 			
 	 			  var comm;
 	 				
-	 			  comm = {
+	 			  	 comm = {
 	 			  			"context" :$('#context').val(),
 	 			  			"title" : "test",
+	 			  			"writer" : $('#username').val()
+	 			  			 };
 	 			  			"writer" : $('#currName').val()
 	 			  			 } ;
 	 			 	
 	 			 	comm = JSON.stringify(comm);
 	 			
 			 			$.ajax({
-			 		
-			 			url: "/lp/cboard/insert.action",
+			 			
+			 			url: "insert.action",
 			 			type : "post",
 			 		    data: comm,
 			 		    contentType: "application/json",
 			 			success : function(data, status, xhr) {
 			 				
-			 				// alert("저장했습니다.");
-			 				 location.reload();
-			 				
-			 			},beforeSend:function(){
-			 		       
-			 				 
-			 		    },
+			 				addlist();
+			 			},
 			 			
 			 			error:function(request,status,error){
 			 		       alert("저장에 실패했습니다.");
 			 	       }
 	 			
-	 		   });
+	 		   }); 
 	 		
 	 		});
 				
@@ -110,10 +109,46 @@ $(function() {
 
 
 });
+
+//addlist
+function addlist(data){
+	
+	 profileStr= '<div class="row"><div class="col-md-2" id="profile">'
+				+'<a href="#" class="thumbnail">'
+				 +'<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">' 
+				   +'</a></div>'
+				   +'<div class="col-md-10" id="texttable">  <div class="row"><div class="col-md-12"> <ul class="nav nav-pills">'
+		     +'<li><a href="#" id="username"> ${ loginuser.name }</a></li>'
+			 	+'<span style="float:right"><div class="btn-group"><button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>'
+				 + '<ul class="dropdown-menu">'
+				    +'<li><a href="#">Action</a></li>'
+				      +'<li><a href="#">Another action</a></li></ul></div></span></ul></div>'
+	 					+'<div class="col-md-12" id="contextdata">'
+	 					+ 'hihihihihihihihihih'+
+	 					+'</div>';
+
+$('#textcontainer').append(profileStr);
+
+
+}
+
+ 
+ 
+
+
+function getSingleReply(data,textid) {
+	
+	var textid = "";
+	var  itemStr = "hihi" ;
+	  	$(textid).append(itemStr);
+	  	 
+}
+
+ 
+ 
 </script>
 
-<!--  loading page -->
-
+<input type="hidden" id="username" value="${ loginuser.name }" /> 
 <div id="allcontainer" class="container-fluid " style="margin-top:80px" >
   
   	<div class="row" id="grid">
@@ -122,18 +157,17 @@ $(function() {
   		<ul class="nav nav-pills nav-stacked">
      		 <li role="presentation" class="active"><a href="#"><h4><p class="text-center">Talk</p></h4></a></li>
        </ul>
-  
+        
        
   	 </div><!-- sidebar end --> 
   	 
   	  <div class="col-md-6" role="complementary" id="list">
   	  <h3> Community </h3>
   	  <hr>
+		
 			
-			<div class="row" id="inputcontainer">
-			<input type="hidden" id="currName" value="${ sessionScope.loginuser.name }"/>
 				<div class="row">
-					<div class="col-md-2" id="profile" style="width:80px;height:80px">
+					<div class="col-md-2" id="profile">
 						<a href="#" class="thumbnail">
 						  <img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
 						</a>
@@ -142,14 +176,12 @@ $(function() {
 						<textarea  id="context" class="form-control" rows="4" style="height:103px" placeholder="이야기를 적어주세요."></textarea>
 					</div>
 				</div>
-				 <p>&nbsp;&nbsp;</p>
-				<div class="col-md-11">
-				<nav class="pull-right">
+				<div class="row">
+				
+				<span style="float:right">
 				 	<button type="submit" class="btn btn-danger" id="save">이야기 남기기</button>	
-				</nav>
-			
+				</span>
 				</div>
-			</div>
 			
 			
 			
@@ -157,125 +189,39 @@ $(function() {
 			<hr>
 		 
 		 <div class="row" id="textcontainer">
-		 			
-					<c:choose> 
-					
-		    			<c:when test="${empty comms }">
-					        <table class="table">
-					        <tr>
-					            <td align="center">작성된 이야기가 없습니다.</td>
-					        </tr>
-					        </table>
-					    </c:when>
-		    			
-		    			
-		    			
-		    			<c:otherwise>
-    					  <c:forEach var="comm" items="${ comms }">
-						    <div class="row">	
-										<!--  profile picture -->
-										<div class="col-md-2" id="profile" style="width:80px;height:80px">
-											<a href="#" class="thumbnail">
-												<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
-											</a>
-										</div>
-										
-										<div class="col-md-10" id="texttable">
-											<div class="row">
-													<!--  top manu bar -->
-													<div class="col-md-12">
-														<ul class="nav nav-pills">
-					     									 <li><a href="#" id="username"> ${ comm.writer }</a></li>
-					     									 	<!--  dropdown button -->
-					     									 	<span style="float:right">
-					     									 		<span class="label label-primary">${ comm.dateChanged }</span>
-					            								     <div class="btn-group pullRight">
-					            								        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																		   <span class="caret"></span>
-																		  </button>
-																			  <ul class="dropdown-menu">
-																				    <li><a href="">삭제</a></li>
-																			  </ul>
-																	</div>
-																</span>
-					       							    </ul>
-					       							 </div>
-								       				
-								       				 <!--  context -->
-								       				 <div class="col-md-12" id="contextdata">
-								       				 	
-								       				 	<div class="panel panel-info">
-								       				 	<div class="panel-body">
-													    <p>${ comm.context }</p>
-													    </div>
-								       				 	
-								       				 	</div>
-								       					
-								       				 </div>
-								       				 
-								       				 
-								       				 <!-- reply -->
-								       			
-								       				 <div class="row">
-								       				 <div class="col-md-12" id="replytable">
-								       				  <div class="col-md-10" name="replytable">
-															<div class="row">
-																	<!--  top manu bar -->
-														 			
-																<c:forEach var="reply" items="${ comm.reply }">
-																	<div class="col-md-12">
-																	 <!--  profile picture -->
-																		
-									     									<!--  context -->
-													       				 	<div class="panel panel-info">
-													       				 	<div class="panel-body">
-													       				 	<div class="col-md-2" id="profile" style="width:80px;height:80px">
-																			<a href="#" class="thumbnail">
-																				<img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
-																				<span> ${reply.writer }</span>
-																			</a>
-																		</div>
-																		
-													       				 	  <span class="panel-info">${ reply.context }</span>
-																		    </div>
-																		    </div>
-													       				 
-									       							 </div>
-									       							 	</c:forEach>
-									       							
-									       								<p>&nbsp;&nbsp;</p>
-									       							 <div class="col-md-12">
-									       							<div class="input-group" name="replyinput">
-																		<div class="input-group-btn">
-																	   	  <button class="btn btn-info"><span class="glyphicon glyphicon-align-justify"></span></button>
-																	   </div>
-																	   
-																	    <input type="text" class="form-control" id="inputCommReply${ comm.commNo }" aria-describedby="inputCommReply" value=""/>
-																	    <div class="input-group-btn">
-																		    <button type="submit" class="btn btn-info" id="reply${ comm.commNo }">확인</button>
-																		 </div>
-							    									</div>
-							    									</div><!--  end of replyinput --> 
-							    									
-												       		 </div>
-														</div>
-														</div>
-													</div>
-											
-							</div>	
-							<p>&nbsp;&nbsp;</p>
-							</div>
-							</div>
-							</c:forEach>        	
-							
-											
-											
-						 </c:otherwise>
-					</c:choose>
-		 			
-		 	
-		 	
-		 	
+		 <%-- 	<table class="table">
+		 		<tr style="height:30px;background-color:orange">
+        			<td>이메일(아이디)</td>
+        			<td>이름</td>
+        			<td>성별</td>
+        			<td>학년</td>
+        			<td>등록일자</td>
+        			<td>약관동의여부</td>
+        			<td>가입사이트</td>
+        			<td>사용자구분</td>
+        			<td>활성화여부</td>        			
+        		</tr>  
+		 	<c:forEach var="member" items="${ members }">
+        		<tr style="height:30px">
+        			<td>
+        				<!-- view.action?memberid=...... 경로를 만들고 변수에 저장 -->
+        				<c:url value="view.action" var="viewUrl">
+        					<c:param name="memberid" value="${ member.memberId }" />
+        				</c:url>
+        				<a href="${ viewUrl }">${ member.memberId }</a>
+        				<a href="#">${ member.email }</a> 
+        			</td>
+        			<td>${ member.name }</td>
+        			<td>${ member.sexual }</td>
+        			<td>${ member.grade }</td>
+        			<td>${ member.regDate }</td>
+        			<td>${ member.submit } </td>
+        			<td>${ member.extMember }</td>
+        			<td>${ member.userType }</td>
+        			<td>${ member.deleted }</td>        			
+        		</tr>
+        	</c:forEach>
+		 	</table> --%>
 		 	</div>
 							
 						 </div>
@@ -308,6 +254,56 @@ $(function() {
 </html>
 
 
+<!--  template -->
 
-		  
-		  
+<!-- 
+ <div class="row" >
+					<div class="col-md-2" id="profile">
+						<a href="#" class="thumbnail">
+						  <img src="${cp}/resources/images/profile.jpg" alt="" class="img-circle" style="">
+						</a>
+					</div>
+				<div class="col-md-10" id="texttable">
+							<div class="row">
+								<div class="col-md-12">
+									<ul class="nav nav-pills">
+     									 <li><a href="#" id="username"> ${ loginuser.name }</a></li>
+     									 	<span style="float:right">
+            								   <div class="btn-group">
+												  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												   <span class="caret"></span>
+												  </button>
+												  <ul class="dropdown-menu">
+												    <li><a href="#">Action</a></li>
+												    <li><a href="#">Another action</a></li>
+												  </ul>
+											</div>
+											</span>
+       							    </ul>
+       							 </div>
+       							 <div class="col-md-12" id="contextdata">
+       								<p></p>
+       				  </div>
+					
+					  
+					  <div class="input-group" id="replycontainer">
+					   <div class="input-group-btn">
+					   	  <button class="btn btn-info"><span class="glyphicon glyphicon-align-justify"></span></button>
+					   </div>
+					    <input type="text" class="form-control" id="inputCommReply" aria-describedby="inputCommReply">
+					    <div class="input-group-btn">
+						    <button class="btn btn-info" id="insertreply">확인</button>
+						 </div>
+					</div>
+					
+					
+							
+							</div>
+							</div>
+					 </div>
+					 
+					
+					
+
+ -->
+	

@@ -24,9 +24,7 @@ public class OracleMemberDao implements MemberDao {
 	@Override
 	public void insertMember(Member member) {
 		// TODO Auto-generated method stub
-
-		memberMapper.insertMember(member);
-		
+		memberMapper.insertMember(member);		
 	}
 
 	@Override
@@ -43,20 +41,39 @@ public class OracleMemberDao implements MemberDao {
 
 	@Override
 	public void updateMember(HashMap<String, ?> hash) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
 	public void deleteMemberByIndex(int index) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override	
 	public Member selectMemberByEmailAndPassword(HashMap<String, String> account) {
 		return null;	
-	}
-	
+	}	
 
+	@Override
+	public void deleteMemberByEmail(String email) {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public int countMemberByEmailAndPassword(HashMap<String, String> account) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int countMemberByEmail(String email) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		// TODO Auto-generated method stub
+		
+	}
 }

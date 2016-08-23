@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.common.Util;
 import com.project.model.dto.Member;
@@ -21,22 +22,17 @@ public class AccountController {
 	
 	@RequestMapping(value = "login.action", method = RequestMethod.GET)
 	public String login() {
-		
 		System.out.println("login form shows");
-		
 		return "account/loginform";
-		// /WEB-INF/views/ + account/loginform + .jsp
 	}
 	
 	
 	@RequestMapping(value = "login.action", method = RequestMethod.POST)
 	public String login(String email,String password, HttpSession session) {
-		System.out.println("login request");
-	
- 	 String test = Util.getHashedString("admin", "SHA-256");
-	 System.out.println(test);
-		Member member =	memberService.getMemberByIdAndPasswd(email, password);
-		
+
+		System.out.println("login request");		
+		Member member =	memberService.getMemberByIdAndPasswd(email, password);		
+
 		if (member != null) {
 			//세션에 로그인 정보 저장
 			session.setAttribute("loginuser", member);
@@ -52,4 +48,20 @@ public class AccountController {
 		session.removeAttribute("loginuser");//로그아웃
 		return "redirect:/home.action";
 	}
+	@ResponseBody
+	@RequestMapping(value = "check.action", method = RequestMethod.POST)
+	public String check(String email, String password) {
+		//계정확인
+		String result = memberService.checkMember(email, password);
+		System.out.println("check account @ controller : " + result);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "check.action", method = RequestMethod.GET)
+	public String check(String email) {				
+		// 이메일 중복확인
+		String result = memberService.checkMember(email);
+		return result;
+	}	
 }

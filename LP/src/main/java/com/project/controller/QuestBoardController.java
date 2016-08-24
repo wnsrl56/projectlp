@@ -306,6 +306,8 @@ public class QuestBoardController {
 					files.get(i).setQuestNo(newUploadNo);
 					questService.insertQPicture(files.get(i));// UploadFile
 					
+					System.out.println("tag 삽입 성공");
+					
 					
 				}
 			}
@@ -321,8 +323,8 @@ public class QuestBoardController {
 			// throw new RuntimeException(ex);}
 		}
 			
-		
 		questService.insertTag(tag);
+		
 		
 		
 		

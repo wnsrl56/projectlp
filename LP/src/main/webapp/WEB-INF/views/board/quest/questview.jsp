@@ -386,7 +386,7 @@
 
 				$.ajax({
 
-					url : "/lp/qboard/cinsert.action",
+					url : "cinsert.action",
 					type : "post",
 					data : answer,
 					contentType : "application/json",
@@ -429,7 +429,7 @@
 
 					$.ajax({
 
-						url : "/lp/qboard/crinsertReply.action",
+						url : "crinsertReply.action",
 						type : "post",
 						data : reply,
 						contentType : "application/json",

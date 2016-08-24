@@ -147,7 +147,7 @@
 																class="glyphicon glyphicon-question-sign"
 																aria-hidden="true" style="color: hotpink"><b>몰라요(${ quest.goodCount })</b>&nbsp;</span></a>
 															
-																<!-- <button type="submit" class="btn btn-danger" id="good">좋아요</button> -->
+															
 															</nav>
 														</div>
 													</td>
@@ -163,20 +163,20 @@
 				 
 				</div>
      	</c:forEach> 
-    	 	  <div class="jumbotron">
-  	  <p style="text-align:center"><Button href="#" class="btn btn-info" role="button"  id="more">More</Button></p> 
-  	  </div>
+    	 
     </c:otherwise>
 </c:choose>
   	  
+  	  	 
   	  
-  	</div>
-		   </div>
- 
+  	  
+  	 </div>
   	 
+  	
+ 	
       </div><!-- list end --> 
   	 
-  	 	 	
+  	 	 	<p style="text-align:center"><Button href="#" class="btn btn-info btn-lg" role="button"  id="more">More</Button></p> 
   	 
 				
 
@@ -206,7 +206,7 @@
 
 				$.ajax({
 
-					url : "/lp/qboard/good.action",
+					url : "good.action",
 					type : "post",
 					data : answer,
 					contentType : "application/json",
@@ -332,7 +332,7 @@
 			 
 				$.ajax({
 
-					url : "/lp/qboard/morepost.action",
+					url : "morepost.action",
 					type : "post",
 					data :start,
 					contentType : "application/json",
@@ -349,7 +349,7 @@
 						var viewCount = this["viewCount"];
 						var questNo = this["questNo"];
 						var goodCount = this["goodCount"];	
-						
+						var tagname = this["tagName"];
 						
 							$('#list').append(
 							  '<div class="col-sm-6 col-md-3"><div class="thumbnail"><table><tr><td><span class="glyphicon glyphicon-user btn-lg" aria-hidden="true" style="color: navy;"></span></td><td>'
@@ -357,7 +357,7 @@
 							+'<span class="glyphicon glyphicon-option-vertical btn-lg" aria-hidden="true" style="color:gray;"></span></div><ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"><li role="presentation"><a role="menuitem" tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>&nbsp;스크랩</a></li>'
 							+'<li role="presentation"><a role="menuitem" tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>&nbsp;공유</a></li><li role="presentation"><a role="menuitem" tabindex="-1" href="#" style="color:gray;"><span class="glyphicon glyphicon-alert" aria-hidden="true"></span>&nbsp;신고</a></li></ul></div></td></tr></table><hr>'
 							+'<img src="${cp}/resources/image/${ quest.savedFilePath }" alt="..." style="width: 300px; height: 200px">' 
-						    +'<div class="caption"><hr><a href="#" style="color:gray;">#태그</a><hr><p><div><table><tr><td><c:url value="questview.action" var="viewUrl">'
+						    +'<div class="caption"><hr><a href="#" style="color:gray;">#'+tagname+'</a><hr><p><div><table><tr><td><c:url value="questview.action" var="viewUrl">'
 							+'<c:param name="questNo" value="${ quest.questNo }" /></c:url> <a id="activeModal" href="${ viewUrl }"> <span class="glyphicon glyphicon-pencil" aria-hidden="true">'
 							+'<b>답변하기('+viewCount+')</b></span></a></td><td><div id="inputcontainer">'
 							+'<input type="hidden" id="questNo" value="'+questNo+'" /><nav class="pull-right"><a type="submit" id="good'+questNo+'" class="won" style="cursor:pointer">&nbsp;<span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="color: hotpink"><b>좋아요('+goodCount+')</b>&nbsp;</span></a>'

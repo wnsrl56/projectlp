@@ -36,7 +36,7 @@ $(function() {
 	 			
 			 			$.ajax({
 			 		
-			 			url: "/lp/cboard/insert.action",
+			 			url: "insert.action",
 			 			type : "post",
 			 		    data: comm,
 			 		    contentType: "application/json",
@@ -83,7 +83,7 @@ $(function() {
 		 			
 				 			$.ajax({
 				 		
-				 			url: "/lp/cboard/insertReply.action",
+				 			url: "insertReply.action",
 				 			type : "post",
 				 		    data: reply,
 				 		    contentType: "application/json",

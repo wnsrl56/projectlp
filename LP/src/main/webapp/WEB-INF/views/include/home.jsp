@@ -5,39 +5,6 @@
 <c:set var="cp" value="${pageContext.request.contextPath}"/>
  <link rel="stylesheet" href="${cp}/resources/css/landing-page.css">
  
-  <!-- Navigation -->
-   <!--  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            Brand and toggle get grouped for better mobile display
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
-            </div>
-            Collect the nav links, forms, and other content for toggling
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            /.navbar-collapse
-        </div>
-        /.container
-    </nav>
- -->
-
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header">
@@ -47,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Real Answer</h1>
-                        <h3> 나만 알고싶은 공부어플 바로풀기<br><br>
+                        <h3> 나만 알고싶은 공부어플 진짜 답<br><br>
 							리엔과 함께 하면 공부가 쉬워져요!
 						</h3>
                         <hr class="intro-divider">
@@ -143,9 +110,3 @@
             </div>
         </div>
     </footer>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>

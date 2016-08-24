@@ -164,16 +164,14 @@
 		 
 		 
 		 <select id="selectQuestListOrderByDesc" parameterType="HashMap" resultType="quest">
-		   SELECT 
-		   BoardNo,QuestNo,Title,Context,RegDate,Writer,ViewCount,GoodCount,Deleted 
-		   FROM 
-		   Quest 
+		     SELECT Quest.QuestNo, Quest.BoardNo, Quest.Title, Quest.Context, Quest.RegDate, Quest.Writer, Quest.ViewCount, Quest.GoodCount, Quest.Deleted, Quest.SavedFilePath, Quest.RealFilePath, Tag.TagName, Tag.TagNo
+		   FROM Quest,Tag, QuestTag
 		   WHERE 
-		   Deleted =0 
+		   Quest.Deleted =0 And Quest.QuestNo = QuestTag.QuestNo and QuestTag.TagNo = Tag.TagNo
 		   ORDER BY 
-		   RegDate 
-		   DESC LIMIT #{ start }, #{ end };
-		  </select>
+		   RegDate DESC
+           LIMIT #{ start },#{ end };
+          </select>
 	
 
 </mapper> 	

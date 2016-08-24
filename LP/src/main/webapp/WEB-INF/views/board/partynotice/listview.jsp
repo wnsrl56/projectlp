@@ -34,7 +34,7 @@
  			
 		 			$.ajax({
 		 		
-		 			url: "/lp/pboard/delete.action",
+		 			url: "delete.action",
 		 			type : "post",
 		 		    data: partynotice,
 		 		    contentType: "application/json",
@@ -112,8 +112,7 @@
 							<th>글 번호</th>
 							<th>제목</th>
 							<th>등록일</th>
-							<th>조회수</th>
-							
+							<th>삭제여부</th>
 
 						</tr>
 						
@@ -123,14 +122,11 @@
 								<td>${ partynotice.noticeNo }</td>
 
 								<td>
-								<a class="btn btn-primary" href="#" data-noticeno="${partynotice.context}">${ partynotice.title }</a>
+								<a class="nav nav-pills" href="#" data-noticeno="${partynotice.context}">${ partynotice.title }</a>
 								</td>
-								
-								
-								
 								<td>${ partynotice.dateChanged }</td>
-								<td>${ partynotice.viewCount }</td>
-						<th><button type="button" class="btn btn-primary" id="${ partynotice.noticeNo }">
+							
+						<th><button type="button" class="btn btn-outline-info btn-xs" id="${ partynotice.noticeNo }">
 							삭제
 							</button></th>
 								

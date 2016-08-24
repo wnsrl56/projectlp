@@ -21,7 +21,7 @@
     		checkPw(flag);
     	});
     	$('#back').on('click', function (event) {
-    		url = "/LP/home.action";
+    		url = "/rean/home.action";
 	 		location.href = url;
     	});
 	    	
@@ -39,7 +39,7 @@
     		
         	if ( $('#modalPw').val != null ) {
         		$.ajax({
-        			url: "/LP/account/check.action",
+        			url: "/rean/account/check.action",
         		 	type : "post",
         		 	data : account,
         			success : function(data, status, xhr) {

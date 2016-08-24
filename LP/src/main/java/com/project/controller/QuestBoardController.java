@@ -53,7 +53,7 @@ public class QuestBoardController {
 	@Autowired
 	@Qualifier("answerService")
 	private AnswerService answerService;
-	
+	/*
 	@RequestMapping(value="listviewnone.action", method = RequestMethod.GET)
 	public ModelAndView QuestnoneListGet(Quest quest, Tag tag,QuestTag questtag,String test){
 	    ModelAndView mv2 = new ModelAndView("board/quest/listview");
@@ -96,7 +96,7 @@ public class QuestBoardController {
 	
 	
 	@RequestMapping(value="listviewreal.action", method = RequestMethod.POST)
-	/*public ModelAndView QuestBoardListGet(Map<String,Object> Map){*/
+	public ModelAndView QuestBoardListGet(Map<String,Object> Map){
 	public ModelAndView QuestListGet(Quest quest, Tag tag, QuestTag questtag){
 	    ModelAndView mv = new ModelAndView("board/quest/listview");
 	
@@ -134,7 +134,7 @@ public class QuestBoardController {
 	    return mv;
 	    
 	}
-	
+	*/
 	
 
 	@RequestMapping(value="listview.action", method = RequestMethod.GET)
@@ -149,7 +149,7 @@ public class QuestBoardController {
 	    List<Quest> quests;
 	    int end = 4;
 	    if(tagNo == 0){
-	    	 quests = questService.selectQuestListOrderByDesc(0, end);
+	    	quests = questService.selectQuestListOrderByDesc(0, end);
 	    } else {
 	    	 quests = questService.selectAllTagQuests(tagNo);
 	    }
@@ -197,7 +197,7 @@ public class QuestBoardController {
 	        
 	        lists = questService.selectQuestListOrderByDesc(start,4);
 	    	System.out.println("성공2");
-	    	
+	        
 	   
 	    System.out.println(lists.get(0).getContext());
 	    String datelength2 = null;
@@ -250,7 +250,7 @@ public class QuestBoardController {
 		System.out.println(tag.getQuestNo());
 		System.out.println("--------------------------------------------------------");
 		
-		questService.insertTag(tag);
+
 		
 		//boardService.insertBoard();
 		
@@ -305,6 +305,8 @@ public class QuestBoardController {
 					//files.get(i).setQuestNo(newUploadNo);
 					files.get(i).setQuestNo(newUploadNo);
 					questService.insertQPicture(files.get(i));// UploadFile
+					
+					
 				}
 			}
 
@@ -319,6 +321,11 @@ public class QuestBoardController {
 			// throw new RuntimeException(ex);}
 		}
 			
+		
+		questService.insertTag(tag);
+		
+		
+		
 	    return "redirect:listview.action?tagNo=0";
 	    
 	    

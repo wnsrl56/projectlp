@@ -22,6 +22,7 @@
   <div class="row" id="grid">
 
 			<div class="col-sm-2 col-md-2" role="main" id="sidebar">
+			
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="insert.action" class="btn btn-outline-info"><p class="text-center"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span>&nbsp;&nbsp;질문 하기</p></a></li>
 				</ul>

@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,9 @@ public class AccountController {
 
 		System.out.println("login request");		
 		Member member =	memberService.getMemberByIdAndPasswd(email, password);		
-
+		
+		String dateChanged =  (new SimpleDateFormat("yyyy년 MM월 dd일 HH시mm분").format(member.getRegDate()));
+		member.setDateChanged(dateChanged);
 		if (member != null) {
 			//세션에 로그인 정보 저장
 			session.setAttribute("loginuser", member);

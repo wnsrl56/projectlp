@@ -303,8 +303,7 @@ Licensed under MIT
 							<i class="glyphicon glyphicon-question-sign"></i>
 						   회원 리스트 </a>
 						</li>
-						
-						   </c:if>
+						 </c:if>
 						<!--  <li>
 							<a href="#" target="_blank">
 							<i class="glyphicon glyphicon-ok-sign"></i>
@@ -362,7 +361,7 @@ Licensed under MIT
         			<td>${ member.name }</td>
         			<td>${ member.sexual }</td>
         			<td>${ member.grade }</td>
-        			<td>${ member.regDate }</td>
+        			<td>${ member.dateChanged }</td>
         			<td>${ member.submit } </td>
         			<td>${ member.userType }</td>
         			<td>${ member.deleted }</td>        			

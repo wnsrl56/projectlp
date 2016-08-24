@@ -31,16 +31,11 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/include/error.action", method = RequestMethod.GET)
+	public String error() {
+		
+		return "include/error";
+	}
 	
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Model model,@ModelAttribute Member member) {
-//		logger.info("Welcome home! The client locale is {}.", member.toString());
-//			
-//		//memberService.insertMember(member);
-//		
-//		model.addAttribute("serverTime", "HIHI" );
-//		
-//		return "home";
-//	}
 	
 }

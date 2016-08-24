@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -47,6 +48,15 @@ public class MemberController {
 	@RequestMapping(value = "list.action", method = RequestMethod.GET)
 	public String list(Model model) {		
 		ArrayList<Member> lists = memberService.listAllMembers();
+		
+		
+		
+		for(int index=0;index<lists.size();index++){
+		String dateChanged =  (new SimpleDateFormat("yyyy년 MM월 dd일 HH시mm분").format(lists.get(index).getRegDate()));
+		lists.get(index).setDateChanged(dateChanged);
+		}
+		
+		
 		model.addAttribute("members", lists);
 		if (lists.isEmpty())
 			{

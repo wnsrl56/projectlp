@@ -40,17 +40,15 @@
             		<!-- <a href="/demoweb-spring-compact5/account/login.action">로그인</a>
               		<a href="#">등록</a> -->
               		<li>
-                        <a type="button" href="${cp}/account/login.action">Login</a>
+                        <a type="button" href="${cp}/account/login.action">Sign In</a>
                     </li>
-                    <li>
-                        <a type="button" href="${cp}/member/register.action">Register</a>
-                    </li>
+                   
             	</c:when>
             	<c:otherwise>
             		<%-- ${ loginuser.memberId }님 환영합니다.
             		<a href="/demoweb-spring-compact5/account/logout.action">로그아웃</a> --%>
             		<li>
-                        <a href="${cp}/account/logout.action">Logout</a>
+                        <a href="${cp}/account/logout.action">Sign Out</a>
                     </li>
                   <%--   <c:if test="${sessionScope.loginuser.userType == 'admin' }">
                     <li>

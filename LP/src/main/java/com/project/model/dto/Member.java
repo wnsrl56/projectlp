@@ -16,8 +16,14 @@ public class Member implements Serializable {
 	private boolean submit;
 	private boolean deleted;
 	private Date regDate;
+	private String dateChanged;
 	
-	
+	public String getDateChanged() {
+		return dateChanged;
+	}
+	public void setDateChanged(String dateChanged) {
+		this.dateChanged = dateChanged;
+	}
 	public int getMemberNo() {
 		return MemberNo;
 	}

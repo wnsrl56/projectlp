@@ -36,4 +36,16 @@
 		
 	</beans:bean>
 	
+	<!--  Interceptor -->
+	
+	<interceptors>
+		<interceptor>
+		<mapping path ="/**"/>
+		<exclude-mapping path="/resources/**"/>
+		<beans:bean class="com.project.model.interceptor.AuthInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
+	
 </beans:beans>

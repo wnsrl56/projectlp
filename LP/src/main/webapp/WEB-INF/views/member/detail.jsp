@@ -362,7 +362,7 @@ Licensed under MIT
                       </tr>
                       <tr>
                         <td>가입일자</td>
-                        <td>${member.regDate}</td>
+                        <td>${member.dateChanged}</td>
                       </tr> 
                        
                      

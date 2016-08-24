@@ -59,5 +59,11 @@ public class MysqlCommDao implements CommDao {
 		return commMapper.selectCommListOrderByDesc(period);
 	}
 
+	@Override
+	public List<Comm> selectAllCommListOrderBy() {
+		// TODO Auto-generated method stub
+		return commMapper.selectAllCommListOrderBy();
+	}
+
 	
 }

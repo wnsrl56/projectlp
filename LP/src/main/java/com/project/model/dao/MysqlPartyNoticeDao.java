@@ -60,6 +60,12 @@ public class MysqlPartyNoticeDao implements PartyNoticeDao {
 		// TODO Auto-generated method stub
 		partynoticeMapper.deletePartyNoticeByIndex(index);
 	}
+
+	@Override
+	public List<PartyNotice> selectAllPartyNoticeListByReg() {
+		// TODO Auto-generated method stub
+		return partynoticeMapper.selectAllPartyNoticeListByReg();
+	}
 	
 	
 	

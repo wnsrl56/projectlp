@@ -14,7 +14,7 @@ public interface PartyNoticeDao {
 	public List<PartyNotice> selectAllPartyNoticeList();
 
 	public PartyNotice searchPartyNoticeByIndex(int index);
-
+	public List<PartyNotice> selectAllPartyNoticeListByReg();
 	// 수정
 	// put으로 알아서 추가하던가, 명시적으로 만들어서 쓰면 될듯
 	public void updatePartyNotice(HashMap<String, ?> hash);

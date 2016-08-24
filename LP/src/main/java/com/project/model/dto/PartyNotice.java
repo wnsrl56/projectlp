@@ -14,7 +14,17 @@ public class PartyNotice implements Serializable{
 	private boolean deleted;
 	private int viewCount;
 	private String dateChanged;
+	private String regDateStr;
 	
+	
+	
+	
+	public String getRegDateStr() {
+		return regDateStr;
+	}
+	public void setRegDateStr(String regDateStr) {
+		this.regDateStr = regDateStr;
+	}
 	public String getDateChanged() {
 		return dateChanged;
 	}

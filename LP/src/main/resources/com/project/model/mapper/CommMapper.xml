@@ -55,6 +55,15 @@
 			WHERE Deleted=0
 		</select>
 		
+		<select id="selectAllCommListOrderBy" resultType="comm">
+			<include refid="selectDefault" /> 
+			WHERE Deleted=0
+			ORDER BY RegDate 
+			DESC 
+		</select>
+		
+		
+		
 		<!--  select limits -->
 		<select id="selectCommListOrderByDesc" parameterType="hashMap" resultType="comm">
 			<include refid="selectDefault" />  
@@ -62,6 +71,9 @@
 			ORDER BY RegDate 
 			DESC LIMIT #{ start },#{ end };
 		</select>
+		
+		
+		
 
 </mapper> 	
 	

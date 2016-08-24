@@ -42,4 +42,10 @@ public class CommServiceImpl implements CommService {
 		return commDao.selectCommListOrderByDesc(period);
 	}
 
+	@Override
+	public List<Comm> selectAllCommListOrderBy() {
+		// TODO Auto-generated method stub
+		return commDao.selectAllCommListOrderBy();
+	}
+
 }

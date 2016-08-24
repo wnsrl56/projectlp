@@ -51,6 +51,12 @@ public class PartyNoticeServiceImpl implements PartyNoticeService {
 		
 	}
 
+	@Override
+	public List<PartyNotice> selectAllPartyNoticeListByReg() {
+		// TODO Auto-generated method stub
+		return partynoticeDao.selectAllPartyNoticeListByReg();
+	}
+
 
 }
 

@@ -15,9 +15,15 @@ public class Comm implements Serializable {
 	private boolean deleted;
 	private String dateChanged;
 	private List<CommReply> reply;
+	private String regDateStr;
 	
 	
-	
+	public String getRegDateStr() {
+		return regDateStr;
+	}
+	public void setRegDateStr(String regDateStr) {
+		this.regDateStr = regDateStr;
+	}
 	public List<CommReply> getReply() {
 		return reply;
 	}

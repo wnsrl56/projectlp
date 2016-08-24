@@ -15,4 +15,5 @@ public interface PartyNoticeService {
 	public void insertPartyNotice(PartyNotice partynotice);
 	public int selectPartyNoticeNo();
 	public void deletePartyNoticeByIndex(int index);
+	public List<PartyNotice> selectAllPartyNoticeListByReg();
 }	

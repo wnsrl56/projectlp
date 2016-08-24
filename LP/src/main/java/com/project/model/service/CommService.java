@@ -14,6 +14,6 @@ public interface CommService {
 	//조회
 	public List<Comm> selectAllCommList();
 	public List<Comm> selectCommListOrderByDesc(int start,int end);
-
+	public List<Comm> selectAllCommListOrderBy();
 
 }

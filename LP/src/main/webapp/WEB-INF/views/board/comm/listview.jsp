@@ -162,7 +162,7 @@ $(function() {
 				</div>
 			</div>
 				 
-				 
+				 <hr>
 				 
 				 <c:choose> 
 					

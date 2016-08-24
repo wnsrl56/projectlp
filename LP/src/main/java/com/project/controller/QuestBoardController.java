@@ -285,7 +285,6 @@ public class QuestBoardController {
 						quest.setSavedFilePath(uniqueFileName);
 						quest.setRealFilePath(fileName);
 						questService.insertQuest(quest);// Upload
-						//questService.insertQuest(quest);// Upload
 						newUploadNo = questService.selectQuestNo(quest);
 						
 					} else {

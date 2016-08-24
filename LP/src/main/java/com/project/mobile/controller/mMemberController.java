@@ -52,13 +52,13 @@ public class mMemberController {
 			System.out.println("login complete");
 		}
 	}*/
-	@RequestMapping(value = "/login.action", method = RequestMethod.POST)
+	@RequestMapping(value = "login.action", method = RequestMethod.POST)
 	public void login(HttpSession session, HttpServletRequest req, HttpServletResponse resp, String email, String password) {
 		
 		System.out.println("in login Post : id = " + email + " passwd :" + password);
 		Member member = memberService.getMemberByIdAndPasswd(email, password);
 
-		/*member.setRegDate(null);*/
+			
 
 		if (member == null) {
 			System.out.println("member is null");

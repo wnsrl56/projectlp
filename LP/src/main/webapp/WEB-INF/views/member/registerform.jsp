@@ -17,7 +17,7 @@
 		var checkedEmail = 'undone'; // 이메일 중복확인 여부 (0: 안함 1: 확인)
     	$('#checkEmail').on('click', function (event) {
     		$.ajax({
-    			url: "/LP/account/check.action",
+    			url: "/rean/account/check.action",
     		 	type : "get",
     		 	data : {
 			  		"email" : $('#email').val(),	  				
@@ -61,7 +61,7 @@
     	})	 
     	
     	$('#cancel').on('click', function (event) {
-    		location.href = "/LP";	
+    		location.href = "/rean";	
     	})
     	
     	$('#selectGrade').on('click', function(event){
@@ -132,7 +132,7 @@
         <div class="page-header">
         	<c:import url="/WEB-INF/views/include/header.jsp" />
         </div>
-        <div align="center"><h1>회원가입 <small>basic form</small></h1></div>
+        <div align="center"><h2>회원가입 </h2></div>
         <div class="col-md-6 col-md-offset-3">
           
           <form:form action="${cp}/member/register.action" method="post" modelAttribute="member" id="registerForm">

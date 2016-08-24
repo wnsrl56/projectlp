@@ -52,11 +52,11 @@
             		<li>
                         <a href="${cp}/account/logout.action">Logout</a>
                     </li>
-                    <c:if test="${sessionScope.loginuser.userType == 'admin' }">
+                  <%--   <c:if test="${sessionScope.loginuser.userType == 'admin' }">
                     <li>
                         <a href="${cp}/member/list.action">List of members</a>
                     </li>
-                    </c:if>
+                    </c:if> --%>
                     
                     <%-- <li>
                         <a href="${cp}/member/modify.action">Modify</a>

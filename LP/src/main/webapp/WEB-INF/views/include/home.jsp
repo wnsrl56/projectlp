@@ -14,7 +14,7 @@
                 <div class="col-lg-12">
                     <div class="intro-message">
                         <h1>Real Answer</h1>
-                        <h3> 나만 알고싶은 공부어플 진짜 답<br><br>
+                        <h3> 나만 알고싶은 공부어플 리얼 엔서<br><br>
 							리엔과 함께 하면 공부가 쉬워져요!
 						</h3>
                         <hr class="intro-divider">
@@ -30,7 +30,7 @@
     <!-- /.intro-header -->
 
     <!-- Page Content -->
-
+<%-- 
 	<a  name="services"></a>
     <div class="content-section-a">
 
@@ -51,8 +51,8 @@
         <!-- /.container -->
 
     </div>
-    <!-- /.content-section-a -->
-
+    <!-- /.content-section-a --> --%>
+<!-- 
 	<a  name="contact"></a>
     <div class="banner">
 
@@ -78,17 +78,17 @@
             </div>
 
         </div>
-        <!-- /.container -->
+        /.container
 
     </div>
-    <!-- /.banner -->
+    /.banner -->
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="nav nav-justified">
                 <div class="col-lg-12">
-                    <ul class="list-inline">
+                    <ul class="nav nav-justified">
                         <li>
                             <a href="#">Home</a>
                         </li>
@@ -105,7 +105,7 @@
                             <a href="#contact">Contact</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p style="text-align:center">Copyright &copy; All Rights Reserved</p>
                 </div>
             </div>
         </div>

@@ -242,14 +242,7 @@ public class QuestBoardController {
 			return "index";
 		}
 	
-		tag.setTagNo(tagNo);
-		tag.setQuestNo(questService.selectQuestNo(quest));	//tagnum, questno
-		
-		System.out.println("--------------------------------------------------------");
-		System.out.println(tag.getTagNo());
-		System.out.println(tag.getQuestNo());
-		System.out.println("--------------------------------------------------------");
-		
+
 
 		
 		//boardService.insertBoard();
@@ -307,6 +300,15 @@ public class QuestBoardController {
 					questService.insertQPicture(files.get(i));// UploadFile
 					
 					System.out.println("tag 삽입 성공");
+					
+					
+					tag.setTagNo(tagNo);
+					tag.setQuestNo(questService.selectQuestNo(quest));	//tagnum, questno
+					
+					System.out.println("--------------------------------------------------------");
+					System.out.println(tag.getTagNo());
+					System.out.println(tag.getQuestNo());
+					System.out.println("--------------------------------------------------------");
 					
 					
 				}

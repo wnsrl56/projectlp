@@ -244,8 +244,11 @@ public class QuestBoardController {
 	
 		tag.setTagNo(tagNo);
 		tag.setQuestNo(questService.selectQuestNo(quest));	//tagnum, questno
+		
+		System.out.println("--------------------------------------------------------");
 		System.out.println(tag.getTagNo());
 		System.out.println(tag.getQuestNo());
+		System.out.println("--------------------------------------------------------");
 		
 		questService.insertTag(tag);
 		

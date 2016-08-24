@@ -90,22 +90,26 @@
 		<div class="row" id="grid">
 
 			<div class="col-md-2" role="main" id="sidebar">
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="insert.action"><p
-								class="text-center">답변 하기</p></a></li>
+<!-- 				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="active"><a href="insert.action"><p class="text-center">답변 하기</p></a></li>
 				</ul>
 
-
+ -->
 			</div>
 			<!-- sidebar end -->
 
 			<div class="col-md-6" role="complementary" id="list">
-				<h3>
+<%-- 				<h3>
 					<p align="center"> ${ quest.title }  <small></small></p>
-				</h3>
+				</h3> --%>
+				<div align="center">
+					<img src="${cp}/resources/images/profile.jpg" alt=""
+						class="img-circle" style="width: 50px; height: 50px"> <a
+						href="#" id="username"> ${ quest.writer } </a>
+				</div>
+
 				<hr>
-				<p align="center" >${ quest.context }</p>
-				<hr>
+
 				<div align="center" >
 					<c:forEach var="qpicture" items="${ quest.qpicture }">
 						<a class="thumbnail-2" href="${cp}/resources/image/${ qpicture.savedFilePath }">
@@ -114,8 +118,8 @@
 						<br><hr>
 					</c:forEach>
 				</div>
-
-				
+				<p align="center" >${ quest.context }</p>
+			
 				<!-- 답변하기 글쓰기 -->
 <%-- 				<c:choose>
 					<c:when test="${ empty answer }">
@@ -238,11 +242,12 @@
 							
 
 											<!-- reply -->
-
-											<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseReply${ answer.answerNo }" aria-expanded="false" aria-controls="collapseExample">
-										  댓글 더 보기
+									<div align="right">
+										<a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseReply${ answer.answerNo }" aria-expanded="false" aria-controls="collapseExample">
+										  댓글 더 보기&nbsp;<span class="caret"></span>
 										</a>
-					
+									</div>
+									
 									<div class="collapse" id="collapseReply${ answer.answerNo }">
   										<div class="well">
 											<div class="row">
@@ -338,7 +343,7 @@
 					</div>
 					<p>&nbsp;&nbsp;</p>
 					<div class="form-group" align="right">
-						<label for="exampleInputFile">파일 업로드</label> <input type="file"
+						<input type="file"
 							name="attach" multiple="multiple" id="files" />
 						<!-- <input type="file" name="attach" /> -->
 						<output id="result" />

@@ -23,22 +23,24 @@
 
 			<div class="col-sm-2 col-md-2" role="main" id="sidebar">
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a href="insert.action"><p class="text-center">질문 하기</p></a></li>
+					<li role="presentation"><a href="insert.action" class="btn btn-outline-info"><p class="text-center"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span>&nbsp;&nbsp;질문 하기</p></a></li>
 				</ul>
 
 
 				<!-- tag select -->
 				<hr>
+				
 
 				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation" class="active"><a
-							href="listview.action?tagNo=0"><p class="text-center">전체 보기</p></a></li>
+					<li role="presentation"><a
+							href="listview.action?tagNo=0" class="btn btn-outline-info"><p class="text-center"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;전체 보기
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></p></a></li>
 					<c:forEach var="tag" items="${ tags }">
-						<li role="presentation" class="active">
+						<li role="presentation" >
 							<c:url value="listview.action" var="viewTagUrl">
 								<c:param name="tagNo" value="${ tag.tagNo }" />
 							</c:url>		
-							<a href="${ viewTagUrl }"><p class="text-center">${ tag.tagName }</p></a></li>
+							<a href="${ viewTagUrl }" class="btn btn-outline-info"><p class="text-center"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>&nbsp;${ tag.tagName }</p></a></li>
 							
 					</c:forEach>
 				</ul>
@@ -50,7 +52,7 @@
 
 
 			<!-- 실시간 , 안풀린 문제 -->
-			<div class="row" id="inputcontainer">
+			<div class="row" id="inputcontainer" align="right">
 			<input type="hidden" id="tagNo" value="${ tag.tagNo }"/>
 			<input type="hidden" id="questNo" value="${ quest.questNo }"/>
 			 <input type="hidden" id="none" value="0"/>
@@ -64,7 +66,7 @@
 					</label>
 				</div>
 			</div>
-
+			<br>
 			<hr>
  	    
        

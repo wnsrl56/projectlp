@@ -4,22 +4,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 	<c:set var="cp" value="${pageContext.request.contextPath}"/>
+	<link rel="stylesheet" href="${cp}/resources/css/landing-page.css">
   <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="${cp}/home.action">LP</a>
+                </button> -->
+                <a class="navbar-brand topnav" href="${cp}/home.action"><img src="${cp}/resources/image/RA.png" alt="..." style="width: 80px; height: 30px"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">                
+                <ul class="nav navbar-nav navbar-right">                
                 <li>
                        <a href="${ cp }/qboard/listview.action?tagNo=0">Quest</a>
                        
@@ -39,10 +40,10 @@
             		<!-- <a href="/demoweb-spring-compact5/account/login.action">로그인</a>
               		<a href="#">등록</a> -->
               		<li>
-                        <a href="${cp}/account/login.action">Login</a>
+                        <a type="button" href="${cp}/account/login.action">Login</a>
                     </li>
                     <li>
-                        <a href="${cp}/member/register.action">Register</a>
+                        <a type="button" href="${cp}/member/register.action">Register</a>
                     </li>
             	</c:when>
             	<c:otherwise>
@@ -61,7 +62,8 @@
                         <a href="${cp}/member/modify.action">Modify</a>
                     </li> --%>
                      <li>
-                   		<a href="${cp}/member/detail.action"> Welcome ${ loginuser.email }!!</a>
+                   		<a href="${cp}/member/detail.action"> Welcome ${ loginuser.email }</a>
+                   		<!-- <span class="glyphicon glyphicon-bell" aria-hidden="true"></span> -->
                     </li>
                    
             	</c:otherwise>

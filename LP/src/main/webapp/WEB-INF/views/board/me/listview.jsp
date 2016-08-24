@@ -12,7 +12,101 @@
 <!--  start to body -->
 <body>
 	<!--  include header -->
-	<c:import url="../../../views/include/header.jsp" />
+	
+	<div style="margin-bottom:70px">
+	<c:import url="/WEB-INF/views/include/header.jsp" />
+	</div>
+
+	<!--  include body -->
+	
+	<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav" id="clickmenu">
+						<li class="active">
+							<a href=""><p
+								class="text-center">이벤트
+						</li>					
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		
+		<div class="col-md-9">
+			<div id="profile">
+            <div class="profile-content">
+				 
+				 
+<c:choose>
+				<c:when test="empty partynotices">
+					<table width="700" border="1" cellpadding="0" cellspacing="0">
+						<tr>
+							<td align="center">이벤트에 저장된 글이 없습니다.</td>
+						</tr>
+					</table>
+				</c:when>
+
+				<c:otherwise>
+
+	
+					<h3>Event</h3>
+					<hr>
+					
+					<div class="clearfix">
+					<div class="col-sm-6 ng-scope" ng-repeat="notice in notices" ng-if="notice.Category!='TopRow' &amp;&amp; notice.Category!='FrontLine' &amp;&amp; notice.Visible == true">
+				
+					 <div class="panel" style="padding: 15px;">
+						
+					
+					
+						<a href="detail.action" style="display: block;">
+						
+								
+						
+								<p style="text-align:left">6기모집중!!</p>
+								<img src="${ cp }/resources/images/bapul1.jpg">
+							    &nbsp;
+								</a>
+								
+								<a href="detail2.action" style="display: block;">
+								
+								<p style="text-align:left">상위 1%!!</p>
+								
+								
+								<img src="${ cp }/resources/images/bapul2.jpg">
+							    
+							    </a>
+								
+								
+								
+					</div>
+				</div>
+
+
+							
+							
+						
+
+						</div>
+						</div>
+						
+				</c:otherwise>
+
+			</c:choose>
+
+				 
+            </div>
+		</div>
+		</div>
+		</div>
+		</div>
+	
+	<!-- -------------------------------------------------------------------------- -->
+	<%-- <c:import url="../../../views/include/header.jsp" />
 
 	<!--  include body -->
 
@@ -94,7 +188,7 @@
 
 
 		</div>
-
+ --%>
 	
 	
 	<!-- list end -->

@@ -15,4 +15,5 @@
     <script src="${cp}/resources/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="${cp}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${cp}/resources/css/bootstrapform.css" rel="stylesheet">
     

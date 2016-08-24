@@ -63,16 +63,105 @@
 	
 	</script>
 	<!--  include header -->
-	<c:import url="../../../views/include/header.jsp" />
+	<div style="margin-bottom:70px">
+	<c:import url="/WEB-INF/views/include/header.jsp" />
+	</div>
 
 	<!--  include body -->
+	
+	<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav" id="clickmenu">
+						<li class="active">
+							<a href="insert.action"><p class="text-center">공지사항 등록</p></a>
+						</li>					
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		
+		<div class="col-md-9">
+			<div id="profile">
+            <div class="profile-content">
+				 <div class="panel panel-info">
+				 
+				 <c:choose>
+				<c:when test="empty partynotices">
+					<table width="700" border="1" cellpadding="0" cellspacing="0">
+						<tr>
+							<td align="center">게시판에 저장된 글이 없습니다.</td>
+						</tr>
+					</table>
+				</c:when>
 
-	<div id="allcontainer" class="container-fluid "
+				<c:otherwise>
+	
+					<div class="panel-heading">
+					<h3 class="panel-title">Notice</h3>
+					</div>
+					<hr>
+
+
+					<div class="collapse" id="collapseExample">
+									<div class="well">
+										
+									</div>
+								</div>
+					<table class="table table-condensed" style="margin: auto">
+
+						<tr style="height: 25px" align="center">
+							<th>글 번호</th>
+							<th>제목</th>
+							<th>등록일</th>
+							<th>삭제여부</th>
+
+						</tr>
+						
+						<c:forEach var="partynotice" items="${ partynotices }" varStatus="status">
+							<tr>
+								<td>${ partynotice.noticeNo }</td>
+
+								<td>
+								<a class="nav nav-pills" href="#" data-noticeno="${partynotice.context}">${ partynotice.title }</a>
+								</td>
+								<td>${ partynotice.dateChanged }</td>
+							
+						<th><button type="button" class="btn btn-outline-info btn-xs" id="${ partynotice.noticeNo }">
+							삭제
+							</button></th>
+								
+							</tr>
+						</c:forEach>
+
+
+
+					</table>
+
+				</c:otherwise>
+
+			</c:choose>
+				 
+            </div>
+		</div>
+		</div>
+		</div>
+		</div>
+		
+
+
+
+<%-- 	<div id="allcontainer" class="container-fluid "
 		style="margin-top: 80px">
 
+		
 
-
-		<div class="col-md-2" role="main" id="sidebar">
+		<!-- <div class="col-md-2" role="main" id="sidebar"> -->
+		
 			<ul class="nav nav-pills nav-stacked">
 				<li role="presentation" class="active"><a href="insert.action"><p class="text-center">공지사항 등록</p></a></li>
 			</ul>
@@ -117,7 +206,7 @@
 						</tr>
 						
 						<c:forEach var="partynotice" items="${ partynotices }" varStatus="status">
-							<%-- AAA.rows는 레코드 배열을 반환한다 --%>
+							AAA.rows는 레코드 배열을 반환한다
 							<tr>
 								<td>${ partynotice.noticeNo }</td>
 
@@ -142,7 +231,7 @@
 			</c:choose>
 
 
-		</div>
+		</div> --%>
 
 
 

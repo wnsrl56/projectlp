@@ -378,6 +378,8 @@ Licensed under MIT
             </div>
 		</div>
 		</div>
+		</div>
+		</div>
 		<%-- <div id="question">
 			<div class="profile-content">
 				 <div class="panel panel-info">
